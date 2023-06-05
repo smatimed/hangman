@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Some apps">
+    <meta name="author" content="Mohamed SMATI">
+    <title>{% block title %}SOME APPS{% endblock title %}</title>
+    <!-- bloc where we can change the default title, when we extend 'base.html' -->
+
+
+    {% comment %}
+    {% load static %}
+    <link href="{% static 'bootstrap513-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap-icons-1.9.1/bootstrap-icons.css' %}" rel="stylesheet">
+
+    <link href="{% static 'favicon.ico' %}" rel="icon">
+    <!-- <link rel="shortcut icon" type="image/png" href="{ % static 'favicon.ico' % }" /> -->
+    {% endcomment %}
+
+    {% block head %}
+    <!-- bloc where we can add "style" content, when we extend 'base.html' -->
+    {% endblock head %}
+
+</head>
+
+<!-- <body class="text-center"> -->
+
+<body {% block bodyclass %} {% endblock bodyclass %}>
+    <!-- bloc where we can add Bootstrap class to body tag, when we extend 'base.html' -->
+
+
+    {% block content %}
+    <!-- bloc where we add HTML content, when we extend 'base.html' -->
+    {% endblock content %}
+
+
+    {% comment %}
+    <script src="{% static 'bootstrap513-dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'mini_navigateur.js' %}"></script>
+    {% endcomment %}
+
+    <script>
+        // ------- Go Top button
+        // When the user scrolls down 100px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                document.getElementById("theGoTopBtn").style.display = "block";
+            } else {
+                document.getElementById("theGoTopBtn").style.display = "none";
+            }
+        }
+
+        {% block add_to_script %}
+        // bloc where we add JavaScript content, when we extend 'base.html'
+        {% endblock add_to_script %}        
+    </script>
+
+</body>
+
+</html>

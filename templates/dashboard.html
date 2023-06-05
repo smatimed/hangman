@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% comment %}
+{% load static %}
+<link href="{% static 'sticky-footer-navbar.css' %}" rel="stylesheet">
+{% endcomment %}
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .child {
+        text-align: center;
+    }
+
+    #imgPendu {
+        width: 10%;
+        border-style: solid;
+        border-color: maroon;
+        border-width: 3px;
+    }
+</style>
+{% endblock head %}
+
+<!-- { % block bodyclass % } style="text-align: center;" { % endblock bodyclass % } -->
+{% block bodyclass %} class="text-center"{% endblock bodyclass %}
+
+{% block content %}
+
+<div class="container">
+    <div class="child" id="divLangue">
+        <input type="radio" name="Langue" id="anglais" value="EN"><label for="anglais">English</label>
+        <input type="radio" name="Langue" id="francais" value="FR" checked><label for="francais">Français</label>
+        <input type="radio" name="langue" id="allemand" value="GE"><label for="allemand">Deutsch</label>
+        <input type="radio" name="langue" id="arabe" value="AR"><label for="arabe">عربي</label>
+    </div>
+
+    <br>
+
+    <div class="child">
+        <a href="{% url 'hangman' %}"><img id="imgPendu" src="../static/LePendu.png" alt="hangman"></a>
+    </div>
+
+    <div class="child">
+        <p>Copyright &copy; 2022 Mohamed SMATI</p>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<!-- <footer class="footer bg-secondary text-white text-center my-0 py-0">
+    < !-- p-5 bg-dark text-white text-center position-relative"> -- >
+    <div class="container">
+        <span>Copyright &copy; 2022 Mohamed SMATI</span>
+        < !-- <a href="#" class="position-absolute bottom-0 end-0 p-5">
+                <i class="bi bi-arrow-up-circle h1"></i>
+            </a> -- >
+    </div>
+</footer> -->
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+id;lang;word;definition;hint;difficulty;nbTimesChosen
+1;F;COPAIN;Il fait partie des relations;Ami;N;9
+2;F;PNEU;Permet d'avancer;Rond;E;3
+3;F;DEFENDRE;Repousser;Protéger;N;8
+4;F;PERSONNE;Humain;Individu;N;8
+5;F;SONNETTE;Produit un son;Pousser le bouton;N;9
+6;F;BOUTEILLE;Conteneur;Boire;N;2
+7;F;CHAUSSURES;On les porte;Pied;N;9
+8;F;REMPLACER;Mettre un autre;Substituer;N;9
+9;F;DANGEUREUX;Redoutable;agressif;N;9
+10;F;DISTRIBUER;Diviser;Répartir;N;2
+11;F;BIBLIOTHEQUE;Armoire;Livres;N;7
+12;F;REZ DE CHAUSSEE;Niveau;Niveau 0;N;6
+13;F;INSEPARABLE;Noué;Indissociable;H;2
+14;F;MULTICOLORE;Varié;polychrome;H;0
+15;F;MATERNELLE;Ecole;Jardin d'enfants;H;1
+16;F;AVION;Transport;Air;E;2
+17;F;COURT;Bref;Mini;E;2
