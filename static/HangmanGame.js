@@ -3,12 +3,12 @@ var lesTouches = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var leMot = ["word", "hint"];
 var motRestant = [];
 var niveauJeu;
+var laLangue;
 
-
-function demanderUnMot(laLang, laDifficulte) {
+function demanderUnMot(laLangue, laDifficulte) {
     // We use here FETCH and REST-API
 
-    let url = window.location.origin + '/api/word/' + laLang + '/' + laDifficulte;
+    let url = window.location.origin + '/api/word/' + laLangue + '/' + laDifficulte;
     // window.location.origin   =>   'http://127.0.0.1:8000'
     // window.location.host   =>   '127.0.0.1:8000'
     // window.location.pathname   =>   '/api/word/F/N'
@@ -26,7 +26,11 @@ function demanderUnMot(laLang, laDifficulte) {
             creerEspaceMot();
         })
         .catch(erreur => {
-            document.getElementById("definition").innerHTML = '*** Problème avec serveur ***';
+            if (laLangue = 'F') {
+                document.getElementById("definition").innerHTML = '*** Problème avec le serveur ***';
+            } else {
+                document.getElementById("definition").innerHTML = '*** Problem with the server ***';
+            }
             leMot[0] = 'X';
             leMot[1] = 'X';
         })
@@ -128,37 +132,37 @@ function afficherProchaineErreur() {
     nbErreur++;
     switch (nbErreur) {
         case 1:
-            document.getElementById("img-pendu").setAttribute("src", "../static/LePendu01.png");
+            document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu01.png");
             break;
         case 2:
-            document.getElementById("img-pendu").setAttribute("src", "../static/LePendu02.png");
+            document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu02.png");
             break;
         case 3:
-            document.getElementById("img-pendu").setAttribute("src", "../static/LePendu03.png");
+            document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu03.png");
             break;
         case 4:
-            document.getElementById("img-pendu").setAttribute("src", "../static/LePendu04.png");
+            document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu04.png");
             break;
         case 5:
-            document.getElementById("img-pendu").setAttribute("src", "../static/LePendu05.png");
+            document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu05.png");
             if (niveauJeu != 'H') {
                 document.getElementById("boutonAide").setAttribute("data","true");
             };
             break;
         case 6:
-            document.getElementById("img-pendu").setAttribute("src", "../static/LePendu06.png");
+            document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu06.png");
             break;
         case 7:
-            document.getElementById("img-pendu").setAttribute("src", "../static/LePendu07.png");
+            document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu07.png");
             break;
         case 8:
-            document.getElementById("img-pendu").setAttribute("src", "../static/LePendu08.png");
+            document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu08.png");
             break;
         case 9:
-            document.getElementById("img-pendu").setAttribute("src", "../static/LePendu09.png");
+            document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu09.png");
             break;
         case 10:
-            document.getElementById("img-pendu").setAttribute("src", "../static/LePendu10.png");
+            document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu10.png");
             finDuJeu(false);
             break;
     };
@@ -168,14 +172,28 @@ function finDuJeu(lOk) {
     var divResultat = document.getElementById("resultat");
     divResultat.setAttribute("data", lOk);
     if (lOk) {
-        document.getElementById("resultatTitre").innerText = "Gagné !";
-        document.getElementById("resultatCorps").innerHTML = "Bravo, vous avez trouvé le mot.";
+        if (laLangue = 'F') {
+            document.getElementById("resultatTitre").innerText = "Gagné !";
+            document.getElementById("resultatCorps").innerHTML = "Bravo, vous avez trouvé le mot.";
+        } else {
+            document.getElementById("resultatTitre").innerText = "You won !";
+            document.getElementById("resultatCorps").innerHTML = "Congratulations, you found the word.";
+        };
     } else {
+        if (laLangue = 'F') {
         document.getElementById("resultatTitre").innerText = "Perdu !";
         document.getElementById("resultatCorps").innerHTML = "Le mot est <b>\"" + leMot[0].toUpperCase() + "\"</b><br>Bonne chance pour la prochaine fois.";
+    } else {
+            document.getElementById("resultatTitre").innerText = "You lost !";
+            document.getElementById("resultatCorps").innerHTML = "The word is <b>\"" + leMot[0].toUpperCase() + "\"</b><br>Good luck next time.";
+        };
     };
     document.getElementById("clavier").setAttribute("data", "false");
-    document.getElementById("boutonJouer").innerHTML = "Rejouer";
+    if (laLangue = 'F') {
+        document.getElementById("boutonJouer").innerHTML = "Rejouer";
+    } else {
+        document.getElementById("boutonJouer").innerHTML = "Replay";
+    };
     document.getElementById("boutonJouer").setAttribute("data", "true");
     document.getElementById("niveauDeJeu").setAttribute("data", "true");
 };
@@ -191,26 +209,38 @@ function initJeu() {
     motRestant = [];
     creerClavier();
 
+    // console.log('langue',laLangue);
+
     var libNiveauJeu;
     if (document.getElementById("facile").checked) {
         niveauJeu = document.getElementById("facile").value;
-        libNiveauJeu = "Facile";
+        if (laLangue = 'F') {
+            libNiveauJeu = "Facile";
+        } else {
+            libNiveauJeu = "Easy";
+        }
     } else if (document.getElementById("normal").checked) {
         niveauJeu = document.getElementById("normal").value;
         libNiveauJeu = "Normal";
     } else {
         niveauJeu = document.getElementById("difficile").value
-        libNiveauJeu = "Difficile";
+        if (laLangue = 'F') {
+            libNiveauJeu = "Difficile";
+        } else {
+            libNiveauJeu = "Difficult";
+        }
     };
     document.getElementById("niveauJeuChoisi").innerHTML = " ("+libNiveauJeu+")";
 
-    demanderUnMot('F', niveauJeu);    // theLang, theDifficulty
+    demanderUnMot(laLangue, niveauJeu);    // theLang, theDifficulty
 };
 
-function demarrerJeu() {
+function demarrerJeu(LangueDuJeu) {
+    // console.log('1-langue:',LangueDuJeu);
+    laLangue = LangueDuJeu;
     document.getElementById("boutonJouer").setAttribute("data", "false");
     document.getElementById("niveauDeJeu").setAttribute("data", "false");
-    document.getElementById("img-pendu").setAttribute("src", "../static/LePendu00.png");
+    document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu00.png");
     document.getElementById("resultat").setAttribute("data", "");
     document.getElementById("texteAide").setAttribute("data","false");
     document.getElementById("boutonAide").setAttribute("data","false");

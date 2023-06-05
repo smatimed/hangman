@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Some apps">
     <meta name="author" content="Mohamed SMATI">
-    <title>{% block title %}SOME APPS{% endblock title %}</title>
+    <title>{% block title %}HANGMAN{% endblock title %}</title>
     <!-- bloc where we can change the default title, when we extend 'base.html' -->
 
 
@@ -15,7 +15,7 @@
     <link href="{% static 'bootstrap513-dist/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'bootstrap-icons-1.9.1/bootstrap-icons.css' %}" rel="stylesheet">
 
-    <link href="{% static 'favicon.ico' %}" rel="icon">
+    <!-- <link href="{ % static 'favicon.ico' %}" rel="icon"> -->
     <!-- <link rel="shortcut icon" type="image/png" href="{ % static 'favicon.ico' % }" /> -->
     {% endcomment %}
 
@@ -37,11 +37,11 @@
 
 
     {% comment %}
-    <script src="{% static 'bootstrap513-dist/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'mini_navigateur.js' %}"></script>
+    <!-- <script src="{ % static 'bootstrap513-dist/js/bootstrap.bundle.min.js' %}"></script> -->
+    <!-- <script src="{ % static 'mini_navigateur.js' %}"></script> -->
     {% endcomment %}
 
-    <script>
+    <!-- <script>
         // ------- Go Top button
         // When the user scrolls down 100px from the top of the document, show the button
         window.onscroll = function () { scrollFunction() };
@@ -57,7 +57,7 @@
         {% block add_to_script %}
         // bloc where we add JavaScript content, when we extend 'base.html'
         {% endblock add_to_script %}        
-    </script>
+    </script> -->
 
 </body>
 

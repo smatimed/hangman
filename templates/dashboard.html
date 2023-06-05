@@ -4,7 +4,7 @@
 
 {% comment %}
 {% load static %}
-<link href="{% static 'sticky-footer-navbar.css' %}" rel="stylesheet">
+<!-- <link href="{ % static 'sticky-footer-navbar.css' %}" rel="stylesheet"> -->
 {% endcomment %}
 
 <style>
@@ -36,20 +36,37 @@
     <div class="child" id="divLangue">
         <input type="radio" name="Langue" id="anglais" value="EN"><label for="anglais">English</label>
         <input type="radio" name="Langue" id="francais" value="FR" checked><label for="francais">Français</label>
-        <input type="radio" name="langue" id="allemand" value="GE"><label for="allemand">Deutsch</label>
-        <input type="radio" name="langue" id="arabe" value="AR"><label for="arabe">عربي</label>
+        <!-- <input type="radio" name="langue" id= "allemand" value="GE"><label for="allemand">Deutsch</label> -->
+        <!-- <input type="radio" name="langue" id="arabe" value="AR"><label for="arabe">عربي</label> -->
     </div>
 
     <br>
 
     <div class="child">
-        <a href="{% url 'hangman' %}"><img id="imgPendu" src="../static/LePendu.png" alt="hangman"></a>
+        <!-- <a href="{ % url 'hangman' % }"><img id="imgPendu" src="../static/LePendu.png" alt="hangman"></a> -->
+        <a role="button" onclick="goHangmanPage()"><img id="imgPendu" src="../static/LePendu.png" alt="hangman"></a>
     </div>
 
     <div class="child">
         <p>Copyright &copy; 2022 Mohamed SMATI</p>
     </div>
 </div>
+
+<script>
+    function goHangmanPage() {
+        let vLangue;
+        if (document.getElementById("anglais").checked) {
+            vLangue = 'E'
+        } else {
+            if (document.getElementById("francais").checked) {
+                vLangue = 'F'
+            }
+        };
+        let theUrl = "/hangman/" + vLangue + "/"
+        // window.location = "{ % url 'hangman' langue % }".replace('langue', vLangue);
+        document.location.href = theUrl;
+    }
+</script>
 
 
 <!-- Footer -->
