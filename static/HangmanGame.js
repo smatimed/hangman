@@ -7,6 +7,7 @@ var laLangue;
 
 function demanderUnMot(laLangue, laDifficulte) {
     // We use here FETCH and REST-API
+    // console.log('langue (demanderUnMot)',laLangue);
 
     let url = window.location.origin + '/api/word/' + laLangue + '/' + laDifficulte;
     // window.location.origin   =>   'http://127.0.0.1:8000'
@@ -26,7 +27,7 @@ function demanderUnMot(laLangue, laDifficulte) {
             creerEspaceMot();
         })
         .catch(erreur => {
-            if (laLangue = 'F') {
+            if (laLangue == 'F') {
                 document.getElementById("definition").innerHTML = '*** Problème avec le serveur ***';
             } else {
                 document.getElementById("definition").innerHTML = '*** Problem with the server ***';
@@ -171,8 +172,9 @@ function afficherProchaineErreur() {
 function finDuJeu(lOk) {
     var divResultat = document.getElementById("resultat");
     divResultat.setAttribute("data", lOk);
+    // console.log('langue (finDuJeu)',laLangue);
     if (lOk) {
-        if (laLangue = 'F') {
+        if (laLangue == 'F') {
             document.getElementById("resultatTitre").innerText = "Gagné !";
             document.getElementById("resultatCorps").innerHTML = "Bravo, vous avez trouvé le mot.";
         } else {
@@ -180,7 +182,7 @@ function finDuJeu(lOk) {
             document.getElementById("resultatCorps").innerHTML = "Congratulations, you found the word.";
         };
     } else {
-        if (laLangue = 'F') {
+        if (laLangue == 'F') {
         document.getElementById("resultatTitre").innerText = "Perdu !";
         document.getElementById("resultatCorps").innerHTML = "Le mot est <b>\"" + leMot[0].toUpperCase() + "\"</b><br>Bonne chance pour la prochaine fois.";
     } else {
@@ -189,7 +191,7 @@ function finDuJeu(lOk) {
         };
     };
     document.getElementById("clavier").setAttribute("data", "false");
-    if (laLangue = 'F') {
+    if (laLangue == 'F') {
         document.getElementById("boutonJouer").innerHTML = "Rejouer";
     } else {
         document.getElementById("boutonJouer").innerHTML = "Replay";
@@ -209,12 +211,12 @@ function initJeu() {
     motRestant = [];
     creerClavier();
 
-    // console.log('langue',laLangue);
+    // console.log('langue (initJeu)',laLangue);
 
     var libNiveauJeu;
     if (document.getElementById("facile").checked) {
         niveauJeu = document.getElementById("facile").value;
-        if (laLangue = 'F') {
+        if (laLangue == 'F') {
             libNiveauJeu = "Facile";
         } else {
             libNiveauJeu = "Easy";
@@ -224,7 +226,7 @@ function initJeu() {
         libNiveauJeu = "Normal";
     } else {
         niveauJeu = document.getElementById("difficile").value
-        if (laLangue = 'F') {
+        if (laLangue == 'F') {
             libNiveauJeu = "Difficile";
         } else {
             libNiveauJeu = "Difficult";
@@ -236,7 +238,7 @@ function initJeu() {
 };
 
 function demarrerJeu(LangueDuJeu) {
-    // console.log('1-langue:',LangueDuJeu);
+    // console.log('langue (demarrerJeu)',LangueDuJeu);
     laLangue = LangueDuJeu;
     document.getElementById("boutonJouer").setAttribute("data", "false");
     document.getElementById("niveauDeJeu").setAttribute("data", "false");
