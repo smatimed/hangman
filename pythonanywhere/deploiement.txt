@@ -1,0 +1,6 @@
+- compress all files (in zip)
+- upload the zip file to pythonanywhere
+- enter in bash and decompress the zip (unzip <filename.zip>)
+- delete the zip
+
+Click on "Web" to enter configuration.

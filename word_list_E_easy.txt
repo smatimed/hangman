@@ -1,0 +1,214 @@
+*** REVOIR LES DEFINITIONS QUI SONT TROP COURTES, SURTOUT POUR LE FACILE
+
+32. Moon: Earth's natural satellite that
+
+ orbits around it
+    Hint: It can be seen at night in the sky.
+
+33. Nest: A structure built by birds to lay eggs and raise their young
+    Hint: It's usually made with twigs and leaves.
+
+34. Owl: A nocturnal bird of prey with large eyes and a sharp beak
+    Hint: It's known for its wisdom in stories.
+
+35. Pencil: A tool used for writing or drawing
+    Hint: It leaves marks on paper.
+
+36. Queen: A female ruler or monarch
+    Hint: She holds a high position of power.
+
+37. Rainbow: A meteorological phenomenon with colors in the sky
+    Hint: It appears after rainfall.
+
+38. Sun: The star at the center of our solar system
+    Hint: It provides heat and light.
+
+39. Tree: A large perennial plant with a trunk and branches
+    Hint: It has leaves and provides shade.
+
+40. Umbrella: A device used for protection from rain or sun
+    Hint: It can be opened and closed.
+
+41. Van: A large vehicle used for transportation
+    Hint: It's commonly used for moving goods.
+
+42. Window: An opening in a wall with a transparent covering
+    Hint: You can look through it to see outside.
+
+43. Xylophone: A musical instrument with wooden bars of different lengths
+    Hint: It's played by striking the bars with mallets.
+
+44. Yo-yo: A toy consisting of a spool attached to a string
+    Hint: It can be spun and manipulated with tricks.
+
+45. Zebra: A large mammal with black and white stripes
+    Hint: It's often found in African grasslands.
+
+46. Ball: A round object used for sports or games
+    Hint: It can be kicked, thrown, or hit.
+
+47. Car: A motor vehicle used for transportation on roads
+    Hint: It has wheels and runs on fuel.
+
+48. Drum: A percussion instrument played by striking it with sticks or hands
+    Hint: It produces rhythmic sounds.
+
+49. Elephant: A large mammal with a long trunk and tusks
+    Hint: It's known for its size and strength.
+
+50. Flag: A piece of cloth with colors and symbols representing a country or organization
+    Hint: It's often raised on poles.
+
+51. Guitar: A stringed musical instrument played with fingers or a pick
+    Hint: It's popular in various music genres.
+
+52. House: A building used as a dwelling place
+    Hint: It provides shelter and a home.
+
+53. Island: A piece of land surrounded by water
+    Hint: It's often found in the middle of an ocean.
+
+54. Jacket: A garment worn on the upper body for warmth or style
+    Hint: It has sleeves and buttons or a zipper.
+
+55. Kite: A lightweight object flown in the air on a string
+    Hint: It requires wind to stay airborne.
+
+56. Lemon: A sour citrus fruit with yellow skin
+    Hint: It's often used for its juice or zest.
+
+57. Monkey: A small to medium-sized primate with a long tail
+    Hint: It's known for its agility and climbing abilities.
+
+58. Nest: A structure built by birds to lay eggs and raise their young
+    Hint: It's usually made with twigs, grass, and feathers.
+
+59. Orange: A citrus fruit with a bright orange color and a sweet taste
+    Hint: It's often associated with vitamin C.
+
+60. Penguin: A flightless bird found in the Southern Hemisphere
+    Hint: It's known for its distinctive black and white coloration.
+
+61. Queen: A female ruler or monarch
+    Hint
+
+: She holds a position of authority and power.
+
+62. Rabbit: A small mammal with long ears and a fluffy tail
+    Hint: It's known for its hopping and nibbling on carrots.
+
+63. Sun: The star at the center of our solar system
+    Hint: It provides light and heat to Earth.
+
+64. Turtle: A reptile with a hard shell that lives both on land and in water
+    Hint: It moves slowly and can retract its head and limbs into its shell.
+
+65. Unicorn: A mythical creature depicted as a horse with a single horn on its forehead
+    Hint: It's often associated with magic and fantasy.
+
+66. Violin: A stringed musical instrument played with a bow
+    Hint: It produces beautiful melodies.
+
+67. Whale: A large marine mammal that lives in the ocean
+    Hint: It's known for its massive size and aquatic lifestyle.
+
+68. Xylophone: A musical instrument with wooden bars of different lengths
+    Hint: It's often played in school bands or orchestras.
+
+69. Yak: A long-haired bovine mammal found in the Himalayas
+    Hint: It's known for its shaggy coat and sturdy build.
+
+70. Zebra: A large mammal with black and white stripes
+    Hint: It's often found in grasslands and savannas.
+
+71. Ant: A small insect that lives in organized colonies
+    Hint: It's known for its strength and hardworking nature.
+
+72. Bear: A large mammal with a heavy build and thick fur
+    Hint: It hibernates during winter.
+
+73. Cow: A large domesticated mammal kept for milk and meat
+    Hint: It's often found on farms.
+
+74. Dolphin: A marine mammal known for its intelligence and playful nature
+    Hint: It's often seen leaping and swimming in oceans.
+
+75. Elephant: A large mammal with a long trunk and tusks
+    Hint: It's known for its intelligence and memory.
+
+76. Fox: A small to medium-sized carnivorous mammal with a bushy tail
+    Hint: It's often associated with being sly or cunning.
+
+77. Giraffe: A tall African mammal with a long neck and patterned coat
+    Hint: It's known for being the tallest land animal.
+
+78. Horse: A large domesticated mammal used for riding and pulling loads
+    Hint: It has hooves and a mane.
+
+79. Iguana: A large reptile with rough skin and a long tail
+    Hint: It's often found in tropical regions.
+
+80. Jellyfish: A gelatinous marine creature with long, trailing tentacles
+    Hint: It's known for its translucent appearance and stinging cells.
+
+81. Kangaroo: A marsupial mammal with powerful hind legs for hopping
+    Hint: It's native to Australia and has a pouch to carry its young.
+
+82. Lion: A large carnivorous feline mammal known as the "king of the jungle"
+    Hint: It's known for its majestic appearance and roaring sound.
+
+83. Monkey: A small to medium-sized primate with a long tail
+    Hint: It's known for its intelligence and dexterity.
+
+84. Narwhal: A medium-sized toothed whale with a long, spiral tusk
+    Hint: It's often associated with myths and legends.
+
+85. Octopus: A marine mollusk with a soft body and eight arms
+    Hint: It's known for its intelligence and ability to change colors.
+
+86. Penguin: A flightless bird found in the Southern Hemisphere
+    Hint: It's known for its tuxedo-like appearance and waddling walk.
+
+
+
+87. Quail: A small bird with a plump body and a short tail
+    Hint: It's often hunted for sport or raised for its eggs.
+
+88. Rabbit: A small mammal with long ears and a fluffy tail
+    Hint: It's known for its ability to hop quickly.
+
+89. Snake: A long, legless reptile that slithers on the ground
+    Hint: It's often associated with venom and shedding its skin.
+
+90. Tiger: A large carnivorous cat with distinctive black stripes on its orange coat
+    Hint: It's known for its strength and agility.
+
+91. Umbrella: A device used for protection from rain or sun
+    Hint: It can be opened and closed and provides shade or cover.
+
+92. Vulture: A large bird of prey that scavenges on dead animals
+    Hint: It's often associated with circling in the sky.
+
+93. Whale: A large marine mammal that lives in the ocean
+    Hint: It's known for its massive size and presence in the sea.
+
+94. Fox: A small to medium-sized carnivorous mammal with a bushy tail
+    Hint: It's known for its cunning and adaptability.
+
+95. Yak: A long-haired bovine mammal found in the Himalayas
+    Hint: It's often domesticated for milk, meat, and transportation.
+
+96. Zebra: A large mammal with black and white stripes
+    Hint: It's often found in African grasslands and has a unique pattern.
+
+97. Carrot: A long, orange vegetable that is rich in vitamins
+    Hint: It's often eaten raw or cooked as part of a meal.
+
+98. Cake: A sweet baked dessert often served for celebrations
+    Hint: It's made with flour, sugar, eggs, and flavorings.
+
+99. Pizza: A round, flat bread topped with sauce, cheese, and various toppings
+    Hint: It's a popular Italian dish enjoyed worldwide.
+
+100. Rainbow: A meteorological phenomenon with colors in the sky
+     Hint: It occurs after rain when sunlight refracts through water droplets.

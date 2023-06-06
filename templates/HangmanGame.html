@@ -10,7 +10,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container mt-1">
 
     <!-- <div class="div_enfant">
         {% if langue == 'F' %}
@@ -21,22 +21,23 @@
     </div> -->
 
     <div class="row">
+        <div class="col-2"></div>
         <div class="col">
             <div class="div_enfant">
                 {% if langue == 'F' %}
-                <h2>LE PENDU<span id="niveauJeuChoisi"></span></h2>
+                <h3 class="titreJeu">LE PENDU<span id="niveauJeuChoisi"></span></h3>
                 {% else %}
-                <h2>HANGMAN<span id="niveauJeuChoisi"></span></h2>
+                <h3 class="titreJeu">HANGMAN<span id="niveauJeuChoisi"></span></h3>
                 {% endif %}
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-2 px-0">
             <!-- *Navigateur* start -->
-            <a href="{% url 'dashboard' %}" style="float: right;" class="btn btn-outline-dark btn-rounded mx-3" role="button">
+            <a href="{% url 'dashboard' %}" style="float: right;" class="btn btn-outline-dark btn-rounded ms-3 py-1 px-2" role="button">
                 <span class="bi bi-house-fill" style="font-size: large"></span>
                 <!-- <p class="m-0 p-0">{% if langue == 'F' %}Accueil{% else %}Home{% endif %}</p> -->
             </a>
-            <a href="{% url 'hangman' langue %}" style="float: right;" class="btn btn-outline-dark btn-rounded" role="button">
+            <a href="{% url 'hangman' langue %}" style="float: right;" class="btn btn-outline-dark btn-rounded py-1 px-2" role="button">
                 <span class="bi bi-x-circle-fill" style="font-size: large"></span>
                 <!-- <p class="m-0 p-0">{% if langue == 'F' %}Annuler{% else %}Cancel{% endif %}</p> -->
             </a>
@@ -52,7 +53,7 @@
         </div>
     </div>
 
-    <div class="div_enfant">
+    <div class="div_enfant pt-2">
         <p>
             <span id="definition"></span>
             <span id="texteAide" data="false"></span>
@@ -60,6 +61,7 @@
         </p>
     </div>
 
+    <!-- *clavier* -->
     <div class="div_enfant" id="clavier" data="">
     </div>
 
@@ -67,9 +69,9 @@
     <div class="div_enfant" id="boutonJouer" data="true" onclick="demarrerJeu('{{langue}}')">{% if langue == 'F' %}Jouer{% else %}Play{% endif %}</div>
 
     <div class="div_enfant" id="niveauDeJeu" data="true">
-        <input type="radio" name="niveauJeu" id="facile" value="E"><label for="facile">{% if langue == 'F' %}Facile{% else %}Easy{% endif %}</label>
-        <input type="radio" name="niveauJeu" id="normal" value="N" checked><label for="normal">Normal</label>
-        <input type="radio" name="niveauJeu" id="difficile" value="H"><label for="difficile">{% if langue == 'F' %}Difficile{% else %}Difficult{% endif %}</label>
+        <input class="ps-5" type="radio" name="niveauJeu" id="facile" value="E"><label class="pe-3 ps-1" for="facile">{% if langue == 'F' %}Facile{% else %}Easy{% endif %}</label>
+        <input type="radio" name="niveauJeu" id="normal" value="N" checked><label class="pe-3 ps-1" for="normal">Normal</label>
+        <input type="radio" name="niveauJeu" id="difficile" value="H"><label class="ps-1" for="difficile">{% if langue == 'F' %}Difficile{% else %}Difficult{% endif %}</label>
     </div>
 
     <div class="div_enfant" id="resultat">

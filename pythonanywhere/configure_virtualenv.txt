@@ -1,0 +1,11 @@
+https://help.pythonanywhere.com/pages/Virtualenvs
+
+$ mkvirtualenv myvirtualenv --python=/usr/bin/python3.8
+
+$ workon myvirtualenv
+$ which pip
+$ pip install django==4.2.1
+$ pip install django-widget-tweaks
+$ pip install djangorestframework
+
+Go to the Web tab, and in the Virtualenv section, enter the path: /home/smatimed/.virtualenvs/myvirtualenv

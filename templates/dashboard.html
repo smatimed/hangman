@@ -7,12 +7,13 @@
 <!-- <link href="{ % static 'sticky-footer-navbar.css' %}" rel="stylesheet"> -->
 {% endcomment %}
 
+<!--  
 <style>
-    .container {
+     .container {
         display: flex;
         flex-direction: column;
         justify-content: center;
-    }
+    } 
 
     .child {
         text-align: center;
@@ -22,9 +23,10 @@
         width: 10%;
         border-style: solid;
         border-color: maroon;
-        border-width: 3px;
+        border-width: 3px; 
     }
-</style>
+    </style>
+-->
 {% endblock head %}
 
 <!-- { % block bodyclass % } style="text-align: center;" { % endblock bodyclass % } -->
@@ -33,39 +35,202 @@
 {% block content %}
 
 <div class="container">
-    <div class="child" id="divLangue">
+    <!-- <div class="div_enfant" id="divLangue">
         <input type="radio" name="Langue" id="anglais" value="EN"><label for="anglais">English</label>
         <input type="radio" name="Langue" id="francais" value="FR" checked><label for="francais">Français</label>
-        <!-- <input type="radio" name="langue" id= "allemand" value="GE"><label for="allemand">Deutsch</label> -->
-        <!-- <input type="radio" name="langue" id="arabe" value="AR"><label for="arabe">عربي</label> -->
+        < !-- <input type="radio" name="langue" id= "allemand" value="GE"><label for="allemand">Deutsch</label> -- >
+        < !-- <input type="radio" name="langue" id="arabe" value="AR"><label for="arabe">عربي</label> -- >
+    </div> -->
+
+    <!-- ! *** Languages bar tools *** -->
+    <div class="row">
+        <div class="col">
+            <div class="row mt-3">
+                <div class="l_en">
+                    <h4>Language</h4>
+                </div>
+                <div class="l_fr">
+                    <h4>Langue</h4>
+                </div>
+                <div class="l_de">
+                    <h4>Sprache</h4>
+                </div>
+                <div class="l_ar">
+                    <h4>لـغــة</h4>
+                </div>
+            </div>
+            <div class="row">
+                <ul>
+                    <!-- En -->
+                    <li id="en_click" class="mx-1 button_lang current_lang anim" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" data-bs-original-title="English">En</li>
+                    <!-- <span>&nbsp;&nbsp;&nbsp;</span> -->
+                    <!-- Fr -->
+                    <li id="fr_click" class="mx-1 button_lang anim" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        data-bs-original-title="Français">Fr</li>
+                    <!-- <span>&nbsp;&nbsp;&nbsp;</span> -->
+                    <!-- De -->
+                    <li hidden id="de_click" class="mx-1 button_lang anim" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        data-bs-original-title="Deutsch">De</li>
+                    <!-- <span>&nbsp;&nbsp;&nbsp;</span> -->
+                    <!-- Ar -->
+                    <li hidden id="ar_click" class="mx-1 button_lang anim" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        data-bs-original-title="عربي">&nbsp;ع&nbsp;</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <br>
 
-    <div class="child">
+    <div class="div_enfant">
         <!-- <a href="{ % url 'hangman' % }"><img id="imgPendu" src="../static/LePendu.png" alt="hangman"></a> -->
-        <a role="button" onclick="goHangmanPage()"><img id="imgPendu" src="../static/LePendu.png" alt="hangman"></a>
+        <a role="button" onclick="goHangmanPage()"><img id="imgPendu" src="../static/LePendu_150.png" alt="hangman"></a>
     </div>
 
-    <div class="child">
-        <p>Copyright &copy; 2022 Mohamed SMATI</p>
+    <div class="div_enfant">
+        <p class="mt-3">Copyright &copy; 2022 by Mohamed SMATI</p>
     </div>
 </div>
 
 <script>
     function goHangmanPage() {
-        let vLangue;
-        if (document.getElementById("anglais").checked) {
-            vLangue = 'E'
-        } else {
-            if (document.getElementById("francais").checked) {
-                vLangue = 'F'
-            }
-        };
-        let theUrl = "/hangman/" + vLangue + "/"
+        let theUrl = "/hangman/" + langueCourante + "/"
         // window.location = "{ % url 'hangman' langue % }".replace('langue', vLangue);
         document.location.href = theUrl;
     }
+    // function goHangmanPage() {
+    //     let vLangue;
+    //     if (document.getElementById("anglais").checked) {
+    //         vLangue = 'E'
+    //     } else {
+    //         if (document.getElementById("francais").checked) {
+    //             vLangue = 'F'
+    //         }
+    //     };
+    //     let theUrl = "/hangman/" + vLangue + "/"
+    //     // window.location = "{ % url 'hangman' langue % }".replace('langue', vLangue);
+    //     document.location.href = theUrl;
+    // }
+</script>
+
+<script>
+
+    // switching between languages
+    var langueCourante = 'E';
+    var french = document.getElementById('fr_click'),
+        english = document.getElementById('en_click'),
+        german = document.getElementById('de_click'),
+        arabic = document.getElementById('ar_click'),
+        fr_txt = document.querySelectorAll('.l_fr'),
+        en_txt = document.querySelectorAll('.l_en'),
+        de_txt = document.querySelectorAll('.l_de'),
+        ar_txt = document.querySelectorAll('.l_ar'),
+        nb_fr = fr_txt.length,
+        nb_en = en_txt.length,
+        nb_de = de_txt.length,
+        nb_ar = ar_txt.length,
+        fr_in_txt = document.querySelectorAll('.l_in_fr'),
+        en_in_txt = document.querySelectorAll('.l_in_en'),
+        de_in_txt = document.querySelectorAll('.l_in_de'),
+        ar_in_txt = document.querySelectorAll('.l_in_ar'),
+        nb_in_fr = fr_in_txt.length,
+        nb_in_en = en_in_txt.length,
+        nb_in_de = de_in_txt.length,
+        nb_in_ar = ar_in_txt.length;
+
+    french.addEventListener('click', function () {
+        langue(french, english, german, arabic);
+    }, false);
+
+    english.addEventListener('click', function () {
+        langue(english, french, german, arabic);
+    }, false);
+
+    german.addEventListener('click', function () {
+        langue(german, french, english, arabic);
+    }, false);
+
+    arabic.addEventListener('click', function () {
+        langue(arabic, english, german, french);
+    }, false);
+
+    function langue(langueOn, langueOff, langue2Off, langue3Off) {
+        if (!langueOn.classList.contains('current_lang')) {
+            langueOn.classList.add('current_lang');
+            langueOff.classList.remove('current_lang');
+            langue2Off.classList.remove('current_lang');
+            langue3Off.classList.remove('current_lang');
+        }
+        if (langueOn.innerHTML == 'Fr') {
+            afficher(fr_txt, nb_fr);
+            afficher_in(fr_in_txt, nb_in_fr);
+            cacher(en_txt, nb_en);
+            cacher(en_in_txt, nb_in_en);
+            cacher(de_txt, nb_de);
+            cacher(de_in_txt, nb_in_de);
+            cacher(ar_txt, nb_ar);
+            cacher(ar_in_txt, nb_in_ar);
+            document.getElementsByTagName("html")[0].setAttribute("lang", "fr");
+            langueCourante = 'F';
+        }
+        else if (langueOn.innerHTML == 'En') {
+            afficher(en_txt, nb_en);
+            afficher_in(en_in_txt, nb_in_en);
+            cacher(fr_txt, nb_fr);
+            cacher(fr_in_txt, nb_in_fr);
+            cacher(de_txt, nb_de);
+            cacher(de_in_txt, nb_in_de);
+            cacher(ar_txt, nb_ar);
+            cacher(ar_in_txt, nb_in_ar);
+            document.getElementsByTagName("html")[0].setAttribute("lang", "en");
+            langueCourante = 'E';
+        }
+        else if (langueOn.innerHTML == 'De') {
+            afficher(de_txt, nb_de);
+            afficher_in(de_in_txt, nb_in_de);
+            cacher(fr_txt, nb_fr);
+            cacher(fr_in_txt, nb_in_fr);
+            cacher(en_txt, nb_en);
+            cacher(en_in_txt, nb_in_en);
+            cacher(ar_txt, nb_ar);
+            cacher(ar_in_txt, nb_in_ar);
+            document.getElementsByTagName("html")[0].setAttribute("lang", "de");
+            langueCourante = 'D';
+        }
+        else if (langueOn.innerHTML == '&nbsp;ع&nbsp;') {
+            afficher(ar_txt, nb_ar);
+            afficher_in(ar_in_txt, nb_in_ar);
+            cacher(fr_txt, nb_fr);
+            cacher(fr_in_txt, nb_in_fr);
+            cacher(en_txt, nb_en);
+            cacher(en_in_txt, nb_in_en);
+            cacher(de_txt, nb_de);
+            cacher(de_in_txt, nb_in_de);
+            document.getElementsByTagName("html")[0].setAttribute("lang", "ar");
+            langueCourante = 'A';
+        };
+    }
+
+    function afficher(txt, nb) {
+        for (var i = 0; i < nb; i++) {
+            txt[i].style.display = 'block';
+        }
+    }
+    function afficher_in(txt, nb) {
+        for (var i = 0; i < nb; i++) {
+            txt[i].style.display = 'inline';
+        }
+    }
+    function cacher(txt, nb) {
+        for (var i = 0; i < nb; i++) {
+            txt[i].style.display = 'none';
+        }
+    }
+    function init() {
+        langue(english, french, german, arabic);
+    }
+    init();        
 </script>
 
 
