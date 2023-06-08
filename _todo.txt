@@ -1,0 +1,4 @@
+- time
+- records
+- effect when loosing
+- color red or green depending on the result
