@@ -1,35 +1,45 @@
-Pain : Nourriture de base ; Indice : Farine
-Chat : Animal domestique ; Indice : Souris
-Port : Endroit où on accoste ; Indice : Bateaux
-Haut : Direction ; Indice : Au-dessus
-Neuf : Nouveau ; Indice : Non utilisé
-Vent : Mouvement de l'air ; Indice : Souffle
-Ciel : Atmosphère ; Indice : Bleu
-Vide : Sans contenu ; Indice : Rien
-Bois : Matériau ; Indice : Arbres
-Temps : Mesure ; Indice : Durée
-Bleu : Couleur ; Indice : Primaire
-Main : Partie du corps humain ; Indice : Deux
-Porte : Ouverture ; Indice : Clé
-Long : Etendu ; Indice : Pas court
-Miel : Substance sucrée ; Indice : Abeilles
-Miroir : Surface réfléchissante ; Indice : Se coiffer
-Peur : Émotion ; Indice : En cas de danger
-Faim : Sensation ; Indice : Estomac
-Coin : Angle formé par deux lignes ; Indice : Endroit
-Verre : Matériau ; Indice : Transparent
-Ferme : Lieu pas dans la ville  ; Indice : Animaux
-Peau : Couche externe ; Indice : Corps
-Bonheur : État de satisfaction ; Indice : Joie
-Chien : Animal de compagnie ; Indice : Gardien
-Froid : Etat relatif à la température ; Indice : Hiver
-Oeil : Organe ; Indice : Visage
-Jour : Période ; Indice : Unité pour le mois
-Voir : Percevoir ; Indice : Yeux
-Saut : Action de bondir ; Indice : Kangourous
-Base : Fondation ; Indice : Elle sert de support
-Rire : Réaction joyeuse ; Indice : Sons amusants
+Est-ce que tu peux me donner une liste de 300 mots faciles (qui sont différents), de longueur minimale de 4 lettres, avec une brève définition et un indice à utiliser pour le jeu du pendu; la liste sous le format mot;définition;indice
 
+ChatGPT
+Bien sûr! Voici une liste de 100 mots faciles avec leurs définitions et indices pour le jeu du pendu :
+
+Pain : Nourriture de base ; Indice : On le trouve souvent à côté du beurre.
+Chat : Animal domestique ; Indice : Il aime jouer avec des souris.
+Port : Endroit où les bateaux accostent ; Indice : Il peut être ouvert ou fermé.
+Haut : Opposé de bas ; Indice : Il est au-dessus de notre tête.
+Neuf : Nouveau ; Indice : Il vient après huit.
+Vent : Mouvement de l'air ; Indice : Il fait bouger les feuilles des arbres.
+Ciel : L'atmosphère au-dessus de nous ; Indice : Les oiseaux volent dedans.
+Vide : Sans contenu ; Indice : Il est opposé à plein.
+Bois : Matériau provenant des arbres ; Indice : On en fait des meubles.
+Temps : Mesure de la durée ; Indice : Il peut être ensoleillé ou pluvieux.
+Bleu : Couleur primaire ; Indice : Le ciel est souvent de cette couleur.
+Main : Partie du corps humain ; Indice : On s'en sert pour saisir les objets.
+Porte : Ouverture dans un mur ; Indice : On peut la fermer avec une clé.
+Long : Pas court ; Indice : Il est opposé à court.
+Bas : Opposé de haut ; Indice : Il est en dessous de notre tête.
+Miel : Substance sucrée produite par les abeilles ; Indice : Il est délicieux sur des tartines.
+Feu : Chaleur produite par la combustion ; Indice : On en a besoin pour cuisiner.
+Nez : Organe situé au milieu du visage ; Indice : Il permet de sentir les odeurs.
+Miroir : Surface réfléchissante ; Indice : On s'y regarde pour se coiffer.
+Peur : Émotion ressentie en cas de danger ; Indice : Les films d'horreur peuvent la provoquer.
+Faim : Sensation de besoin de manger ; Indice : On la ressent lorsque l'estomac est vide.
+Coin : Angle formé par deux lignes ; Indice : Il peut être rond ou carré.
+Verre : Matériau transparent ; Indice : On boit dedans.
+Porte : Ouverture dans un mur ; Indice : On entre et sort par là.
+Ferme : Lieu où vivent les animaux de la ferme ; Indice : On y trouve des vaches et des poules.
+Peau : Couche externe du corps ; Indice : Elle nous protège.
+Bonheur : État de satisfaction ; Indice : Il est synonyme de joie.
+Chien : Animal de compagnie ; Indice : Il est fidèle et aboie.
+Froid : Température basse ; Indice : On le ressent en hiver.
+Oeil : Organe de la vision ; Indice : On en a deux.
+Lit : Meuble pour dormir ; Indice : On s'y repose.
+Jour : Période de 24 heures ; Indice : Il est composé de matin, après-midi et soir.
+Port : Endroit où les bateaux font escale ; Indice : On y embarque et débarque.
+Voir : Percevoir avec les yeux ; Indice : Il faut ouvrir les yeux pour le faire.
+Saut : Action de bondir dans les airs ; Indice : Les kangourous en sont experts.
+Base : Fondation d'un objet ; Indice : Elle sert de support.
+Rire : Réaction joyeuse ; Indice : On produit des sons amusants en le faisant.
 Fête : Célébration ; Indice : On organise souvent une pour son anniversaire.
 Peur : Sentiment d'effroi ; Indice : On peut avoir des frissons en la ressentant.
 Rose : Fleur parfumée ; Indice : Elle est souvent associée à l'amour.
@@ -956,3 +966,5 @@ Je m'excuse pour cette erreur. Voici la suite de la liste pour atteindre un tota
 298. Plante : Être vivant qui pousse du sol ; Indice : On en trouve dans les jardins et les maisons.
 299. Douche : Bain rapide pour se laver ; Indice : On l'utilise souvent le matin.
 300. Sauter : Action de quitter le sol avec force ; Indice : On le fait souvent pour franchir un obstacle.
+
+J'espère que cette liste complète de 300 mots répond à vos attentes.
