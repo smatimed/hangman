@@ -48,16 +48,19 @@
 
     <div class="div_enfant" id="lettersEspaceJeu"></div>
 
+    <!-- Le pendu -->
     <div class="div_enfant" id="game">
         <div class="LePendu" id="pendu"><img id="img-pendu" src="../../static/LePendu.png" width="">
         </div>
     </div>
 
+    <!-- indication (definition) et aide -->
     <div class="div_enfant pt-2">
         <p>
-            <span id="definition"></span>
+            <span id="definition" data="false"></span>
             <span id="texteAide" data="false"></span>
             <button id="boutonAide" data="false" onclick="afficherAide()">{% if langue == 'F' %}Aide{% else %}Help{% endif %} ?</button>
+            <button id="boutonEnlever5Lettres" data="false" onclick="enlever5Lettres()">{% if langue == 'F' %}Enlever 5 lettres{% else %}Remove 5 lettres{% endif %} ?</button>
         </p>
     </div>
 
@@ -68,12 +71,21 @@
 
     <div class="div_enfant" id="boutonJouer" data="true" onclick="demarrerJeu('{{langue}}')">{% if langue == 'F' %}Jouer{% else %}Play{% endif %}</div>
 
+    <!-- Difficulté du jeu -->
     <div class="div_enfant" id="niveauDeJeu" data="true">
         <input class="ps-5" type="radio" name="niveauJeu" id="facile" value="E"><label class="pe-3 ps-1" for="facile">{% if langue == 'F' %}Facile{% else %}Easy{% endif %}</label>
         <input type="radio" name="niveauJeu" id="normal" value="N" checked><label class="pe-3 ps-1" for="normal">Normal</label>
         <input type="radio" name="niveauJeu" id="difficile" value="H"><label class="ps-1" for="difficile">{% if langue == 'F' %}Difficile{% else %}Difficult{% endif %}</label>
     </div>
 
+    <!-- Options d'assistance du jeu -->
+    <div class="div_enfant" id="assistanceAuJeu" data="true">
+        <label class="pe-3 ps-1" for="indicationJeu"><input class="ps-5" type="checkbox" id="indicationJeu" onclick="desactiverAideSiNecessaire()" value="I" checked> Indication</label>
+        <label class="pe-3 ps-1" for="aideJeu"><input type="checkbox" id="aideJeu" value="A" onclick="desactiverAideSiNecessaire()" checked> {% if langue == 'F' %}Aide{% else %}Help{% endif %}</label>
+        <input type="checkbox" id="supp5Jeu" value="H" checked><label class="ps-1" for="supp5Jeu"> {% if langue == 'F' %}Enlever 5 lettres{% else %}Remove 5 letters{% endif %}</label>
+    </div>
+
+    <!-- Résultat -->
     <div class="div_enfant" id="resultat">
         <div id="resultatTitre"></div>
         <div id="resultatCorps"></div>

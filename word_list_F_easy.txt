@@ -1,34 +1,3 @@
-Pain : Nourriture de base ; Indice : Farine
-Chat : Animal domestique ; Indice : Souris
-Port : Endroit où on accoste ; Indice : Bateaux
-Haut : Direction ; Indice : Au-dessus
-Neuf : Nouveau ; Indice : Non utilisé
-Vent : Mouvement de l'air ; Indice : Souffle
-Ciel : Atmosphère ; Indice : Bleu
-Vide : Sans contenu ; Indice : Rien
-Bois : Matériau ; Indice : Arbres
-Temps : Mesure ; Indice : Durée
-Bleu : Couleur ; Indice : Primaire
-Main : Partie du corps humain ; Indice : Deux
-Porte : Ouverture ; Indice : Clé
-Long : Etendu ; Indice : Pas court
-Miel : Substance sucrée ; Indice : Abeilles
-Miroir : Surface réfléchissante ; Indice : Se coiffer
-Peur : Émotion ; Indice : En cas de danger
-Faim : Sensation ; Indice : Estomac
-Coin : Angle formé par deux lignes ; Indice : Endroit
-Verre : Matériau ; Indice : Transparent
-Ferme : Lieu pas dans la ville  ; Indice : Animaux
-Peau : Couche externe ; Indice : Corps
-Bonheur : État de satisfaction ; Indice : Joie
-Chien : Animal de compagnie ; Indice : Gardien
-Froid : Etat relatif à la température ; Indice : Hiver
-Oeil : Organe ; Indice : Visage
-Jour : Période ; Indice : Unité pour le mois
-Voir : Percevoir ; Indice : Yeux
-Saut : Action de bondir ; Indice : Kangourous
-Base : Fondation ; Indice : Elle sert de support
-Rire : Réaction joyeuse ; Indice : Sons amusants
 
 Fête : Célébration ; Indice : On organise souvent une pour son anniversaire.
 Peur : Sentiment d'effroi ; Indice : On peut avoir des frissons en la ressentant.

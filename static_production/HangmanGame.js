@@ -2,8 +2,7 @@ var nbErreur = 0;
 var lesTouches = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var leMot = ["word", "hint"];
 var motRestant = [];
-var niveauJeu;
-var laLangue;
+var niveauJeu, laLangue, opJeu_indication, opJeu_Aide, opJeu_Enlever5Lettres;
 
 function demanderUnMot(laLangue, laDifficulte) {
     // We use here FETCH and REST-API
@@ -37,12 +36,16 @@ function demanderUnMot(laLangue, laDifficulte) {
         })
 };
 
+
 function creerEspaceMot() {
     var lesLettresOuJour = document.getElementById("lettersEspaceJeu");
     lesLettresOuJour.innerHTML = "";
 
     for (i = 0; i < leMot[0].length; i++) {
         var lTexte = leMot[0][i].toUpperCase();
+        if (laLangue == 'F') {
+            lTexte = transformerAccent(lTexte)
+        };
         var lettre = document.createElement("span");
         if (lTexte == " ") { lettre.className = "lettreEspace" }
         else { lettre.className = "lettre" };
@@ -56,8 +59,29 @@ function creerEspaceMot() {
             }
         }
     }
+    // console.log('motRestant:',motRestant);
 };
 
+function transformerAccent(lettre) {
+    // pour le FRANCAIS
+    if ((lettre == 'É') || (lettre == 'È') || (lettre == 'Ê')) {
+        return 'E'
+    } else {
+        if ((lettre == 'À') || (lettre == 'Â')) {
+            return 'A';
+        } else {
+            if (lettre == 'Ô') {
+                return 'O';
+            } else {
+                if ((lettre == 'Ù') || (lettre == 'Û')) {
+                    return 'U';
+                } else {
+                    return lettre;
+                }
+            }
+        }
+    }
+}
 
 function creerClavier() {
     var elemClavier = document.getElementById("clavier");
@@ -85,7 +109,7 @@ function verifierJeu(laTouche) {
             afficherLettre(laTouche.innerText.toUpperCase());
             lettreExiste = true;
         };
-        laTouche.setAttribute("data", lettreExiste)
+        laTouche.setAttribute("data", lettreExiste);
         if (lettreExiste) {
             if (motRestant.length == 0) {
                 finDuJeu(true);
@@ -125,6 +149,12 @@ function afficherLettre(laLettre) {
     for (i = 0; i < leMot[0].length; i++) {
         if (leMot[0][i].toUpperCase() == laLettre) {
             document.getElementById("lettre_" + i).innerText = laLettre;
+        } else {
+            if (laLangue == 'F') {
+                if (transformerAccent(leMot[0][i]).toUpperCase() == laLettre) {
+                    document.getElementById("lettre_" + i).innerText = leMot[0][i].toUpperCase();
+                }
+            }
         }
     }
 };
@@ -147,7 +177,9 @@ function afficherProchaineErreur() {
         case 5:
             document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu05.png");
             if (niveauJeu != 'H') {
-                document.getElementById("boutonAide").setAttribute("data","true");
+                if (opJeu_Aide) {
+                    document.getElementById("boutonAide").setAttribute("data","true");
+                }
             };
             break;
         case 6:
@@ -158,6 +190,9 @@ function afficherProchaineErreur() {
             break;
         case 8:
             document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu08.png");
+            if (opJeu_Enlever5Lettres) {
+                document.getElementById("boutonEnlever5Lettres").setAttribute("data","true");
+            };
             break;
         case 9:
             document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu09.png");
@@ -171,8 +206,14 @@ function afficherProchaineErreur() {
 
 function finDuJeu(lOk) {
     var divResultat = document.getElementById("resultat");
+    
+    document.getElementById("definition").setAttribute("data","false");
+    document.getElementById("boutonAide").setAttribute("data","false");
+    document.getElementById("texteAide").setAttribute("data","false");
+    document.getElementById("boutonEnlever5Lettres").setAttribute("data","false");
+    
     divResultat.setAttribute("data", lOk);
-    // console.log('langue (finDuJeu)',laLangue);
+
     if (lOk) {
         if (laLangue == 'F') {
             document.getElementById("resultatTitre").innerText = "Gagné !";
@@ -181,6 +222,7 @@ function finDuJeu(lOk) {
             document.getElementById("resultatTitre").innerText = "You won !";
             document.getElementById("resultatCorps").innerHTML = "Congratulations, you found the word.";
         };
+        document.getElementsByTagName("body")[0].style.backgroundColor = "rgba(83, 234, 83, 0.5)";
     } else {
         if (laLangue == 'F') {
         document.getElementById("resultatTitre").innerText = "Perdu !";
@@ -189,6 +231,7 @@ function finDuJeu(lOk) {
             document.getElementById("resultatTitre").innerText = "You lost !";
             document.getElementById("resultatCorps").innerHTML = "The word is <b>\"" + leMot[0].toUpperCase() + "\"</b><br>Good luck next time.";
         };
+        document.getElementsByTagName("body")[0].style.backgroundColor = "rgba(234, 57, 57, 0.5)";
     };
     document.getElementById("clavier").setAttribute("data", "false");
     if (laLangue == 'F') {
@@ -196,9 +239,11 @@ function finDuJeu(lOk) {
     } else {
         document.getElementById("boutonJouer").innerHTML = "Replay";
     };
+
     document.getElementById("boutonJouer").setAttribute("data", "true");
     document.getElementById("niveauDeJeu").setAttribute("data", "true");
 };
+
 
 function afficherAide() {
     document.getElementById("texteAide").innerHTML = "&nbsp;&nbsp;&nbsp;("+leMot[1]+")";    
@@ -206,9 +251,54 @@ function afficherAide() {
     document.getElementById("boutonAide").setAttribute("data","false");
 };
 
+function enlever5Lettres() {
+    retirerCinqLettres();
+    document.getElementById("boutonEnlever5Lettres").setAttribute("data","false");
+};
+
+function nombreAleatoire(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function retirerCinqLettres() {
+    // console.log('retirerCinqLettres',motRestant);
+
+    let lettresNonUtilisees_Et_NonPartieDuMot = [], indice;
+    let elemClavier = document.getElementById("clavier");
+
+    indice = 0;
+    for (const child of elemClavier.children) {
+        if (motRestant.indexOf(child.innerText.toUpperCase()) == -1) {   // ne fait pas partie du mot
+            if (child.getAttribute("data") == "") {   // Touche non encore jouée
+                lettresNonUtilisees_Et_NonPartieDuMot.push(indice);
+            }
+        };
+        indice += 1;
+    }
+
+    for (let i = 0; i < 5; i++) {
+        // On choisit un nombre aléatoire parmis les indices des touches non utilisées et qui ne font pas partie du mot.
+        // Ce nombre aléatoire représente l'indice de la touche à désactiver (comme aide).
+        let pos = nombreAleatoire(lettresNonUtilisees_Et_NonPartieDuMot.length);
+        elemClavier.children[lettresNonUtilisees_Et_NonPartieDuMot[pos]].setAttribute("data", false);
+        lettresNonUtilisees_Et_NonPartieDuMot.splice(pos,1);
+    };
+};
+
+
+function desactiverAideSiNecessaire() {
+    // Si on désacive l'indication (définition) alors on désactive l'aide
+    if (! document.getElementById("indicationJeu").checked) {
+        document.getElementById("aideJeu").checked = false;
+    }
+}
+
 function initJeu() {
     nbErreur = 0;
     motRestant = [];
+
+    document.getElementsByTagName("body")[0].style.backgroundColor = "rgba(240, 232, 174, 0.8)";
+
     creerClavier();
 
     // console.log('langue (initJeu)',laLangue);
@@ -234,6 +324,17 @@ function initJeu() {
     };
     document.getElementById("niveauJeuChoisi").innerHTML = " ("+libNiveauJeu+")";
 
+    // options du jeu
+    opJeu_indication = document.getElementById("indicationJeu").checked;
+    opJeu_Aide = document.getElementById("aideJeu").checked;
+    opJeu_Enlever5Lettres = document.getElementById("supp5Jeu").checked;
+
+    if (opJeu_indication) {
+        document.getElementById("definition").setAttribute("data","true");
+    } else {
+        document.getElementById("definition").setAttribute("data","false");
+    };
+
     demanderUnMot(laLangue, niveauJeu);    // theLang, theDifficulty
 };
 
@@ -242,9 +343,11 @@ function demarrerJeu(LangueDuJeu) {
     laLangue = LangueDuJeu;
     document.getElementById("boutonJouer").setAttribute("data", "false");
     document.getElementById("niveauDeJeu").setAttribute("data", "false");
+    document.getElementById("assistanceAuJeu").setAttribute("data", "false");
     document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu00.png");
     document.getElementById("resultat").setAttribute("data", "");
     document.getElementById("texteAide").setAttribute("data","false");
     document.getElementById("boutonAide").setAttribute("data","false");
+    document.getElementById("boutonEnlever5Lettres").setAttribute("data","false");
     initJeu();
 };

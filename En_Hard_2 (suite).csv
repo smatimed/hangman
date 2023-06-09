@@ -1,0 +1,143 @@
+id;lang;word;definition;hint;difficulty;nbTimesChosen
+
+
+;E;VERBOSE;Using more words than necessary; wordy or long-winded;;H;0
+    Hint: It's often used to describe someone who tends to be overly talkative or uses excessive words.
+;E;VEXING;Making someone feel annoyed, frustrated, or worried;;H;0
+    Hint: This word describes something that is irritating, bothersome, or causing vexation.
+;E;ZEPHYR;A gentle, mild breeze;;H;0
+    Hint: This word represents a light and refreshing breeze, often associated with spring or summer.
+;E;ACUMEN;The ability to make quick and accurate judgments or decisions; keen insight;;H;0
+    Hint: It describes the skill or talent of making sound judgments and perceptive observations.
+;E;BOMBASTIC;High-sounding but with little meaning; inflated language;;H;0
+    Hint: It's often used to describe someone who speaks in a pompous, grandiose, and exaggerated manner.
+;E;CAPRICIOUS;Given to sudden and unaccountable changes of mood or behavior;;H;0
+    Hint: This word describes someone who is unpredictable, impulsive, and prone to sudden mood swings.
+;E;DELINEATE;To describe or portray something precisely; to outline or define with precision;;H;0
+    Hint: It means to provide a detailed and accurate description or representation of something.
+;E;ENERVATE;To weaken or drain someone's energy or vitality; to cause someone to feel tired or exhausted;;H;0
+    Hint: This word describes the act of reducing someone's energy, vigor, or strength.
+;E;EPHEMERAL;Lasting for a very short time; transient or fleeting;;H;0
+    Hint: It represents something that is temporary, brief, and ephemeral in nature.
+;E;EXORBITANT;Unreasonably high or excessive in price, amount, or cost;;H;0
+    Hint: This word describes something that is overly expensive, exorbitant, or beyond reasonable limits.
+;E;FASTIDIOUS;Very attentive to and concerned about accuracy and detail; meticulous;;H;0
+    Hint: It's often used to describe someone who has high standards and pays close attention to detail.
+;E;GREGARIOUS;Fond of the company of others; sociable;;H;0
+    Hint: It's often used to describe someone who is outgoing, enjoys socializing, and being around people.
+;E;ICONOCLAST;A person who attacks or challenges established beliefs, customs, or institutions;;H;0
+    Hint: This word describes someone who questions conventional ideas and traditions, often causing controversy.
+;E;INTRANSIGENT;Unwilling to change one's views or agree with others; stubborn or uncompromising;;H;0
+    Hint: It's used to describe someone who is firmly resistant to compromise or negotiation.
+;E;MAGNANIMOUS;Very generous or forgiving, especially toward a rival or someone less powerful;;H;0
+    Hint: This word describes someone who displays great generosity, kindness, and forgiveness.
+;E;NEBULOUS;Unclear, vague, or ill-defined; hazy or cloudy;;H;0
+    Hint: It describes something that is indistinct, vague, or lacking clarity.
+;E;OBFUSCATE;To make something unclear or confusing; to deliberately make something more difficult to understand;;H;0
+    Hint: It means to intentionally obscure or complicate something, often for the purpose of deception.
+;E;PANACEA;A solution or remedy for all problems or difficulties;;H;0
+    Hint: This word represents a cure-all or universal solution that is believed to solve every problem.
+;E;PERNICIOUS;Having a harmful effect, especially in a gradual or subtle way;;H;0
+    Hint: It's often used to describe something that is subtly destructive or poses a gradual threat.
+;E;PERSPICACIOUS;Having a ready insight into and understanding of things; perceptive;;H;0
+    Hint: This word describes someone who is astute, discerning, and possesses sharp intellectual insight.
+;E;PROCRASTINATE;To delay or postpone doing something, often habitually or intentionally;;H;0
+    Hint: It means to put off or defer a task or action, usually leading to a last-minute rush.
+;E;PULCHRITUDINOUS;Physically beautiful; attractive in appearance;;H;0
+    Hint: This word describes someone or something that is remarkably beautiful or aesthetically pleasing.
+;E;QUERULOUS;Complaining or whining in a petulant or whiny manner;;H;0
+    Hint: It's often used to describe someone who is habitually complaining or finding fault.
+;E;RAMBUNCTIOUS;Noisy, wild, and uncontrollable; boisterous or rowdy;;H;0
+    Hint: This word describes someone or something that is lively, energetic, and full of unruly behavior.
+;E;SYCOPHANT;A person who acts obsequiously toward someone important in order to gain an advantage; a flatterer;;H;0
+    Hint: This word represents someone who excessively praises or flatters others for personal gain.
+;E;TACITURN;Reserved or uncommunicative in speech; saying little;;H;0
+    Hint: It's often used to describe someone who is habitually quiet, reserved, and reluctant to speak.
+;E;TENACIOUS;Holding firmly to something; persistent or determined;;H;0
+    Hint: This word describes someone who is resolute, steadfast, and refuses to give up easily.
+;E;TRANSIENT;Lasting only for a short time; impermanent or temporary;;H;0
+    Hint: It represents something that is passing or fleeting in nature.
+;E;VITRIOLIC;Filled with bitter criticism or malice; sharp-tongued;;H;0
+    Hint: This word describes someone who expresses strong, harsh, and caustic criticism.
+;E;VEXATIOUS;Causing or tending to cause annoyance, frustration, or worry;;H;0
+    Hint: It describes something that is irritating, bothersome, or causing vexation.
+;E;XENOPHOBIA;Fear, hatred, or prejudice against people from other countries or cultures;;H;0
+    Hint: This word represents an irrational dislike or fear of foreigners or strangers.
+;E;ZEALOUS;Showing great enthusiasm, passion, or fervor for a cause or belief;;H;0
+    Hint: It describes someone who is highly dedicated, enthusiastic, and passionate about something.
+;E;CACOPHONY;A harsh, discordant mixture of sounds;;H;0
+    Hint: This word represents a jarring or unpleasant combination of loud, harsh sounds.
+;E;DESULTORY;Lacking a plan, purpose, or enthusiasm; aimless or random;;H;0
+    Hint: It's often used to describe something that lacks direction or coherence.
+;E;DISCOMBOBULATE;To confuse, disconcert, or upset someone; to throw into a state of confusion;;H;0
+    Hint: This word means to perplex or bewilder someone, often causing a sense of disorientation.
+;E;EBULLITION;A sudden outburst of emotion or enthusiasm; a boiling or bubbling over;;H;0
+    Hint: It represents an eruption or sudden display of intense emotion or excitement.
+;E;EFFERVESCENT;Bubbly, lively, and full of high spirits; exuberant;;H;0
+    Hint: This word describes someone who is enthusiastic, lively, and full of vivacity.
+;E;EQUANIMITY;Mental calmness, composure, and evenness of temper, especially in difficult situations;;H;0
+    Hint: It represents a state of tranquility, balance, and emotional stability.
+;E;EVANESCENT;Vanishing or fading away quickly; transient or ephemeral;;H;0
+    Hint: This word describes something that is fleeting or tending to disappear quickly.
+;E;EXCORIATE;To criticize or berate severely; to condemn or denounce strongly;;H;0
+    Hint: It means to harshly reprimand or express strong disapproval towards someone or something.
+;E;FETID;Having an unpleasant or offensive smell; foul-smelling;;H;0
+    Hint: This word describes something that emits a strong and unpleasant odor.
+;E;HALCYON;Denoting a period of time in the past that was idyllically happy and peaceful;;H;0
+    Hint: It's often used to describe a nostalgic or idealized period of tranquility and contentment.
+;E;INDEFATIGABLE;Persisting tirelessly; showing sustained effort and determination;;H;0
+    Hint: This word describes someone who is tireless, unwavering, and undeterred by obstacles.
+;E;INEFFABLE;Too great or extreme to be expressed or described in words; beyond words;;H;0
+    Hint: It represents something that is indescribable, beyond language, or impossible to articulate.
+;E;INIMICAL;Tending to obstruct or harm; hostile or unfriendly;;H;0
+    Hint: This word describes something that is detrimental, harmful, or poses a threat.
+;E;INSOUCIANT;Showing a lack of concern, worry, or anxiety; carefree or nonchalant;;H;0
+    Hint: It's often used to describe someone who appears unconcerned or indifferent.
+;E;MERCURIAL;Subject to sudden or unpredictable changes of mood or mind; volatile;;H;0
+    Hint: This word describes someone who has rapidly changing moods or is unpredictable in behavior.
+;E;MULTIFARIOUS;Diverse, varied, or of many different types or kinds;;H;0
+    Hint: It represents something that is characterized by a wide range of diverse elements or variations.
+;E;NOXIOUS;Harmful, poisonous, or very unpleasant;;H;0
+    Hint: This word describes something that is toxic, injurious, or causing harm.
+;E;OBSTREPEROUS;Noisy, boisterous, and difficult to control; unruly or rowdy;;H;0
+    Hint: It's often used to describe someone who is loud, disruptive, and unmanageable.
+;E;PERFIDIOUS;Deceitful and untrustworthy; disloyal or treacherous;;H;0
+    Hint: This word describes someone who betrays trust, is dishonest, or acts in a traitorous manner.
+;E;PLENITUDE;An abundant quantity or supply; a state of being full or complete;;H;0
+    Hint: It represents a state of abundance, plenty, or being fully replenished.
+;E;QUOTIDIAN;Ordinary, everyday, or commonplace; occurring on a daily basis;;H;0
+    Hint: This word describes something that is routine, ordinary, or part of daily life.
+;E;RECALCITRANT;Resisting authority or control; stubbornly disobedient or defiant;;H;0
+    Hint: It's used to describe someone who is uncooperative, resistant, or stubbornly defiant.
+;E;SOPORIFIC;Inducing or tending to induce sleep; sleep-inducing;;H;0
+    Hint: This word describes something that has a drowsy or sleep-inducing effect.
+;E;SYCOPHANTIC;Characterized by excessive flattery or praise; fawning or obsequious;;H;0
+    Hint: It's often used to describe someone who excessively praises or flatters others for personal gain.
+;E;TORTUOUS;Full of twists, turns, or bends; excessively lengthy or complex;;H;0
+    Hint: This word describes something that is winding, convoluted, or excessively complicated.
+;E;UNCTUOUS;Excessively flattering or insincerely earnest; oily or greasy in texture;;H;0
+    Hint: It's used to describe someone who behaves in an excessively suave or ingratiating manner.
+;E;VERISIMILITUDE;The appearance of being true or real; the quality of seeming to be true or believable;;H;0
+    Hint: This word represents the quality of being realistic or having a convincing appearance of truth.
+;E;VICISSITUDE;A change of circumstances or fortune, typically one that is unwelcome or unpleasant;;H;0
+    Hint: It represents a fluctuation or alteration in one's life or circumstances, often involving ups and downs.
+;E;WINSOME;Attractive or appealing in appearance, character, or manner; charming;;H;0
+    Hint: This word describes someone or something that is pleasing, engaging, and wins over others.
+;E;XERIC;Characterized by or adapted to a dry habitat; having little moisture;;H;0
+    Hint: It's used to describe an environment or climate that is arid, dry, or lacking in water.
+;E;YOKE;To join together or unite; to bring under control or subjection;;H;0
+    Hint: It can refer to the act of harnessing or joining together two animals, or metaphorically, to unite or control.
+;E;ZEST;Enthusiasm, excitement, or keen enjoyment; gusto or relish;;H;0
+    Hint: This word describes a lively and energetic enjoyment or enthusiasm for life.
+;E;ZEITGEIST;The spirit, attitude, or general trend of a particular period in history;;H;0
+    Hint: It represents the prevailing ideas, beliefs, and cultural climate of a specific era.
+;E;ZENITH;The highest point or pinnacle; the peak or apex;;H;0
+    Hint: It represents the culmination or highest point of something, often in terms of success or achievement.
+;E;ZEPHYR;A gentle, mild breeze;;H;0
+    Hint: This word represents a light and refreshing breeze, often associated with spring or summer.
+;E;ZESTFUL;Full of energy, enthusiasm, and excitement; lively and vigorous;;H;0
+    Hint: It's used to describe someone who is spirited, lively, and exudes enthusiasm.
+;E;FECUND;Producing or capable of producing an abundance of offspring, ideas, or creative works;;H;0
+    Hint: This word describes something that is highly fertile, productive, or creative.
+;E;OMINOUS;Giving the impression that something bad or unpleasant is about to happen; foreboding;;H;0
+    Hint: It's often used to describe a feeling of impending danger or a sign of potential trouble.

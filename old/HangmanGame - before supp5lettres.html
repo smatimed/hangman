@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% load static %}
+<!-- <link href="{ % static 'HangmanGame.css' %}" rel="stylesheet"> -->
+
+{% endblock head %}
+
+
+{% block content %}
+
+<div class="container mt-1">
+
+    <!-- <div class="div_enfant">
+        {% if langue == 'F' %}
+        <h2>LE PENDU<span id="niveauJeuChoisi"></span></h2>
+        {% else %}
+        <h2>HANGMAN<span id="niveauJeuChoisi"></span></h2>
+        {% endif %}
+    </div> -->
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col">
+            <div class="div_enfant">
+                {% if langue == 'F' %}
+                <h3 class="titreJeu">LE PENDU<span id="niveauJeuChoisi"></span></h3>
+                {% else %}
+                <h3 class="titreJeu">HANGMAN<span id="niveauJeuChoisi"></span></h3>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-2 px-0">
+            <!-- *Navigateur* start -->
+            <a href="{% url 'dashboard' %}" style="float: right;" class="btn btn-outline-dark btn-rounded ms-3 py-1 px-2" role="button">
+                <span class="bi bi-house-fill" style="font-size: large"></span>
+                <!-- <p class="m-0 p-0">{% if langue == 'F' %}Accueil{% else %}Home{% endif %}</p> -->
+            </a>
+            <a href="{% url 'hangman' langue %}" style="float: right;" class="btn btn-outline-dark btn-rounded py-1 px-2" role="button">
+                <span class="bi bi-x-circle-fill" style="font-size: large"></span>
+                <!-- <p class="m-0 p-0">{% if langue == 'F' %}Annuler{% else %}Cancel{% endif %}</p> -->
+            </a>
+            <!-- *Navigateur* end -->
+        </div>
+    </div>
+
+
+    <div class="div_enfant" id="lettersEspaceJeu"></div>
+
+    <div class="div_enfant" id="game">
+        <div class="LePendu" id="pendu"><img id="img-pendu" src="../../static/LePendu.png" width="">
+        </div>
+    </div>
+
+    <div class="div_enfant pt-2">
+        <p>
+            <span id="definition"></span>
+            <span id="texteAide" data="false"></span>
+            <button id="boutonAide" data="false" onclick="afficherAide()">{% if langue == 'F' %}Aide{% else %}Help{% endif %} ?</button>
+        </p>
+    </div>
+
+    <!-- *clavier* -->
+    <div class="div_enfant" id="clavier" data="">
+    </div>
+
+
+    <div class="div_enfant" id="boutonJouer" data="true" onclick="demarrerJeu('{{langue}}')">{% if langue == 'F' %}Jouer{% else %}Play{% endif %}</div>
+
+    <div class="div_enfant" id="niveauDeJeu" data="true">
+        <input class="ps-5" type="radio" name="niveauJeu" id="facile" value="E"><label class="pe-3 ps-1" for="facile">{% if langue == 'F' %}Facile{% else %}Easy{% endif %}</label>
+        <input type="radio" name="niveauJeu" id="normal" value="N" checked><label class="pe-3 ps-1" for="normal">Normal</label>
+        <input type="radio" name="niveauJeu" id="difficile" value="H"><label class="ps-1" for="difficile">{% if langue == 'F' %}Difficile{% else %}Difficult{% endif %}</label>
+    </div>
+
+    <div class="div_enfant" id="resultat">
+        <div id="resultatTitre"></div>
+        <div id="resultatCorps"></div>
+    </div>
+
+</div>
+
+{% load static %}
+<script src="{% static 'HangmanGame.js' %}"></script>
+
+{% endblock content %}

@@ -1,0 +1,46 @@
+id;lang;word;definition;hint;difficulty;nbTimesChosen
+75;PISTE;F;Chemin;Etroit;N;0
+76;PONT;F;Structure architecturale;Passer d'une rive à l'autre;N;0
+77;SOMME;F;Résultat;Cumul;N;0
+78;FAUTE;F;Erreur;D'orthographe, par exemple;N;0
+79;CIME;F;Sommet;Montagne;N;0
+80;GRAS;F;Lipide;Cuisine;N;0
+81;SOIE;F;Fibre textile;Naturelle;N;0
+82;CUBE;F;Forme géométrique;Faces identiques;N;0
+83;FRUIT;F;Produit comestible;Généralement sucré;N;0
+84;CHAMP;F;Étendue de terre;Souvent agricole;N;0
+85;FABLE;F;Histoire;Morale;N;0
+86;BRUME;F;Brouillard;Léger;N;0
+87;OISEAU;F;Animal;Plumes;N;0
+88;AMPLE;F;Spacieux;Vaste;N;0
+89;ORAGE;F;Phénomène;Météorologique;N;0
+90;CALME;F;Tranquillité;Silence;N;0
+91;LAVER;F;Décrasser;Eau et savon;N;0
+92;PRUNE;F;Fruit;A noyau;N;0
+93;GRIS;F;Couleur;Entre noir et blanc;N;0
+94;CHANT;F;Sons mélodieux;Voix;N;0
+95;NUAGE;F;Masse de vapeur d'eau;Ciel;N;0
+96;BOIRE;F;Consommer;Liquide;N;0
+97;SABLE;F;Particules fines;Roche;N;0
+98;SOURIRE;F;Expression du visage;Joie;N;0
+99;PÊCHER;F;Capturer;Mer;N;0
+100;DOUX;F;Tendre;Souple;N;0
+101;CHUTER;F;Perdre l'équilibre;Glisser;N;0
+102;MARCHÉ;F;Lieu public;Commerce;N;0
+103;HIVER;F;Période;Froid;N;0
+104;ROUGE;F;Couleur;Danger;N;0
+105;COUTEAU;F;Outil tranchant;Cuisine;N;0
+106;SOURD;F;Handicapé;Language des signes;N;0
+107;CHAUD;F;Etat de température;Plage;N;0
+108;MUSÉE;F;Lieu d'exposition;Art;N;0
+109;TOMBER;F;Descendre rapidement;Vers le sol;N;0
+110;SOURIS;F;Petit mammifère;Maison;N;0
+111;ETOILE;F;Astre;Ciel;N;0
+112;TAMBOUR;F;Instrument de musique;Baguettes;N;0
+113;VOYAGE;F;Déplacement;Vacances;N;0
+114;CRAYON;F;Outil d'écriture;Effacer;N;0
+115;SIFFLET;F;Il produit un son;Aigu;N;0
+116;SOMBRE;F;Peu éclairé;Noir;N;0
+117;MASQUE;F;Couverture; Visage;N;0
+118;BATEAU;F;Embarcation;Eau;N;0
+119;JARDIN;F;Espace extérieur;Fleurs;N;0

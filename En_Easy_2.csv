@@ -1,24 +1,14 @@
 id;lang;word;definition;hint;difficulty;nbTimesChosen
-21;E;APPLE;Round fruit;Green or red;E;0
-22;E;BANANA;Long and curved fruit;Yellow peel;E;0
-23;E;ELEPHANT;Large mammal;Long trunk;E;0
-24;E;FISH;Aquatic creature;Gills;E;0
-25;E;GUITAR;Musical instrument;Stringed;E;0
-26;E;IGLOO;Dome-shaped shelter;Ice blocks;E;0
-27;E;JELLY;Sweet dessert;Gelatinous;E;0
-28;E;LEMON;Citrus fruit;Yellow;E;0
-29;E;MONKEY;Primate;Swinging from trees;E;0
-30;E;NOTE;Message;Can be found in a music sheet;E;0
-31;E;ORANGE;Round citrus fruit;Vitamin C;E;0
-32;E;PENGUIN;Flightless bird;Southern Hemisphere;E;0
-33;E;QUEEN;Monarch;Female;E;0
-34;E;RABBIT;Small mammal;Long ears;E;0
-35;E;STAR;Celestial body;Luminous;E;0
-36;E;UMBRELLA;Device used for protection;Rain;E;0
-37;E;BOOK;Written work;Pages;E;0
-38;E;CHAIR;Piece of furniture very used;Living room;E;0
-39;E;DOOR;Entrance point;Exit;E;0
-40;E;FLOWER;Plant;Beautiful and colorful;E;0
-41;E;GIFT;Something given;Without payment;E;0
-42;E;JUICE;Liquid;Fruits;E;0
-43;E;LAMP;Device on a table;Light;E;0
+210;E;BICYCLE;Vehicle;Two wheels;E;0
+211;E;ENVELOPE;Paper cover;Letter;E;0
+212;E;BALLOON;Toy;Filled with air;E;0
+213;E;REFRIGERATOR;Large container;Cold;E;0
+214;E;DRESS;Piece of clothing;Woman;E;0
+215;E;TELEVISION;Rectangular device;Channels;E;0
+216;E;COMPUTER;Electronic machine;Data;E;0
+217;E;PAINTER;Job;Colors;E;0
+218;E;MECHANIC;Job;Cars;E;0
+219;E;TEACHER;Job;Science;E;0
+220;E;CHICKEN;Bird;Egg;E;0
+221;E;METRE;Unit;Length;E;0
+222;E;CHILD;Human being;Boy;E;0

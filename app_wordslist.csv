@@ -1,18 +1,223 @@
 id;lang;word;definition;hint;difficulty;nbTimesChosen
-1;F;COPAIN;Il fait partie des relations;Ami;N;9
-2;F;PNEU;Permet d'avancer;Rond;E;3
-3;F;DEFENDRE;Repousser;Protéger;N;8
-4;F;PERSONNE;Humain;Individu;N;8
-5;F;SONNETTE;Produit un son;Pousser le bouton;N;9
-6;F;BOUTEILLE;Conteneur;Boire;N;2
-7;F;CHAUSSURES;On les porte;Pied;N;9
-8;F;REMPLACER;Mettre un autre;Substituer;N;9
-9;F;DANGEUREUX;Redoutable;agressif;N;9
-10;F;DISTRIBUER;Diviser;Répartir;N;2
-11;F;BIBLIOTHEQUE;Armoire;Livres;N;7
-12;F;REZ DE CHAUSSEE;Niveau;Niveau 0;N;6
-13;F;INSEPARABLE;Noué;Indissociable;H;2
-14;F;MULTICOLORE;Varié;polychrome;H;0
-15;F;MATERNELLE;Ecole;Jardin d'enfants;H;1
-16;F;AVION;Transport;Air;E;2
-17;F;COURT;Bref;Mini;E;2
+1;E;APPLE;Round fruit;Green or red;E;0
+2;E;BANANA;Long and curved fruit;Yellow peel;E;0
+3;E;BOOK;Written work;Pages;E;0
+4;E;CHAIR;Piece of furniture very used;Living room;E;1
+5;E;DOOR;Entrance point;Exit;E;0
+6;E;ELEPHANT;Large mammal;Long trunk;E;0
+7;E;FISH;Aquatic creature;Gills;E;0
+8;E;FLOWER;Plant;Beautiful and colorful;E;0
+9;E;GIFT;Something given;Without payment;E;0
+10;E;GUITAR;Musical instrument;Stringed;E;0
+11;E;IGLOO;Dome-shaped shelter;Ice blocks;E;0
+12;E;JELLY;Sweet dessert;Gelatinous;E;1
+13;E;JUICE;Liquid;Fruits;E;0
+14;E;LAMP;Device on a table;Light;E;0
+15;E;LEMON;Citrus fruit;Yellow;E;0
+16;E;MONKEY;Primate;Swinging from trees;E;0
+17;E;NOTE;Message;Can be found in a music sheet;E;0
+18;E;ORANGE;Round citrus fruit;Vitamin C;E;0
+19;E;PENGUIN;Flightless bird;Southern Hemisphere;E;0
+20;E;QUEEN;Monarch;Female;E;1
+21;E;RABBIT;Small mammal;Long ears;E;0
+22;E;STAR;Celestial body;Luminous;E;0
+23;E;UMBRELLA;Device used for protection;Rain;E;1
+24;E;FLAMENCO;Spanish dance;Dancers wearing colorful dresses;N;1
+25;E;GALAXY;System of stars;Our solar system is part of one;N;8
+26;F;AVION;Transport;Air;E;3
+27;F;BASE;Fondation;Elle sert de support;E;0
+28;F;BLEU;Couleur;Primaire;E;0
+29;F;BOIS;Matériau;Arbres;E;0
+30;F;BONHEUR;État de satisfaction;Joie;E;0
+31;F;CHAT;Animal domestique;Souris;E;0
+32;F;CHIEN;Animal de compagnie;Gardien;E;0
+33;F;CIEL;Atmosphère;Bleu;E;0
+34;F;COIN;Angle formé par deux lignes;Endroit;E;0
+35;F;COURT;Bref;Mini;E;3
+36;F;FAIM;Sensation;Estomac;E;0
+37;F;FERME;Lieu pas dans la ville;Animaux;E;0
+38;F;FROID;Etat relatif à la température;Hiver;E;0
+39;F;HAUT;Direction;Au-dessus;E;0
+40;F;JOUR;Période;Unité pour le mois;E;0
+41;F;LONG;Etendu;Pas court;E;0
+42;F;MAIN;Partie du corps humain;Deux;E;0
+43;F;MIEL;Substance sucrée;Abeilles;E;0
+44;F;MIROIR;Surface réfléchissante;Se coiffer;E;0
+45;F;NEUF;Nouveau;Non utilisé;E;0
+46;F;OEIL;Organe;Visage;E;0
+47;F;PAIN;Nourriture de base;Farine;E;0
+48;F;PEAU;Couche externe;Corps;E;0
+49;F;PEUR;Émotion;En cas de danger;E;0
+50;F;PNEU;Permet d'avancer;Rond;E;4
+51;F;PORT;Endroit où on accoste;Bateaux;E;0
+52;F;PORTE;Ouverture;Clé;E;0
+53;F;RIRE;Réaction joyeuse;Sons amusants;E;0
+54;F;SAUT;Action de bondir;Kangourous;E;0
+55;F;TEMPS;Mesure;Durée;E;0
+56;F;VENT;Mouvement de l'air;Souffle;E;0
+57;F;VERRE;Matériau;Transparent;E;0
+58;F;VIDE;Sans contenu;Rien;E;0
+59;F;VOIR;Percevoir;Yeux;E;0
+60;F;INSEPARABLE;Noué;Indissociable;H;4
+61;F;MATERNELLE;Ecole;Jardin d'enfants;H;2
+62;F;MULTICOLORE;Varié;polychrome;H;1
+63;F;AMPLE;Spacieux;Vaste;N;3
+64;F;BATEAU;Embarcation;Eau;N;7
+65;F;BIBLIOTHÈQUE;Armoire;Livres;N;7
+66;F;BOIRE;Consommer;Liquide;N;3
+67;F;BOUTEILLE;Conteneur;Boire;N;9
+68;F;BRUME;Brouillard;Léger;N;3
+69;F;CALME;Tranquillité;Silence;N;3
+70;F;CHAMP;Étendue de terre;Souvent agricole;N;2
+71;F;CHANT;Sons mélodieux;Voix;N;5
+72;F;CHAUD;Etat de température;Plage;N;3
+73;F;CHAUSSURES;On les porte;Pied;N;6
+74;F;CHUTER;Perdre l'équilibre;Glisser;N;5
+75;F;CIME;Sommet;Montagne;N;1
+76;F;COPAIN;Il fait partie des relations;Ami;N;4
+77;F;COUTEAU;Outil tranchant;Cuisine;N;3
+78;F;CRAYON;Outil d'écriture;Effacer;N;1
+79;F;CUBE;Forme géométrique;Faces identiques;N;3
+80;F;DANGEUREUX;Redoutable;agressif;N;9
+81;F;DEFENDRE;Repousser;Protéger;N;9
+82;F;DISTRIBUER;Diviser;Répartir;N;9
+83;F;DOUX;Tendre;Souple;N;2
+84;F;ÉTOILE;Astre;Ciel;N;1
+85;F;FABLE;Histoire;Morale;N;4
+86;F;FAUTE;Erreur;"D'orthographe; par exemple";N;4
+87;F;FRUIT;Produit comestible;Généralement sucré;N;5
+88;F;GRAS;Lipide;Cuisine;N;3
+89;F;GRIS;Couleur;Entre noir et blanc;N;7
+90;F;HIVER;Période;Froid;N;2
+91;F;JARDIN;Espace extérieur;Fleurs;N;1
+92;F;LAVER;Décrasser;Eau et savon;N;3
+93;F;MARCHÉ;Lieu public;Commerce;N;2
+94;F;MASQUE;Couverture;Visage;N;2
+95;F;MUSÉE;Lieu d'exposition;Art;N;1
+96;F;NUAGE;Masse de vapeur d'eau;Ciel;N;4
+97;F;OISEAU;Animal;Plumes;N;2
+98;F;ORAGE;Phénomène;Météorologique;N;2
+99;F;PERSONNE;Humain;Individu;N;9
+100;F;PISTE;Chemin;Etroit;N;1
+101;F;PONT;Structure architecturale;Passer d'une rive à l'autre;N;2
+102;F;PRUNE;Fruit;A noyau;N;9
+103;F;PÊCHER;Capturer;Mer;N;0
+104;F;REMPLACER;Mettre un autre;Substituer;N;7
+105;F;REZ DE CHAUSSEE;Niveau;Niveau 0;N;2
+106;F;ROUGE;Couleur;Danger;N;3
+107;F;SABLE;Particules fines;Roche;N;5
+108;F;SIFFLET;Il produit un son;Aigu;N;2
+109;F;SOIE;Fibre textile;Naturelle;N;1
+110;F;SOMBRE;Peu éclairé;Noir;N;2
+111;F;SOMME;Résultat;Cumul;N;5
+112;F;SONNETTE;Produit un son;Pousser le bouton;N;9
+113;F;SOURD;Handicapé;Language des signes;N;1
+114;F;SOURIRE;Expression du visage;Joie;N;4
+115;F;SOURIS;Petit mammifère;Maison;N;5
+116;F;TAMBOUR;Instrument de musique;Baguettes;N;1
+117;F;TOMBER;Descendre rapidement;Vers le sol;N;5
+118;F;VOYAGE;Déplacement;Vacances;N;3
+119;F;BUCOLIQUE;Relatif à la vie champêtre et pastorale;;H;2
+120;F;CHARISMATIQUE;Qui a une influence exceptionnelle;;H;1
+121;F;CHARLATAN;Qui prétend avoir des connaissances qu'il n'a pas;;H;1
+122;F;EXCENTRIQUE;Se comporte de manière inhabituelle;;H;0
+123;F;INDOLENCE;Nonchalance;;H;0
+124;F;INEXORABLE;Impitoyable;;H;2
+125;F;INTRANSIGEANT;Inflexible;;H;0
+126;F;INTRIGANT;Mystérieux;;H;1
+127;F;MÉPHISTOPHÉLIQUE;Qui évoque la ruse et la malice;;H;2
+128;F;NOSTALGIE;Regret lié au passé;;H;1
+129;F;OBSTINÉ;Qui maintient fermement une position;;H;1
+130;F;OMNIPOTENCE;Pouvoir absolu et illimité;;H;1
+131;F;OMNIPOTENT;Qui a un pouvoir absolu et illimité;;H;2
+132;F;PERSPICACE;Clairvoyant;;H;0
+133;F;PROCRASTINER;Remettre syst�matiquement les choses � plus tard;;H;0
+134;F;PRÉJUGÉ;Opinion préconçue;;H;0
+135;F;PRÉMÉDITATION;Résolution prise à l'avance;;H;1
+136;F;PRÉMÉDITER;Réfléchir et planifier à l'avance;;H;1
+137;F;RÉMINISCENCE;Souvenir vague;;H;1
+138;F;RÉTICENT;Réservé, hésitant;;H;0
+139;F;SOLENNEL;Caractère sérieux et formel;;H;0
+140;F;SOPHISTIQUÉ;Complexe et élaboré;;H;0
+141;F;SOPORIFIQUE;Provoque le sommeil;;H;0
+142;F;SUPPOSER;Admettre une hypothèse;;H;0
+143;F;TRAGÉDIE;Evènement malheureux;;H;0
+144;F;ÉNIGMATIQUE;Mystérieux;;H;1
+145;F;ÉPIGRAPHE;Citation en tête d'un ouvrage;;H;0
+146;F;ÉQUIVOQUE;Susceptible d'interprétations multiples;;H;0
+147;F;ÉQUIVOQUER;Tromper ou induire en erreur par des propos ambigus;;H;1
+148;F;ÉRUDITION;Savoir étendu sur un sujet;;H;1
+149;E;ABSTRUSE;Difficult to understand;;H;0
+150;E;AMBIGUOUS;Having more than one interpretation;;H;0
+151;E;CLANDESTINE;Done secretly;;H;0
+152;E;CONUNDRUM;Confusing problem;;H;0
+153;E;CRYPTIC;Mysterious;;H;0
+154;E;DEARTH;Lack of something;;H;0
+155;E;EBULLIENT;Full of enthusiasm;;H;0
+156;E;ENIGMA;Person or thing that is mysterious;;H;0
+157;E;EQUIVOCATE;Use vague language;;H;0
+158;E;ESOTERIC;Understood by only a small group;;H;0
+159;E;EXACERBATE;Make a situation worse;;H;0
+160;E;GREGARIOUS;Sociable;;H;0
+161;E;INEFFABLE;Indescribable;;H;0
+162;E;INSCRUTABLE;Enigmatic;;H;0
+163;E;INSIDIOUS;Proceeding in a gradual, subtle way, but with harmful effects;;H;0
+164;E;LABYRINTHINE;Complex or mazelike;;H;0
+165;E;MELLIFLUOUS;Smooth and sweet;;H;0
+166;E;OSTENTATIOUS;Pretentious or showy;;H;0
+167;E;PEDANTIC;Overly concerned with minor details and rules;;H;0
+168;E;PERPLEX;Confuse or puzzle someone;;H;0
+169;E;PLAUSIBLE;Reasonable or probable;;H;0
+170;E;QUIXOTIC;Unrealistic;;H;0
+171;E;RETICENT;Reserved;;H;0
+172;E;SAGACIOUS;Wise;;H;0
+173;E;SERENDIPITY;Occurrence of fortunate or unexpected events by chance;;H;0
+174;E;SOPHISTICATED;More advanced and complex;;H;0
+175;E;SUPERCILIOUS;Haughty;;H;0
+176;E;TREPIDATION;Fear or anxiety about something that may happen;;H;0
+177;E;UBIQUITOUS;Present everywhere;;H;0
+178;E;UNFATHOMABLE;Incomprehensible;;H;0
+179;E;BELOVED;Adored;Cherished;N;0
+180;E;CAPABLE;Able;Having the ability;N;0
+181;E;DIVERSE;Several;Various;N;0
+182;E;ELOQUENT;Expressing oneself;Fluently and persuasively;N;0
+183;E;FASCINATE;Delight;Please greatly;N;0
+184;E;GRATITUDE;Recognition;Being thankful;N;0
+185;E;HARMONY;Cooperation;State of peaceful agreement;N;0
+186;E;IMAGINATION;Creativity;Creative mental ability;N;0
+187;E;JOVIAL;Cheerful;Good mood;N;0
+188;E;KNOWLEDGE;Understanding;Accumulation of facts and expertise;N;0
+189;E;LAVISH;Extravagant;Excessive spending;N;0
+190;E;MELANCHOLY;Feeling;Sadness;N;0
+191;E;NOSTALGIA;Sentimental yearning;Past;N;0
+192;E;UNIQUE;Unlike anything else;One;N;0
+193;E;BLISS;Happiness;Extreme;N;0
+194;E;IMPECCABLE;Without mistakes;Perfect;N;0
+195;E;GENUINE;Original;Authentic;N;0
+196;E;SEAHORSE;Aquatic animal;Horse;N;0
+197;E;GIRAFFE;Animal;Long;N;0
+198;E;CASTLE;Residence;Monarchy;N;0
+199;E;AERODROME;Area where to land;Small aircraft;N;0
+200;E;WIZARD;Man with powers;Magic;N;0
+201;E;ENCYCLOPEDIA;Book;Generally a set of books;N;0
+202;E;HELICOPTER;Aircraft;Long blades;N;0
+203;E;LOCOMOTIVE;Vehicle;Train;N;0
+204;E;PYJAMAS;Clothes;Bed;N;0
+205;E;PASSPORT;Document;Official;N;0
+206;E;EYEGLASSES;Lenses;See;N;0
+207;E;HARD DISK;Device;Storage;N;0
+208;E;CURTAINS;Large pieces of material;Window;N;0
+209;E;PROVINCE;Region;Autonomy;N;0
+210;E;BICYCLE;Vehicle;Two wheels;E;0
+211;E;ENVELOPE;Paper cover;Letter;E;0
+212;E;BALLOON;Toy;Filled with air;E;0
+213;E;REFRIGERATOR;Large container;Cold;E;0
+214;E;DRESS;Piece of clothing;Woman;E;0
+215;E;TELEVISION;Rectangular device;Channels;E;0
+216;E;COMPUTER;Electronic machine;Data;E;0
+217;E;PAINTER;Job;Colors;E;0
+218;E;MECHANIC;Job;Cars;E;0
+219;E;TEACHER;Job;Science;E;0
+220;E;CHICKEN;Bird;Egg;E;0
+221;E;METRE;Unit;Length;E;0
+222;E;CHILD;Human being;Boy;E;0

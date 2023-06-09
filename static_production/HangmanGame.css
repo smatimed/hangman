@@ -102,12 +102,14 @@ body {
 }
 
 #boutonJouer[data="false"],
-#niveauDeJeu[data="false"] {
+#niveauDeJeu[data="false"],
+#assistanceAuJeu[data="false"] {
     display: none;
 }
 
 #boutonJouer[data="true"],
-#niveauDeJeu[data="true"] {
+#niveauDeJeu[data="true"],
+#assistanceAuJeu[data="true"] {
     display: block;
 }
 
@@ -176,21 +178,41 @@ body {
     /* width: 10px; */
 }
 
+#boutonEnlever5Lettres {
+    /* box-shadow: 0 3px 0 -1px rgb(205, 201, 201); */
+    display: inline-block;
+    background-color: rgba(54, 128, 1, 0.3);
+    color: green;
+    font-weight: bold;
+    margin-left: 2rem;
+    /* margin: 1px; */
+    /* height: 10px; */
+    /* width: 10px; */
+}
+
 #texteAide {
     color: maroon;
 }
 
 #boutonAide[data="false"], 
-#texteAide[data="false"] {
+#boutonEnlever5Lettres[data="false"], 
+#texteAide[data="false"],
+#definition[data="false"] {
     display: none;
 }
 #boutonAide[data="true"],
-#texteAide[data="true"] {
+#boutonEnlever5Lettres[data="true"],
+#texteAide[data="true"],
+#definition[data="true"] {
     display: inline-block;
 }
 
+
 #niveauDeJeu {
-    margin-top: 10px;
+    margin-top: 15px;
+}
+#assistanceAuJeu {
+    margin-top: 5px;
 }
 
 /* .anim {
