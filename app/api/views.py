@@ -23,6 +23,7 @@ def chooseWordRandomly(request, theLang, theDifficulty):
     listNbTimesChosen = wordsList.objects.values_list('nbTimesChosen',flat=True).filter(lang=theLang,difficulty=theDifficulty).all()
     listPoids = [seuilMax-x for x in listNbTimesChosen]
 
+    # Faire de telle sorte que les mots choisis (aléatoirement) soient ceux qui n'ont pas été fréquemment choisis
     # old: randomRecord = lang_words[randrange(len(lang_words))]   // simple random
     randomLine = random.choices(list(range(len(lang_words))), weights=listPoids, k=1)
     theLineChosen = lang_words[randomLine[0]]

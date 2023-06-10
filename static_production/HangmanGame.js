@@ -313,13 +313,17 @@ function initJeu() {
         }
     } else if (document.getElementById("normal").checked) {
         niveauJeu = document.getElementById("normal").value;
-        libNiveauJeu = "Normal";
+        if (laLangue == 'F') {
+            libNiveauJeu = "Moyen";
+        } else {
+            libNiveauJeu = "Medium";
+        }
     } else {
         niveauJeu = document.getElementById("difficile").value
         if (laLangue == 'F') {
             libNiveauJeu = "Difficile";
         } else {
-            libNiveauJeu = "Difficult";
+            libNiveauJeu = "Hard";
         }
     };
     document.getElementById("niveauJeuChoisi").innerHTML = " ("+libNiveauJeu+")";

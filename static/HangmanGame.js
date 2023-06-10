@@ -6,7 +6,6 @@ var niveauJeu, laLangue, opJeu_indication, opJeu_Aide, opJeu_Enlever5Lettres;
 
 function demanderUnMot(laLangue, laDifficulte) {
     // We use here FETCH and REST-API
-    // console.log('langue (demanderUnMot)',laLangue);
 
     let url = window.location.origin + '/api/word/' + laLangue + '/' + laDifficulte;
     // window.location.origin   =>   'http://127.0.0.1:8000'
@@ -313,13 +312,17 @@ function initJeu() {
         }
     } else if (document.getElementById("normal").checked) {
         niveauJeu = document.getElementById("normal").value;
-        libNiveauJeu = "Normal";
+        if (laLangue == 'F') {
+            libNiveauJeu = "Moyen";
+        } else {
+            libNiveauJeu = "Medium";
+        }
     } else {
         niveauJeu = document.getElementById("difficile").value
         if (laLangue == 'F') {
             libNiveauJeu = "Difficile";
         } else {
-            libNiveauJeu = "Difficult";
+            libNiveauJeu = "Hard";
         }
     };
     document.getElementById("niveauJeuChoisi").innerHTML = " ("+libNiveauJeu+")";
