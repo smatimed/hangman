@@ -4,62 +4,77 @@
 
 {% block content %}
 
-<h2 class="mh-3">NEW WORD</h2>
+<h2 class="mh-3 text-primary">NEW WORD</h2>
 
 <form method="POST">
-    <div class="form-group">
-        <label for="lang" accesskey="l"><u>L</u>anguage</label>
-        <select name="lang" id="lang">
+    <div class="pt-2">
+        <label class="pe-2" for="lang" accesskey="l"><u>L</u>anguage:</label>
+        <select name="lang" id="lang" class="form-control my-form-control-10">
             <option value="E"
-                    {% if request.form['lang']=='E' %}
+                    {% if lang=='E' or request.form['lang']=='E' %}
                     selected
                     {% endif %}>English</option>
             <option value="F"
-                    {% if request.form['lang']=='F' %}
+                    {% if lang=='F' or request.form['lang']=='F' %}
                     selected
                     {% endif %}>French</option>
         </select>
-
     </div>
 
-    <div class="form-group">
-        <label for="word" accesskey="w"><u>W</u>ord</label>
-        <input type="text" name="word" id="word" placeholder="Word" class="form-control"
-               value="{{ request.form['word'] }}" maxlength="20">
+    <div class="row pt-2">
+        <div class="col-auto pe-0">
+            <label class="my-label" for="word" accesskey="w"><u>W</u>ord:</label>
+        </div>
+        <div class="col">
+            <input type="text" name="word" id="word" placeholder="Word" class="form-control my-form-control-50 fw-bold" style="text-transform: uppercase;"
+                   value="{{ word }}" maxlength="20" autofocus>
+            <!-- value="{{ request.form['word'] }}" maxlength="20" focused> -->
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="definition" accesskey="d"><u>D</u>efinition</label>
-        <input type="text" name="definition" id="definition" placeholder="Definition"
-               class="form-control" maxlength="50" value="{{ request.form['definition'] }}">
+    <div class="row pt-2">
+        <div class="col-auto pe-0">
+            <label class="my-label" for="definition" accesskey="d"><u>D</u>efinition:</label>
+        </div>
+        <div class="col">
+            <input type="text" name="definition" id="definition" placeholder="Definition"
+                   class="form-control" maxlength="50" value="{{ definition }}">
+            <!-- class="form-control" maxlength="50" value="{{ request.form['definition'] }}"> -->
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="hint" accesskey="h"><u>H</u>int</label>
-        <input name="hint" id="hint" placeholder="Hint"
-               class="form-control" maxlength="50" value="{{ request.form['hint'] }}">
+    <div class="row pt-2">
+        <div class="col-auto pe-0">
+            <label class="my-label" for="hint" accesskey="h"><u>H</u>int:</label>
+        </div>
+        <div class="col">
+            <input name="hint" id="hint" placeholder="Hint"
+                   class="form-control" maxlength="50" value="{{ hint }}">
+            <!-- class="form-control" maxlength="50" value="{{ request.form['hint'] }}"> -->
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="difficulty" accesskey="f">Di<u>f</u>ficulty</label>
-        <select name="difficulty" id="difficulty">
+    <div class="pt-2">
+        <label class="pe-2" for="difficulty" accesskey="f">Di<u>f</u>ficulty:</label>
+        <select name="difficulty" id="difficulty" class="form-control my-form-control-10">
             <option value="E"
-                    {% if request.form['difficulty']=='E' %}
+                    {% if difficulty=='E' or request.form['difficulty']=='E' %}
                     selected
                     {% endif %}>Easy</option>
             <option value="N"
-                    {% if request.form['difficulty']=='N' %}
+                    {% if difficulty=='N' or request.form['difficulty']=='N' %}
                     selected
                     {% endif %}>Medium</option>
             <option value="H"
-                    {% if request.form['difficulty']=='H' %}
+                    {% if difficulty=='H' or request.form['difficulty']=='H' %}
                     selected
                     {% endif %}>Hard</option>
         </select>
     </div>
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary" accesskey="s"><u>S</u>ubmit</button>
+    <div class="pt-2">
+        <button type="submit" name="action" value="stop-adding" class="btn btn-primary" accesskey="s"><u>S</u>ubmit</button>
+        <button type="submit" name="action" value="continue-adding" class="btn btn-primary" accesskey="a">Submit and <u>A</u>dd another one</button>
     </div>
 </form>
 

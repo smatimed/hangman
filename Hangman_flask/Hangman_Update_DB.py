@@ -48,16 +48,30 @@ def indexFiltered(lang,difficulty):
     # difficulty='N'
     # print('***',lang,difficulty)
     conn = get_db_connection()
-    words = conn.execute(f"select * from app_wordslist where lang='{lang}' and difficulty='{difficulty}' order by lang,difficulty,word").fetchall()
+    if lang != 'U':
+        if difficulty != 'U':
+            words = conn.execute(f"select * from app_wordslist where lang='{lang}' and difficulty='{difficulty}' order by lang,difficulty,word").fetchall()
+        else:
+            words = conn.execute(f"select * from app_wordslist where lang='{lang}' order by lang,difficulty,word").fetchall()
+    else:
+        if difficulty != 'U':
+            words = conn.execute(f"select * from app_wordslist where difficulty='{difficulty}' order by lang,difficulty,word").fetchall()
+        else:
+            words = conn.execute(f"select * from app_wordslist order by lang,difficulty,word").fetchall()
     conn.close()
-    return render_template('index.html',words=words,filerEnabled='1')
+    return render_template('index.html',words=words,filerEnabled='1',lang=lang,difficulty=difficulty)
 
 
 @app.route('/create', methods=('GET','POST'))
 def create():
+    lang = 'E'
+    word = ''
+    definition = ''
+    hint = ''
+    difficulty = 'E'
     if request.method == 'POST':
         lang = request.form['lang']
-        word = request.form['word'].replace("'","''")
+        word = request.form['word'].replace("'","''").upper()
         definition = request.form['definition'].replace("'","''")
         hint = request.form['hint'].replace("'","''")
         difficulty = request.form['difficulty']
@@ -74,10 +88,22 @@ def create():
                     conn.execute(f"insert into app_wordslist (lang, word, definition, hint, difficulty, nbTimesChosen) values ('{lang}','{word}','{definition}','{hint}','{difficulty}',0)")
                     conn.commit()
                     conn.close()
-                    return redirect(url_for('index'))
+                    # print('*** request.form:',request.form)
+                    # if request.form['action'] == 'continue-adding':
+                    #     return redirect(request.url)
+                    # else:
+                    #     return redirect(url_for('index'))
+
+                    if request.form['action'] == 'stop-adding':
+                        return redirect(url_for('index'))
+                    else:
+                        # Empty some fields that change
+                        word = ''
+                        definition = ''
+                        hint = ''
                 else:
                     flash('Word already exists')
-    return render_template('create.html')
+    return render_template('create.html',lang=lang,difficulty=difficulty,word=word,definition=definition,hint=hint)
 
 
 @app.route('/edit/<int:id>/', methods=('GET','POST'))
@@ -86,7 +112,7 @@ def edit(id):
 
     if request.method == 'POST':
         lang = request.form['lang']
-        word = request.form['word'].replace("'","''")
+        word = request.form['word'].replace("'","''").upper()
         definition = request.form['definition'].replace("'","''")
         hint = request.form['hint'].replace("'","''")
         difficulty = request.form['difficulty']
@@ -104,5 +130,6 @@ def edit(id):
                 conn.execute(f"update app_wordslist set lang='{lang}', word='{word}', definition='{definition}', hint='{hint}', difficulty='{difficulty}', nbtimeschosen={nbTimesChosen} where id = {id}")
                 conn.commit()
                 conn.close()
+                # print('***',request.referrer)
                 return redirect(url_for('index'))
     return render_template('edit.html', word=word)

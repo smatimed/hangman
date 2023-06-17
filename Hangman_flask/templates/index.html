@@ -15,24 +15,61 @@
 
 <h2>WORDS LIST ({{ words|length }})</h2>
 
+<a href="#" class="btn-primary" id="theGoTopBtn">
+    <span class="bi bi-arrow-up-circle-fill" style="font-size: large;"></span>
+</a>
+
+<!-- <a href="#" class="btn-primary" id="theGoTopBtn"><span class="bi bi-shift-fill fw-bold"
+          style="font-size: 150%;"></span></a> -->
+
 <div class="row">
     <!-- language -->
     <div class="col-3 me-5 border">
-        <div class="div_enfant" id="niveauDeJeu" data="true">
-            <input class="ps-5" type="radio" name="langue" id="english" value="E" checked><label class="pe-3 ps-1" for="english">English</label>
-            <input type="radio" name="langue" id="french" value="N"><label class="ps-1" for="french">French</label>
+        <div>
+            <!-- ENGLISH -->
+            {% if lang == 'E' %}
+            <input class="ps-5" type="radio" name="langue" id="english" value="E" checked>
+            {% else %}
+            <input class="ps-5" type="radio" name="langue" id="english" value="E">
+            {% endif %}
+            <label class="pe-3 ps-1" for="english">English</label>
+            <!-- FRENCH -->
+            {% if lang == 'F' %}
+            <input type="radio" name="langue" id="french" value="N" checked>
+            {% else %}
+            <input type="radio" name="langue" id="french" value="N">
+            {% endif %}
+            <label class="ps-1" for="french">French</label>
         </div>
     </div>
 
     <!-- Difficulty -->
     <div class="col-3 me-5 border">
-        <input class="ps-5" type="radio" name="difficulty" id="easy" value="E" checked><label class="pe-3 ps-1" for="easy">Easy</label>
-        <input type="radio" name="difficulty" id="medium" value="N"><label class="pe-3 ps-1" for="medium">Medium</label>
-        <input type="radio" name="difficulty" id="hard" value="H"><label class="ps-1" for="hard">Hard</label>
+        <!-- EASY -->
+        {% if difficulty == 'E' %}
+        <input class="ps-5" type="radio" name="difficulty" id="easy" value="E" checked>
+        {% else %}
+        <input class="ps-5" type="radio" name="difficulty" id="easy" value="E">
+        {% endif %}
+        <label class="pe-3 ps-1" for="easy">Easy</label>
+        <!-- MEDIUM -->
+        {% if difficulty == 'N' %}
+        <input type="radio" name="difficulty" id="medium" value="N" checked>
+        {% else %}
+        <input type="radio" name="difficulty" id="medium" value="N">
+        {% endif %}
+        <label class="pe-3 ps-1" for="medium">Medium</label>
+        <!-- HARD -->
+        {% if difficulty == 'H' %}
+        <input type="radio" name="difficulty" id="hard" value="H" checked>
+        {% else %}
+        <input type="radio" name="difficulty" id="hard" value="H">
+        {% endif %}
+        <label class="ps-1" for="hard">Hard</label>
     </div>
 
     <!-- Activate filter -->
-    <div class="col">
+    <div class="col-2">
         <div class="form-check form-switch">
             {% if filerEnabled=='1' %}
             <input type="checkbox" class="form-check-input" name="" id="filter" onclick="applyFilter()" checked>
@@ -40,6 +77,16 @@
             <input type="checkbox" class="form-check-input" name="" id="filter" onclick="applyFilter()">
             {% endif %}
             <label for="filtre">Filter</label>
+        </div>
+    </div>
+
+    <!-- search -->
+    <div class="col-auto">
+        <div class="row">
+            <span>
+                <input type="text" name="" id="textSearch" onchange="restoreColorOfLastSearchedWord()" style="text-transform: uppercase;">
+                <label onclick="searchWord()" class="text-primary fs-5"><span class="bi bi-search" id="buttonSearch"></span></label>
+            </span>
         </div>
     </div>
 </div>
@@ -65,7 +112,7 @@
         <tr>
             <td>{{ word['id'] }}</td>
             <td>{{ word['lang'] }}</td>
-            <td style="color: maroon;"><b>{{ word['word'] }}</b></td>
+            <td class="words" style="color: maroon;" data="false"><b>{{ word['word'] }}</b></td>
             <td>{{ word['definition'] }}</td>
             <td>{{ word['hint'] }}</td>
             <td>{{ word['difficulty'] }}</td>
@@ -78,8 +125,10 @@
 </table>
 
 <script>
+    var lastSearchedWord;
+
     function applyFilter() {
-        let vLang = '', vDifficulty = '';
+        let vLang = 'U', vDifficulty = 'U';
         // let theUrl = '/filter/';
 
         if (document.getElementById("filter").checked) {
@@ -104,13 +153,55 @@
             // window.location = '/filter/' + vLang + '/' + vDifficulty + '/';
             // document.location.href = "{{ url_for('indexFiltered', lang='" + vLang + "', difficulty='" + vDifficulty + "') }}";
             // document.location.href = `{{ url_for('indexFiltered', lang='${vLang}', difficulty='${vDifficulty}') }}`;
+
             document.location.href = "{{ url_for('indexFiltered', lang='theLang', difficulty='theDifficulty') }}".replace('theLang', vLang).replace('theDifficulty', vDifficulty);
         } else {
             // FILTER DISABLED
             document.location.href = "{{ url_for('index') }}";
         }
+    };
+
+    function searchWord() {
+        let wordToSearch = document.getElementById("textSearch").value.toUpperCase();
+        let wordsList = document.querySelectorAll('.words');
+        // console.log('to search', wordToSearch);
+        for (i = 0; i < wordsList.length; i++) {
+            elem = wordsList[i];
+            // console.log(elem.innerText);
+            if (elem.innerText == wordToSearch) {
+                // console.log('*** FOUND ***');
+                // elem.focus();
+                // elem.select();
+                elem.setAttribute('data', 'true');
+                lastSearchedWord = elem;
+                window.scrollTo(0, i * 33.5);
+                break;
+            }
+        }
+    };
+
+    function restoreColorOfLastSearchedWord() {
+        lastSearchedWord.setAttribute('data', 'false');
+    };
+
+</script>
+
+<script>
+    //Get the GoTop button
+    var theGoTopButton = document.getElementById("theGoTopBtn");
+
+    // When the user scrolls down 100px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            theGoTopButton.style.display = "block";
+        } else {
+            theGoTopButton.style.display = "none";
+        }
     }
 </script>
+
 
 {% endblock %}
 

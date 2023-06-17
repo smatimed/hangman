@@ -4,3 +4,59 @@ h1 {
     text-align: center;
     padding: 10px;
 }
+
+.my-form-control {
+    display: inline-block;
+}
+
+.my-form-control-50 {
+    display: inline-block;
+    width: 50%;
+        !important
+}
+
+.my-form-control-30 {
+    display: inline-block;
+    width: 30%;
+        !important
+}
+
+.my-form-control-20 {
+    display: inline-block;
+    width: 20%;
+        !important
+}
+
+.my-form-control-10 {
+    display: inline-block;
+    width: 10%;
+        !important
+}
+
+.my-label {
+    padding: 0.375rem 0;
+}
+
+/* Go Top button */
+#theGoTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    z-index: 999;
+    cursor: pointer;
+    /* box-shadow: 4px 4px silver; */
+}
+#theGoTopBtn:hover {
+    background-color: darkblue;
+}
+
+#buttonSearch:hover {
+    cursor: pointer;
+}
+
+.words[data="true"] {
+    background-color: lightblue;
+}
