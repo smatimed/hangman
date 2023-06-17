@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+<h1>{% block title %} Create a New Word {% endblock %}</h1>
+
+{% block content %}
+
+<h2 class="mh-3">NEW WORD</h2>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="lang" accesskey="l"><u>L</u>anguage</label>
+        <select name="lang" id="lang">
+            <option value="E"
+                    {% if request.form['lang']=='E' %}
+                    selected
+                    {% endif %}>English</option>
+            <option value="F"
+                    {% if request.form['lang']=='F' %}
+                    selected
+                    {% endif %}>French</option>
+        </select>
+
+    </div>
+
+    <div class="form-group">
+        <label for="word" accesskey="w"><u>W</u>ord</label>
+        <input type="text" name="word" id="word" placeholder="Word" class="form-control"
+               value="{{ request.form['word'] }}" maxlength="20">
+    </div>
+
+    <div class="form-group">
+        <label for="definition" accesskey="d"><u>D</u>efinition</label>
+        <input type="text" name="definition" id="definition" placeholder="Definition"
+               class="form-control" maxlength="50" value="{{ request.form['definition'] }}">
+    </div>
+
+    <div class="form-group">
+        <label for="hint" accesskey="h"><u>H</u>int</label>
+        <input name="hint" id="hint" placeholder="Hint"
+               class="form-control" maxlength="50" value="{{ request.form['hint'] }}">
+    </div>
+
+    <div class="form-group">
+        <label for="difficulty" accesskey="f">Di<u>f</u>ficulty</label>
+        <select name="difficulty" id="difficulty">
+            <option value="E"
+                    {% if request.form['difficulty']=='E' %}
+                    selected
+                    {% endif %}>Easy</option>
+            <option value="N"
+                    {% if request.form['difficulty']=='N' %}
+                    selected
+                    {% endif %}>Medium</option>
+            <option value="H"
+                    {% if request.form['difficulty']=='H' %}
+                    selected
+                    {% endif %}>Hard</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" accesskey="s"><u>S</u>ubmit</button>
+    </div>
+</form>
+
+{% endblock %}

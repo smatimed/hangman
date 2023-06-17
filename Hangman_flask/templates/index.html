@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+<h1>{% block title %} HANGMAN DB {% endblock %}</h1>
+
+{% block style %}
+<style>
+    .table-hover tbody tr:hover td {
+        background-color: lightgray;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<h2>WORDS LIST ({{ words|length }})</h2>
+
+<div class="row">
+    <!-- language -->
+    <div class="col-3 me-5 border">
+        <div class="div_enfant" id="niveauDeJeu" data="true">
+            <input class="ps-5" type="radio" name="langue" id="english" value="E" checked><label class="pe-3 ps-1" for="english">English</label>
+            <input type="radio" name="langue" id="french" value="N"><label class="ps-1" for="french">French</label>
+        </div>
+    </div>
+
+    <!-- Difficulty -->
+    <div class="col-3 me-5 border">
+        <input class="ps-5" type="radio" name="difficulty" id="easy" value="E" checked><label class="pe-3 ps-1" for="easy">Easy</label>
+        <input type="radio" name="difficulty" id="medium" value="N"><label class="pe-3 ps-1" for="medium">Medium</label>
+        <input type="radio" name="difficulty" id="hard" value="H"><label class="ps-1" for="hard">Hard</label>
+    </div>
+
+    <!-- Activate filter -->
+    <div class="col">
+        <div class="form-check form-switch">
+            {% if filerEnabled=='1' %}
+            <input type="checkbox" class="form-check-input" name="" id="filter" onclick="applyFilter()" checked>
+            {% else %}
+            <input type="checkbox" class="form-check-input" name="" id="filter" onclick="applyFilter()">
+            {% endif %}
+            <label for="filtre">Filter</label>
+        </div>
+    </div>
+</div>
+
+
+<table class="table table-sm table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Lang</th>
+            <th>Word</th>
+            <th>Definition</th>
+            <th>Hint</th>
+            <th>Difficulty</th>
+            <th>nbTimesChosen</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for word in words %}
+
+        <tr>
+            <td>{{ word['id'] }}</td>
+            <td>{{ word['lang'] }}</td>
+            <td style="color: maroon;"><b>{{ word['word'] }}</b></td>
+            <td>{{ word['definition'] }}</td>
+            <td>{{ word['hint'] }}</td>
+            <td>{{ word['difficulty'] }}</td>
+            <td>{{ word['nbTimesChosen'] }}</td>
+            <th><a href="{{ url_for('edit', id=word['id']) }}"><span class="bi-pencil"></span></a></th>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    function applyFilter() {
+        let vLang = '', vDifficulty = '';
+        // let theUrl = '/filter/';
+
+        if (document.getElementById("filter").checked) {
+            // FILTER ENABLED
+            if (document.getElementById("english").checked) {
+                vLang = 'E'
+            } else if (document.getElementById("french").checked) {
+                vLang = 'F'
+            };
+
+            if (document.getElementById("easy").checked) {
+                vDifficulty = 'E'
+            } else if (document.getElementById("medium").checked) {
+                vDifficulty = 'N'
+            } else if (document.getElementById("hard").checked) {
+                vDifficulty = 'H'
+            };
+
+            // theUrl = theUrl + vLang + '/' + vDifficulty + '/';
+            // console.log('theUrl:' + theUrl);
+            // document.location.href = theUrl;
+            // window.location = '/filter/' + vLang + '/' + vDifficulty + '/';
+            // document.location.href = "{{ url_for('indexFiltered', lang='" + vLang + "', difficulty='" + vDifficulty + "') }}";
+            // document.location.href = `{{ url_for('indexFiltered', lang='${vLang}', difficulty='${vDifficulty}') }}`;
+            document.location.href = "{{ url_for('indexFiltered', lang='theLang', difficulty='theDifficulty') }}".replace('theLang', vLang).replace('theDifficulty', vDifficulty);
+        } else {
+            // FILTER DISABLED
+            document.location.href = "{{ url_for('index') }}";
+        }
+    }
+</script>
+
+{% endblock %}
+
+
+<!-- other classes related to "table": 
+table-primary, table-secondary, table-success, table-danger, table-warning, table-info, table-light, table-dark, table-white
+table-striped (zebra-striping)
+table-hover (hoverable rows)
+table-active (highlight a row or a cell)
+table-sm (more compact by cutting all cell padding in half)
+
+table-bordered (borders on all sides)
+border-dark border-danger border-success ...
+table-borderless (without borders)
+
+BORDER:
+Additive: border, border-top, border-end, border-bottom, border-start
+Subtractive: border-0, border-top-0, border-end-0, border-bottom-0, border-start-0
+Color: border-<color>    where color is primary or secondary or success ...
+    example: class="border border-primary"
+Width: border-1, border-2, border-3, border-4, border-5
+Radius: rounded, rounded-top, rounded-end, rounded-bottom, rounded-start, rounded-circle, rounded-pill
+Size: rounded-0, rounded-1, rounded-2, rounded-3
+
+table-responsive{-sm|-md|-lg|-xl|-xxl} (create responsive tables
+    <div class="table-responsive">
+        <table class="table">
+            ...
+        </table>
+    </div>)
+
+vertical-alignment utilities: align-baseline, align-top, align-middle, align-bottom, align-text-bottom, align-text-top
+(vertical-align only affects inline, inline-block, inline-table, and table cell elements)
+-->
