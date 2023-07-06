@@ -29,6 +29,7 @@ body {
     padding: 8px;
     text-align: center;
     width: 41px;
+    cursor: default;
 }
 
 .touche[data="false"],
@@ -462,4 +463,62 @@ body {
     /* box-shadow: 2px 2px gray; */
     transform: translate(5px,5px);
     -webkit-transform: translate(5px,5px);
+}
+
+
+
+/* animation pendu */
+#game {
+    position: relative;
+}
+
+#pendu2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 50%;
+    margin-left: -89px; 
+    /* pour -90, je ne peux expliquer le comment */
+    /* margin-left: -122px; */
+    /* 245/2 = 122.5 (image's width) */
+    /* transition-timing-function:  linear; */
+    /* transition-duration: 10s; */
+}
+
+#pendu2 {
+    /* margin: 0;
+    padding: 0; */
+    /* z-index: 999; */
+    /* transition-timing-function: linear;
+    transition-duration: 10s; */
+}
+
+#pendu2[data="false"] {
+    display: none;
+}
+
+#pendu2[data="true"] {
+    display: block;
+}
+
+/* #pendu2 {
+    z-index: 99;
+}
+#pendu3 {
+    z-index: 1;
+} */
+
+#img-pendu2 {
+    /* z-index: 99; */
+    transition-timing-function: linear;
+    transition-duration: 1s;
+}
+
+#img-pendu2[data="false"] {
+    /* display: none; */
+}
+
+#img-pendu2[data="true"] {
+    /* display: block; */
+    transform: translateY(15px);
 }

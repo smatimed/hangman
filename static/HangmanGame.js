@@ -203,6 +203,20 @@ function afficherProchaineErreur() {
     };
 };
 
+
+// function wait(ms) {
+//     var start = Date.now(),
+//         now = start;
+//     while (now - start < ms) {
+//       now = Date.now();
+//     }
+// };
+
+function goAnimation() {
+        document.getElementById("img-pendu2").setAttribute("data","true");
+}
+
+
 function finDuJeu(lOk) {
     var divResultat = document.getElementById("resultat");
     
@@ -213,7 +227,9 @@ function finDuJeu(lOk) {
     
     divResultat.setAttribute("data", lOk);
 
+
     if (lOk) {
+        // * ----------------------------------------------- SUCCES
         if (laLangue == 'F') {
             document.getElementById("resultatTitre").innerText = "Gagné !";
             document.getElementById("resultatCorps").innerHTML = "Bravo, vous avez trouvé le mot.";
@@ -223,15 +239,25 @@ function finDuJeu(lOk) {
         };
         document.getElementsByTagName("body")[0].style.backgroundColor = "rgba(83, 234, 83, 0.5)";
     } else {
+        // * ----------------------------------------------- ECHEC
         if (laLangue == 'F') {
-        document.getElementById("resultatTitre").innerText = "Perdu !";
-        document.getElementById("resultatCorps").innerHTML = "Le mot est <b>\"" + leMot[0].toUpperCase() + "\"</b><br>Bonne chance pour la prochaine fois.";
-    } else {
+            document.getElementById("resultatTitre").innerText = "Perdu !";
+            document.getElementById("resultatCorps").innerHTML = "Le mot est <b>\"" + leMot[0].toUpperCase() + "\"</b><br>Bonne chance pour la prochaine fois.";
+        } else {
             document.getElementById("resultatTitre").innerText = "You lost !";
             document.getElementById("resultatCorps").innerHTML = "The word is <b>\"" + leMot[0].toUpperCase() + "\"</b><br>Good luck next time.";
         };
+
+        // document.getElementById("pendu").setAttribute("data","false");
+        document.getElementById("pendu2").setAttribute("data","true");
+        document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu12.png");
+        // document.getElementById("img-pendu2").setAttribute("data","true");
+        setTimeout(goAnimation,200);
+
         document.getElementsByTagName("body")[0].style.backgroundColor = "rgba(234, 57, 57, 0.5)";
     };
+
+
     document.getElementById("clavier").setAttribute("data", "false");
     if (laLangue == 'F') {
         document.getElementById("boutonJouer").innerHTML = "Rejouer";
@@ -292,6 +318,7 @@ function desactiverAideSiNecessaire() {
     }
 }
 
+
 function initJeu() {
     nbErreur = 0;
     motRestant = [];
@@ -337,6 +364,10 @@ function initJeu() {
     } else {
         document.getElementById("definition").setAttribute("data","false");
     };
+
+    document.getElementById("pendu2").setAttribute("data","false");
+    document.getElementById("pendu2").style.top = 0;
+    document.getElementById("img-pendu2").setAttribute("data","false");
 
     demanderUnMot(laLangue, niveauJeu);    // theLang, theDifficulty
 };
