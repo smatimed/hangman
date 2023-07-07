@@ -3,4 +3,7 @@
 - enter in bash and decompress the zip (unzip <filename.zip>)
 - delete the zip
 
-Click on "Web" to enter configuration.
+- enter configuration and click on "Reload smatimed.pythonanywhere.com"
+(click on "Web" to enter configuration)
+
+- click on "Run until 3 months from today"

@@ -3,6 +3,14 @@ var lesTouches = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var leMot = ["word", "hint"];
 var motRestant = [];
 var niveauJeu, laLangue, opJeu_indication, opJeu_Aide, opJeu_Enlever5Lettres;
+var jouerSon = true;
+
+const audioLettreFausse = document.getElementById('lettre_fausse');
+const audioLettreJuste = document.getElementById('lettre_juste');
+const audioJeuEchec = document.getElementById('jeu_echec');
+const audioJeuSucces = document.getElementById('jeu_succes');
+const audioNotification = document.getElementById('notification');
+
 
 function demanderUnMot(laLangue, laDifficulte) {
     // We use here FETCH and REST-API
@@ -82,6 +90,7 @@ function transformerAccent(lettre) {
     }
 }
 
+
 function creerClavier() {
     var elemClavier = document.getElementById("clavier");
     elemClavier.innerHTML = "";
@@ -101,6 +110,10 @@ function creerClavier() {
 
 function verifierJeu(laTouche) {
     if (laTouche.getAttribute("data") == "") {   // Touche non encore jouée
+
+        laTouche.style.transitionDuration = "1s";
+        laTouche.style.transform = "rotateY(0.5turn)";
+
         var lettreExiste = false;
         var position = motRestant.indexOf(laTouche.innerText.toUpperCase());
         if (position != -1) {
@@ -112,10 +125,17 @@ function verifierJeu(laTouche) {
         if (lettreExiste) {
             if (motRestant.length == 0) {
                 finDuJeu(true);
-            }
+            } else {
+                // On joue le son de "lttre juste", sauf pour la dernière lettre
+                if (jouerSon) audioLettreJuste.play();
+            };
         } else {
             afficherProchaineErreur();
         };
+
+        
+        // laTouche.style.transitionDuration = "0s";
+        laTouche.style.transform = "rotateY(1turn)";
     };
 };
 
@@ -160,6 +180,15 @@ function afficherLettre(laLettre) {
 
 function afficherProchaineErreur() {
     nbErreur++;
+
+    if (nbErreur < 10) {
+        // Lettre fausse
+        if (jouerSon) audioLettreFausse.play();
+    } else {
+        // La dernière lettre, l'homme est pendu
+        if (jouerSon) audioJeuEchec.play();
+    };
+
     switch (nbErreur) {
         case 1:
             document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu01.png");
@@ -177,6 +206,7 @@ function afficherProchaineErreur() {
             document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu05.png");
             if (niveauJeu != 'H') {
                 if (opJeu_Aide) {
+                    if (jouerSon) audioNotification.play();
                     document.getElementById("boutonAide").setAttribute("data","true");
                 }
             };
@@ -190,6 +220,7 @@ function afficherProchaineErreur() {
         case 8:
             document.getElementById("img-pendu").setAttribute("src", "../../static/LePendu08.png");
             if (opJeu_Enlever5Lettres) {
+                if (jouerSon) audioNotification.play();
                 document.getElementById("boutonEnlever5Lettres").setAttribute("data","true");
             };
             break;
@@ -230,6 +261,7 @@ function finDuJeu(lOk) {
 
     if (lOk) {
         // * ----------------------------------------------- SUCCES
+        if (jouerSon) audioJeuSucces.play();
         if (laLangue == 'F') {
             document.getElementById("resultatTitre").innerText = "Gagné !";
             document.getElementById("resultatCorps").innerHTML = "Bravo, vous avez trouvé le mot.";
@@ -240,6 +272,7 @@ function finDuJeu(lOk) {
         document.getElementsByTagName("body")[0].style.backgroundColor = "rgba(83, 234, 83, 0.5)";
     } else {
         // * ----------------------------------------------- ECHEC
+        // Le son JeuEchec est joué à la 10e erreur (donc il est déjà joué lorsqu'on arrive ici)
         if (laLangue == 'F') {
             document.getElementById("resultatTitre").innerText = "Perdu !";
             document.getElementById("resultatCorps").innerHTML = "Le mot est <b>\"" + leMot[0].toUpperCase() + "\"</b><br>Bonne chance pour la prochaine fois.";
@@ -384,4 +417,18 @@ function demarrerJeu(LangueDuJeu) {
     document.getElementById("boutonAide").setAttribute("data","false");
     document.getElementById("boutonEnlever5Lettres").setAttribute("data","false");
     initJeu();
+};
+
+
+function changerSon() {
+    let boutonSon = document.getElementById("bouton-son");
+    if (boutonSon.classList.contains('bi-bell-fill')) {
+        jouerSon = false;
+        boutonSon.classList.replace('bi-bell-fill','bi-bell-slash-fill');
+        // console.log('bi-bell-fill -> bi-bell-slash-fill');
+    } else {
+        jouerSon = true;
+        boutonSon.classList.replace('bi-bell-slash-fill','bi-bell-fill');
+        // console.log('bi-bell-slash-fill -> bi-bell-fill');
+    };
 };
