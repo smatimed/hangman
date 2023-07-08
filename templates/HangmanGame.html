@@ -22,9 +22,10 @@
 
     <div class="row">
         <div class="col-2 px-0">
+            <!-- * Bouton du son -->
             <button class="btn btn-outline-dark btn-rounded ms-3 py-1 px-2" onclick="changerSon()"
                     style="float: left;">
-                <span id="bouton-son" class="bi bi-bell-fill" style="font-size: large"></span>
+                <span id="bouton-son" class="bi bi-bell-fill bouton-nav"></span>
             </button>
             <!-- <a href="" style="float: left;" class="btn btn-outline-dark btn-rounded ms-3 py-1 px-2" role="button" onclick="changerSon()" data-bs-toggle="tooltip" data-bs-placement="bottom"
                data-bs-original-title="{% if langue == 'F' %}Son{% else %}Sound{% endif %}">
@@ -44,12 +45,12 @@
             <!-- *Navigateur* start -->
             <a href="{% url 'dashboard' %}" style="float: right;" class="btn btn-outline-dark btn-rounded ms-3 py-1 px-2" role="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
                data-bs-original-title="{% if langue == 'F' %}Accueil{% else %}Home{% endif %}">
-                <span class="bi bi-house-fill" style="font-size: large"></span>
+                <span class="bi bi-house-fill bouton-nav"></span>
                 <!-- <p class="m-0 p-0">{% if langue == 'F' %}Accueil{% else %}Home{% endif %}</p> -->
             </a>
             <a href="{% url 'hangman' langue %}" style="float: right;" class="btn btn-outline-dark btn-rounded py-1 px-2" role="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
                data-bs-original-title="{% if langue == 'F' %}Annuler{% else %}Cancel{% endif %}">
-                <span class="bi bi-x-circle-fill" style="font-size: large"></span>
+                <span class="bi bi-x-circle-fill bouton-nav"></span>
                 <!-- <p class="m-0 p-0">{% if langue == 'F' %}Annuler{% else %}Cancel{% endif %}</p> -->
             </a>
             <!-- *Navigateur* end -->
@@ -71,7 +72,7 @@
 
     <!-- indication (definition) et aide -->
     <div class="div_enfant pt-2">
-        <p>
+        <p id="p-indication">
             <span id="definition" data="false"></span>
             <span id="texteAide" data="false"></span>
             <button id="boutonAide" data="false" onclick="afficherAide()">{% if langue == 'F' %}Aide{% else %}Help{% endif %} ?</button>
@@ -88,9 +89,12 @@
 
     <!-- Difficulté du jeu -->
     <div class="div_enfant" id="niveauDeJeu" data="true">
-        <input class="ps-5" type="radio" name="niveauJeu" id="facile" value="E"><label class="pe-3 ps-1" for="facile">{% if langue == 'F' %}Facile{% else %}Easy{% endif %}</label>
-        <input type="radio" name="niveauJeu" id="normal" value="N" checked><label class="pe-3 ps-1" for="normal">{% if langue == 'F' %}Moyen{% else %}Medium{% endif %}</label>
-        <input type="radio" name="niveauJeu" id="difficile" value="H"><label class="ps-1" for="difficile">{% if langue == 'F' %}Difficile{% else %}Hard{% endif %}</label>
+        <label class="pe-3 ps-1" for="facile">
+            <input class="ps-5" type="radio" name="niveauJeu" id="facile" value="E"> {% if langue == 'F' %}Facile{% else %}Easy{% endif %}</label>
+        <label class="pe-3 ps-1" for="normal">
+            <input class="ps-5" type="radio" name="niveauJeu" id="normal" value="N" checked> {% if langue == 'F' %}Moyen{% else %}Medium{% endif %}</label>
+        <label class="ps-1" for="difficile">
+            <input class="ps-5" type="radio" name="niveauJeu" id="difficile" value="H"> {% if langue == 'F' %}Difficile{% else %}Hard{% endif %}</label>
     </div>
 
     <!-- * Options d'assistance du jeu -->
@@ -106,8 +110,11 @@
             <input type="checkbox" id="aideJeu" value="A" onclick="desactiverAideSiNecessaire()" checked> {% if langue == 'F' %}Aide{% else %}Help{% endif %}</label>
 
         <!-- Enlever 5 lettres -->
-        <input type="checkbox" id="supp5Jeu" value="H" checked><label class="ps-1" for="supp5Jeu" data-bs-toggle="tooltip" data-bs-placement="top"
-               data-bs-original-title="{% if langue == 'F' %}Proposer d'enlever 5 lettres après 8 erreurs{% else %}Propose to remove 5 letters after 8 errors{% endif %}"> {% if langue == 'F' %}Enlever 5 lettres{% else %}Remove 5 letters{% endif %}</label>
+        <label class="ps-1" for="supp5Jeu" data-bs-toggle="tooltip" data-bs-placement="top"
+               data-bs-original-title="{% if langue == 'F' %}Proposer d'enlever 5 lettres après 8 erreurs{% else %}Propose to remove 5 letters after 8 errors{% endif %}">
+            <input type="checkbox" id="supp5Jeu" value="H" checked> {% if langue == 'F' %}Enlever 5 lettres{% else %}Remove 5 letters{% endif %}</label>
+        <!-- <input type="checkbox" id="supp5Jeu" value="H" checked><label class="ps-1" for="supp5Jeu" data-bs-toggle="tooltip" data-bs-placement="top"
+               data-bs-original-title="{% if langue == 'F' %}Proposer d'enlever 5 lettres après 8 erreurs{% else %}Propose to remove 5 letters after 8 errors{% endif %}"> {% if langue == 'F' %}Enlever 5 lettres{% else %}Remove 5 letters{% endif %}</label> -->
 
     </div>
 

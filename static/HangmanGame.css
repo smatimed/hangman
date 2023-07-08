@@ -32,6 +32,7 @@ body {
     cursor: default;
 }
 
+
 .touche[data="false"],
 .touche[data="true"] {
     color: rgb(75, 75, 75);
@@ -87,6 +88,50 @@ body {
     /* position: absolute; */
     /* right: 0; */
     text-align: center;
+}
+
+.bouton-nav {
+    font-size: large;
+}
+
+#p-indication {
+    margin: 0 0 16px;
+}
+
+@media (max-width: 480px) {
+    .touche {
+        width: 35px;
+        padding: 6px;
+    }
+
+    #lettersEspaceJeu {
+        margin: 15px;
+    }
+
+    .bouton-nav{
+        font-size: medium;
+    }
+
+    #p-indication {
+        margin: 0 0 8px;
+    }
+}
+
+@media (max-width: 425px) {
+    .touche {
+        width: 30px;
+        padding: 4px;
+    }
+
+    #lettersEspaceJeu {
+        margin: 10px;
+    }
+    .bouton-nav {
+        font-size: medium;
+    }
+    #p-indication {
+        margin: 0 0 8px;
+    }
 }
 
 #boutonJouer {

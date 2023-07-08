@@ -10,11 +10,11 @@
 <style>
     #nom-jeu {
         position: absolute;
-        /* transform: rotate(-90deg); */
+        transform: rotate(-90deg);
 
-        font-size: 300%;
+        font-size: 400%;
         left: 1%;
-        top: 1%;
+        top: 50%;
 
         color: maroon;
         text-shadow: 1.5px 1.5px silver;
@@ -22,13 +22,25 @@
 
     @media (max-width: 700px) {
         #nom-jeu {
+            font-size: 300%;
+        }
+    }
+
+    @media (max-width: 570px) {
+        #nom-jeu {
             font-size: 200%;
         }
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 475px) {
         #nom-jeu {
-            font-size: 100%;
+            font-size: 150%;
+        }
+    }
+
+    @media (max-width: 420px) {
+        #nom-jeu {
+            display: none;
         }
     }
 </style>
