@@ -1,0 +1,6 @@
+manage.py
+app
+hangman
+static
+static_production
+templates

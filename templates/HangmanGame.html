@@ -100,7 +100,11 @@
     </div>
 
 
-    <div class="div_enfant" id="boutonJouer" data="true" onclick="demarrerJeu('{{langue}}')">{% if langue == 'F' %}Jouer{% else %}Play{% endif %}</div>
+    <div class="div_enfant" id="div-boutonJouer">
+        <bouton id="boutonJouer" data="true" onclick="demarrerJeu('{{langue}}')">
+            {% if langue == 'F' %}Jouer{% else %}Play{% endif %}
+        </bouton>
+    </div>
 
     <!-- Difficulté du jeu -->
     <div class="div_enfant" id="niveauDeJeu" data="true">

@@ -134,6 +134,12 @@ body {
     }
 }
 
+#div-boutonJouer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #boutonJouer {
     background: #aaB5ff;
     background: linear-gradient(#aaB5ff, #6699ff);
@@ -146,9 +152,9 @@ body {
     /* display: table; */
     font-weight: bold;
     /* padding: 10px 20px; */
-    margin-left: 47%;
-    width: 6%;
-    min-width: 60px;
+    /* margin-left: 47%; */
+    /* width: 6%; */
+    min-width: 66px;
 }
 
 #boutonJouer[data="false"],
