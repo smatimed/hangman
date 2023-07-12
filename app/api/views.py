@@ -6,6 +6,7 @@ from .serializers import wordChosenSerializer
 
 from app.models import wordsList
 
+# import time
 
 class Word(object):
     def __init__(self, valWord, valDefinition, valHint):
@@ -19,9 +20,11 @@ def chooseWordRandomly(request, theLang, theDifficulty):
     """Choisir un mot de façon aléatoire, selon la langue et la difficulté choisies."""
     lang_words = wordsList.objects.values_list('id','word','definition','hint').filter(lang=theLang,difficulty=theDifficulty).all()
     
-    seuilMax = 10
+    seuilMax = 100
+    # seuilMax : détermine le maximum de fois après quoi la fréquence de choix du mot est remise à zéro
     listNbTimesChosen = wordsList.objects.values_list('nbTimesChosen',flat=True).filter(lang=theLang,difficulty=theDifficulty).all()
-    listPoids = [seuilMax-x for x in listNbTimesChosen]
+    # old 10/07/2023: listPoids = [seuilMax-x for x in listNbTimesChosen]
+    listPoids = [seuilMax*(seuilMax-x)-seuilMax+1 for x in listNbTimesChosen]  # permet d'avoir des poids éloignés
 
     # Faire de telle sorte que les mots choisis (aléatoirement) soient ceux qui n'ont pas été fréquemment choisis
     # old: randomRecord = lang_words[randrange(len(lang_words))]   // simple random
@@ -35,6 +38,8 @@ def chooseWordRandomly(request, theLang, theDifficulty):
     theRecordChosen.save()
 
     theWord = Word(valWord=theRecordChosen.word, valDefinition=theRecordChosen.definition, valHint=theRecordChosen.hint)
+
+    # time.sleep(10): to test a delay in server response
 
     serializer = wordChosenSerializer(theWord, many=False)
     return Response(serializer.data)

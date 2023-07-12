@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: rgba(240, 232, 174, 0.8);
+            /* #eee; */
+            margin: 0;
+        }
+
+        /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } */
+
+        /* body {
+            background: linear-gradient(to right, #917173, #2a3b36, #432c52);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } */
+
+        #loader {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* orig: #loader::before {
+            content: "";
+            background: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(8px);
+            position: absolute;
+            width: 140px;
+            height: 55px;
+            z-index: 20;
+            border-radius: 0 0 10px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.274);
+            border-top: none;
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.082);
+            animation: anim2 2s infinite;
+        } */
+        #loader::before {
+            content: "";
+            background: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(3px);
+            position: absolute;
+            width: 140px;
+            height: 15px;
+            z-index: 20;
+            border-radius: 0 0 10px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.274);
+            border-top: none;
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.082);
+            /* animation: anim2 2s infinite; */
+        }
+
+        #loader div {
+            background: rgba(164, 91, 3);
+            /* background: rgb(228, 228, 228); */
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            z-index: -1;
+            animation: anim 2s infinite linear;
+            animation-delay: calc(-0.3s * var(--i));
+            transform: translateY(-5px);
+            margin: 0.2em;
+        }
+
+        @keyframes anim {
+
+            0%,
+            100% {
+                transform: translateY(-5px);
+                /* mine: transform: translateX(12px); */
+            }
+
+            50% {
+                transform: translateY(-40px);
+                /* mine: transform: translateX(-14px); */
+                /* orig: transform: translateY(-65px); */
+            }
+        }
+
+        /* @keyframes anim2 {
+
+            0%,
+            100% {
+                transform: rotate(-10deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
+        } */
+    </style>
+</head>
+
+<body>
+    <h1>TEST</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero deserunt quos id ducimus laboriosam culpa! Neque repellat reprehenderit quo recusandae quam, vitae numquam delectus obcaecati aperiam, fugit itaque culpa accusantium.
+        Praesentium iste quae voluptas, ea, eaque impedit nam quis at recusandae, enim sequi ex beatae. Doloremque tempore est, nam et suscipit quis sint, aliquid, nostrum quisquam deserunt omnis illo cupiditate.</p>
+
+    <div id="loader">
+        <div style="--i: 1"></div>
+        <div style="--i: 2"></div>
+        <div style="--i: 3"></div>
+        <div style="--i: 4"></div>
+        <div style="--i: 5"></div>
+    </div>
+
+    <h3>SUITE</h3>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque adipisci doloremque non itaque quae quisquam eligendi facilis quaerat, temporibus blanditiis dolorem nostrum saepe numquam cumque hic minus architecto quasi autem.</p>
+
+</body>
+
+</html>

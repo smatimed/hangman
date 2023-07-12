@@ -571,3 +571,129 @@ body {
     /* display: block; */
     transform: translateY(15px);
 }
+
+
+/* * --- Loading animation (connecting to server) -BEGIN- */
+#loading[data="false"] {
+    display: none;
+}
+#loading[data="true"] {
+    display: block;
+}
+
+.letter-anim {
+    display: inline-block;
+    text-shadow: 2px 2px silver;
+
+    font-size: x-large;
+
+    animation-name: anim_letters;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    animation-delay: calc(-0.3s * var(--i));
+    -webkit-animation-name: anim_letters;
+    -webkit-animation-duration: 2.5s;
+    -webkit-animation-iteration-count: infinite;
+
+    /* animation: anim 2s infinite linear;
+    animation-delay: calc(-0.3s * var(--i));
+    transform: translateY(-5px); */
+
+}
+
+@keyframes anim_letters {
+    0% {
+        transform: translateY(0px);
+        -webkit-transform: translateY(0px);
+        color: rgb(0, 0, 0);
+        -webkit-color: rgb(0, 0, 0);
+    }
+
+    10%,
+    90% {
+        transform: translateY(-1px);
+        -webkit-transform: translateY(-1px);
+        color: rgb(100, 60, 60);
+        -webkit-color: rgb(100, 60, 60);
+    }
+
+    20%,
+    80% {
+        transform: translateY(-2px);
+        -webkit-transform: translateY(-2px);
+        color: rgb(130, 60, 60);
+        -webkit-color: rgb(130, 60, 60);
+    }
+
+    30%,
+    70% {
+        transform: translateY(-3px);
+        -webkit-transform: translateY(-3px);
+        color: rgb(160, 60, 60);
+        -webkit-color: rgb(160, 60, 60);
+    }
+
+    40%,
+    60% {
+        transform: translateY(-4px);
+        -webkit-transform: translateY(-4px);
+        color: rgb(190, 60, 60);
+        -webkit-color: rgb(190, 60, 60);
+    }
+
+    50% {
+        transform: translateY(-5px);
+        -webkit-transform: translateY(-5px);
+        color: rgb(220, 60, 60);
+        -webkit-color: rgb(220, 60, 60);
+    }
+}
+
+@-webkit-keyframes anim_letters {
+    0% {
+        transform: translateY(0px);
+        -webkit-transform: translateY(0px);
+        color: rgb(0, 0, 0);
+        -webkit-color: rgb(0, 0, 0);
+    }
+
+    10%,
+    90% {
+        transform: translateY(-1px);
+        -webkit-transform: translateY(-1px);
+        color: rgb(100, 60, 60);
+        -webkit-color: rgb(100, 60, 60);
+    }
+
+    20%,
+    80% {
+        transform: translateY(-2px);
+        -webkit-transform: translateY(-2px);
+        color: rgb(130, 60, 60);
+        -webkit-color: rgb(130, 60, 60);
+    }
+
+    30%,
+    70% {
+        transform: translateY(-3px);
+        -webkit-transform: translateY(-3px);
+        color: rgb(160, 60, 60);
+        -webkit-color: rgb(160, 60, 60);
+    }
+
+    40%,
+    60% {
+        transform: translateY(-4px);
+        -webkit-transform: translateY(-4px);
+        color: rgb(190, 60, 60);
+        -webkit-color: rgb(190, 60, 60);
+    }
+
+    50% {
+        transform: translateY(-5px);
+        -webkit-transform: translateY(-5px);
+        color: rgb(220, 60, 60);
+        -webkit-color: rgb(220, 60, 60);
+    }
+}
+/* * --- Loading animation (connecting to server) -END- */

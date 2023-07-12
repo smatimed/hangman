@@ -78,6 +78,21 @@
             <button id="boutonAide" data="false" onclick="afficherAide()">{% if langue == 'F' %}Aide{% else %}Help{% endif %} ?</button>
             <button id="boutonEnlever5Lettres" data="false" onclick="enlever5Lettres()">{% if langue == 'F' %}Enlever 5 lettres{% else %}Remove 5 lettres{% endif %} ?</button>
         </p>
+
+        <!-- Loading animation (connecting to server) -->
+        <div id="loading" data="false">
+            <!-- class="d-block d-sm-inline-block" -->
+            <span class="fw-bold letter-anim" style="--i: 1">L</span>
+            <span class="fw-bold letter-anim" style="--i: 2">o</span>
+            <span class="fw-bold letter-anim" style="--i: 3">a</span>
+            <span class="fw-bold letter-anim" style="--i: 4">d</span>
+            <span class="fw-bold letter-anim" style="--i: 5">i</span>
+            <span class="fw-bold letter-anim" style="--i: 6">n</span>
+            <span class="fw-bold letter-anim" style="--i: 7">g</span>
+            <span class="fw-bold letter-anim" style="--i: 8">.</span>
+            <span class="fw-bold letter-anim" style="--i: 9">.</span>
+            <span class="fw-bold letter-anim" style="--i: 10">.</span>
+        </div>
     </div>
 
     <!-- *clavier* -->

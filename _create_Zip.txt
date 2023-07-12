@@ -1,0 +1,7 @@
+manage.py
+db.sqlite3
+app
+hangman
+static
+static_production
+templates

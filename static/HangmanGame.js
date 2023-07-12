@@ -4,6 +4,8 @@ var leMot = ["word", "hint"];
 var motRestant = [];
 var niveauJeu, laLangue, opJeu_indication, opJeu_Aide, opJeu_Enlever5Lettres;
 var jouerSon = true;
+// * idea 10/07/2023 with cookies: var histWordsHangman = lireHistWordsHangman();
+var histWordsHangman = lireHistWordsHangman(), todayHistWordsHangman;
 
 const audioLettreFausse = document.getElementById('lettre_fausse');
 const audioLettreJuste = document.getElementById('lettre_juste');
@@ -12,7 +14,207 @@ const audioJeuSucces = document.getElementById('jeu_succes');
 const audioNotification = document.getElementById('notification');
 
 
-function demanderUnMot(laLangue, laDifficulte) {
+function lireHistWordsHangman() {
+    let histhangman = localStorage.getItem('histhangman');
+    // format: ;<mot>:<date-choisi>;<mot>:<date-choisi>;...    où date-choisi a le format: aaaa-mm-jj
+    // Le dernier mot ne contient pas de ';'
+    
+    let now = new Date();
+    let aujourdhui = new Date(Date.parse( now.toISOString().slice(0,10) ));   // au format aaaa-mm-jj (sans l'heure)
+    
+    let new_histhangman = '';
+    todayHistWordsHangman = '';   // Les mots joués aujourd'hui
+
+    if (histhangman != null) {
+        histhangman = decodeURIComponent(histhangman);
+        listeMots =  histhangman.split(';');
+        // Filtrer les mots qui ont expiré (plus d'1 mois)
+        for (let i = 1; i < listeMots.length; i++) {   // i commence à 1 au lieu de 0 pour sauter le 1er élément vide à cause du 1er ';'
+            const element = listeMots[i];
+            unMot = element.split(':')[0];
+            uneDateChoisi = new Date(Date.parse( element.split(':')[1] ));
+
+            let dateExpiration = new Date(uneDateChoisi);
+            dateExpiration = new Date(dateExpiration.setMonth(dateExpiration.getMonth()+1));   // Date d'expiration = 1 mois
+
+            // console.log('unMot=',unMot,' , uneDateChoisi=',uneDateChoisi);
+            if (dateExpiration.valueOf() > aujourdhui.valueOf()) {
+                // Le mois n'a pas encore expiré
+
+                // if (new_histhangman != ';') {
+                //     // Le dernier mot ne contient pas de ';'
+                //     new_histhangman += ';';
+                // };
+
+                // On commence par ';' pour que tous les mots soient encadrés entre ';' et ':' , comme ça quand on chercher si un mot existe on ne risque pas de tomber sur une partie d'un mot (exemple: LOGIQUE est une partie de BIOLOGIQUE)
+                new_histhangman = new_histhangman + ';' + element; // Le dernier mot ne contient pas de ';'
+                // console.log('*** non expire');
+            };
+
+            // Liste des mots joués aujourd'hui
+            if (uneDateChoisi.valueOf() == aujourdhui.valueOf()) {
+                todayHistWordsHangman += ';' + unMot + ':';   // ';' et ':' pour garder le même principe de recherche déjà évoqué
+            };
+        }
+    } else {new_histhangman = ';';};
+    // console.log('lireHistWordsHangman()=',new_histhangman);
+    // console.log('todayHistWordsHangman=',todayHistWordsHangman);
+    return new_histhangman;
+};
+
+
+function ajouterMot_a_HistWordsHangman(leMot_a_ajouter) {
+    var now = new Date();   // Date où le mot a été joué
+    // old: now.setMonth (now.getMonth() + 1 );   // Date d'expiration = 1 mois
+    // pour reconstituer la date: new Date(Date.parse(<valeur-date_aaaa-mm-jj>))
+
+    if (histWordsHangman != ';') {
+        // Le dernier mot ne contient pas de ';'
+        histWordsHangman += ';';
+    };
+    histWordsHangman += leMot_a_ajouter +':'+ now.toISOString().slice(0,10);   // aaaa-mm-jj
+    localStorage.setItem('histhangman', encodeURIComponent(histWordsHangman));
+    // console.log('localStorage.getItem("histhangman")=',localStorage.getItem('histhangman'));
+};
+
+// * idea 10/07/2023 with cookies
+// function lireHistWordsHangman() {
+//     // Lire les mots déjà choisis par l'utilisateur courant
+//     allCookies = document.cookie.split(';')
+//     for (let i = 0; i < allCookies.length; i++) {
+//         nomCookie = allCookies[i].split('=')[0];
+//         valCookie = allCookies[i].split('=')[1];
+//         if (nomCookie == 'histhangman') {
+//             console.log('lireHistWordsHangman()=',valCookie);
+//             // Lire la date d'expiration
+//             let d_expires;
+//             if (i+1 < allCookies.length) {
+//                 nomCookie = allCookies[i+1].split('=')[0];
+//                 valCookie = allCookies[i+1].split('=')[1];
+//                 if (nomCookie.trim() == 'expires') {
+//                     d_expires = new Date(Date.parse(decodeURIComponent(valCookie)));
+//                 } else {
+//                     d_expires = new Date();
+//                     d_expires = setMonth( now.getMonth() - 1 );
+//                 }
+//             } else {
+//                     d_expires = new Date();
+//                     d_expires = setMonth( now.getMonth() - 1 );
+//                 };
+//             // Voir si la cookie 'histhangman' a expiré (dans ce cas, on retourne '') ou non
+//             if (d_expires < Date()) {return ''}
+//             else {
+//                 console.log('return=',decodeURIComponent(valCookie));
+//                 return decodeURIComponent(valCookie)
+//             };
+//         }
+//     };
+//     return '';
+// };
+
+// * idea 10/07/2023 with cookies
+// function ajouterMot_a_HistWordsHangman(leMot) {
+//     console.log('Avant ajout mot-1:',histWordsHangman);
+//     console.log('Avant ajout mot-2:',document.cookie);
+
+//     if (histWordsHangman == '') {
+//         // Cookie vide ou a expiré
+//         var now = new Date();
+//         now.setMonth( now.getMonth() + 1 );  // Date d'expiration = 1 mois
+//         document.cookie = "histhangman=" + encodeURIComponent(histWordsHangman)+";";
+//         document.cookie = "expires=" + encodeURIComponent(now.toDateString()) + ";"        
+//     }
+//     // Ajouter le mot courant
+//     histWordsHangman = histWordsHangman + leMot + ";";
+//     document.cookie = "histhangman=" + encodeURIComponent(histWordsHangman);
+//     console.log('Apres ajout mot-3:',document.cookie);
+// };
+
+
+// * non utilisée, mais la simplicité est interessante
+// function demanderUnMot(laLangue, laDifficulte) {
+//     // We use here FETCH and REST-API SYNCHRONOUSLY
+
+//     let url = window.location.origin + '/api/word/' + laLangue + '/' + laDifficulte;
+//     // window.location.origin   =>   'http://127.0.0.1:8000'
+//     // window.location.host   =>   '127.0.0.1:8000'
+//     // window.location.pathname   =>   '/api/word/F/N'
+
+//     const avoirUnMot = async () => {
+//         const response = await fetch(url);
+//         const json = await response.json();
+//         console.log('definition=',json['definition']);
+//         console.log('word=',json['word']);
+//         console.log('hint=',json['hint']);
+//         return json;
+//     };
+
+// };
+
+
+function jouerAvecCeMot (motAJouer) {
+    document.getElementById("loading").setAttribute("data","false");
+    document.getElementById("definition").innerHTML = motAJouer['definition'];
+    leMot[0] = motAJouer['word'];
+    leMot[1] = motAJouer['hint'];
+    ajouterMot_a_HistWordsHangman(leMot[0]);
+    creerEspaceMot();
+};
+
+async function demanderUnMot(laLangue, laDifficulte, nbTiragesExistantDans_TodayHist, nbTiragesExistantDans_AllHist) {
+    // We use here FETCH and REST-API SYNCHRONOUSLY
+
+    let url = window.location.origin + '/api/word/' + laLangue + '/' + laDifficulte;
+    // window.location.origin   =>   'http://127.0.0.1:8000'
+    // window.location.host   =>   '127.0.0.1:8000'
+    // window.location.pathname   =>   '/api/word/F/N'
+    
+    await fetch(url)
+        .then(resp => resp.json())
+        .then(function (data) {
+            // console.log('def=', data['definition']);
+            console.log('mot ',nbTiragesExistantDans_TodayHist,nbTiragesExistantDans_AllHist,' = ', data["word"]);
+            // console.log('hint=', data['hint']);
+
+            if (todayHistWordsHangman.indexOf(';'+data['word']+':') != -1) {   // mot déjà joué aujourd'hui
+                if (nbTiragesExistantDans_TodayHist < 100) {   // On fait 100 essais au max pour cette liste
+                    console.log('Existe dans TodayHist');
+                    demanderUnMot(laLangue, laDifficulte, ++nbTiragesExistantDans_TodayHist, nbTiragesExistantDans_AllHist)
+                } else {
+                    console.log("echec apres 100 essais dans TodayHist");
+                    jouerAvecCeMot(data);
+                };
+            } else {
+                if (histWordsHangman.indexOf(';'+data['word']+':') != -1) {   // mot déjà joué (dans le passé)
+                    if (nbTiragesExistantDans_AllHist < 10) {   // On fait 10 essais au max
+                        console.log('Existe dans AllHist');
+                        demanderUnMot(laLangue, laDifficulte, nbTiragesExistantDans_TodayHist, ++nbTiragesExistantDans_AllHist)
+                    } else {
+                        console.log("echec apres 10 essais dans AllHist");
+                        jouerAvecCeMot(data);
+                    };
+                } else {
+                    // console.log("success");
+                    jouerAvecCeMot(data);
+                };
+            };
+        })
+        .catch(erreur => {
+            console.log('error=',erreur);
+            document.getElementById("loading").setAttribute("data","false");
+            if (laLangue == 'F') {
+                document.getElementById("definition").innerHTML = '*** Problème avec le serveur ***';
+            } else {
+                document.getElementById("definition").innerHTML = '*** Problem with the server ***';
+            };
+            leMot[0] = 'X';
+            leMot[1] = 'X';
+            document.getElementById("clavier").setAttribute("data", "false");
+        });
+};
+
+
+function OLD_demanderUnMot(laLangue, laDifficulte) {
     // We use here FETCH and REST-API
 
     let url = window.location.origin + '/api/word/' + laLangue + '/' + laDifficulte;
@@ -30,7 +232,11 @@ function demanderUnMot(laLangue, laDifficulte) {
             leMot[0] = data['word'];
             leMot[1] = data['hint'];
             // console.log('word:', leMot[0]);
+            // idea 10/07/2023 with cookies: ajouterMot_a_HistWordsHangman(leMot[0]);
+
+            ajouterMot_a_HistWordsHangman(leMot[0]);
             creerEspaceMot();
+            // return true;
         })
         .catch(erreur => {
             if (laLangue == 'F') {
@@ -40,7 +246,9 @@ function demanderUnMot(laLangue, laDifficulte) {
             }
             leMot[0] = 'X';
             leMot[1] = 'X';
-        })
+            document.getElementById("clavier").setAttribute("data", "false");
+            // return false;
+        });
 };
 
 
@@ -358,7 +566,7 @@ function initJeu() {
 
     document.getElementsByTagName("body")[0].style.backgroundColor = "rgba(240, 232, 174, 0.8)";
 
-    creerClavier();
+    // old: creerClavier();
 
     // console.log('langue (initJeu)',laLangue);
 
@@ -402,7 +610,11 @@ function initJeu() {
     document.getElementById("pendu2").style.top = 0;
     document.getElementById("img-pendu2").setAttribute("data","false");
 
-    demanderUnMot(laLangue, niveauJeu);    // theLang, theDifficulty
+    // --- Demander un mot
+    document.getElementById("loading").setAttribute("data","true");
+    demanderUnMot(laLangue, niveauJeu, 0, 0);    // laLangue, laDifficulte, nbTiragesExistantDans_TodayHist, nbTiragesExistantDans_AllHist
+
+    creerClavier();
 };
 
 function demarrerJeu(LangueDuJeu) {

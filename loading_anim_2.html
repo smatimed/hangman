@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: rgba(240, 232, 174, 0.8);
+            /* #eee; */
+            margin: 0;
+        }
+
+        /* Animation of 'Mohamed SMATI'  */
+        .letter-anim {
+            display: inline-block;
+            text-shadow: 2px 2px silver;
+
+            animation-name: anim_letters;
+            animation-duration: 2.5s;
+            animation-iteration-count: infinite;
+            animation-delay: calc(-0.3s * var(--i));
+            -webkit-animation-name: anim_letters;
+            -webkit-animation-duration: 2.5s;
+            -webkit-animation-iteration-count: infinite;
+
+            /* animation: anim 2s infinite linear;
+            animation-delay: calc(-0.3s * var(--i));
+            transform: translateY(-5px); */
+
+        }
+
+        /* #l1 {
+            animation-delay: 0s;
+            -webkit-animation-delay: 0s;
+        }
+
+        #l2 {
+            animation-delay: 0.25s;
+            -webkit-animation-delay: 0.25s;
+        }
+
+        #l3 {
+            animation-delay: 0.5s;
+            -webkit-animation-delay: 0.5s;
+        }
+
+        #l4 {
+            animation-delay: 0.75s;
+            -webkit-animation-delay: 0.75s;
+        }
+
+        #l5 {
+            animation-delay: 1s;
+            -webkit-animation-delay: 1s;
+        }
+
+        #l6 {
+            animation-delay: 1.25s;
+            -webkit-animation-delay: 1.25s;
+        }
+
+        #l7 {
+            animation-delay: 1.5s;
+            -webkit-animation-delay: 1.5s;
+        }
+
+        #l8 {
+            animation-delay: 1.25s;
+            -webkit-animation-delay: 1.25s;
+        }
+
+        #l9 {
+            animation-delay: 1.5s;
+            -webkit-animation-delay: 1.5s;
+        }
+
+        #l10 {
+            animation-delay: 1.75s;
+            -webkit-animation-delay: 1.75s;
+        }
+
+        #l11 {
+            animation-delay: 2s;
+            -webkit-animation-delay: 2s;
+        }
+
+        #l12 {
+            animation-delay: 2.25s;
+            -webkit-animation-delay: 2.25s;
+        }
+
+        #l13 {
+            animation-delay: 2.5s;
+            -webkit-animation-delay: 2.5s;
+        } */
+
+        @keyframes anim_letters {
+            0% {
+                transform: translateY(0px);
+                -webkit-transform: translateY(0px);
+                color: rgb(0, 0, 0);
+                -webkit-color: rgb(0, 0, 0);
+            }
+
+            10%,
+            90% {
+                transform: translateY(-1px);
+                -webkit-transform: translateY(-1px);
+                color: rgb(100, 60, 60);
+                -webkit-color: rgb(100, 60, 60);
+            }
+
+            20%,
+            80% {
+                transform: translateY(-2px);
+                -webkit-transform: translateY(-2px);
+                color: rgb(130, 60, 60);
+                -webkit-color: rgb(130, 60, 60);
+            }
+
+            30%,
+            70% {
+                transform: translateY(-3px);
+                -webkit-transform: translateY(-3px);
+                color: rgb(160, 60, 60);
+                -webkit-color: rgb(160, 60, 60);
+            }
+
+            40%,
+            60% {
+                transform: translateY(-4px);
+                -webkit-transform: translateY(-4px);
+                color: rgb(190, 60, 60);
+                -webkit-color: rgb(190, 60, 60);
+            }
+
+            50% {
+                transform: translateY(-5px);
+                -webkit-transform: translateY(-5px);
+                color: rgb(220, 60, 60);
+                -webkit-color: rgb(220, 60, 60);
+            }
+        }
+
+        @-webkit-keyframes anim_letters {
+            0% {
+                transform: translateY(0px);
+                -webkit-transform: translateY(0px);
+                color: rgb(0, 0, 0);
+                -webkit-color: rgb(0, 0, 0);
+            }
+
+            10%,
+            90% {
+                transform: translateY(-1px);
+                -webkit-transform: translateY(-1px);
+                color: rgb(100, 60, 60);
+                -webkit-color: rgb(100, 60, 60);
+            }
+
+            20%,
+            80% {
+                transform: translateY(-2px);
+                -webkit-transform: translateY(-2px);
+                color: rgb(130, 60, 60);
+                -webkit-color: rgb(130, 60, 60);
+            }
+
+            30%,
+            70% {
+                transform: translateY(-3px);
+                -webkit-transform: translateY(-3px);
+                color: rgb(160, 60, 60);
+                -webkit-color: rgb(160, 60, 60);
+            }
+
+            40%,
+            60% {
+                transform: translateY(-4px);
+                -webkit-transform: translateY(-4px);
+                color: rgb(190, 60, 60);
+                -webkit-color: rgb(190, 60, 60);
+            }
+
+            50% {
+                transform: translateY(-5px);
+                -webkit-transform: translateY(-5px);
+                color: rgb(220, 60, 60);
+                -webkit-color: rgb(220, 60, 60);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>TEST</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero deserunt quos id ducimus laboriosam culpa! Neque repellat reprehenderit quo recusandae quam, vitae numquam delectus obcaecati aperiam, fugit itaque culpa accusantium.
+        Praesentium iste quae voluptas, ea, eaque impedit nam quis at recusandae, enim sequi ex beatae. Doloremque tempore est, nam et suscipit quis sint, aliquid, nostrum quisquam deserunt omnis illo cupiditate.</p>
+
+    <!-- <div id="loader">
+        <div style="--i: 1">L</div>
+        <div style="--i: 2">O</div>
+        <div style="--i: 3">A</div>
+        <div style="--i: 4">D</div>
+        <div style="--i: 5">I</div>
+        <div style="--i: 6">N</div>
+        <div style="--i: 7">G</div>
+    </div> -->
+
+    <div class="d-block d-sm-inline-block">
+        <span class="display-4 fw-bold letter-anim" id="l1" style="--i: 1">L</span>
+        <span class="display-4 fw-bold letter-anim" id="l2" style="--i: 2">o</span>
+        <span class="display-4 fw-bold letter-anim" id="l3" style="--i: 3">a</span>
+        <span class="display-4 fw-bold letter-anim" id="l4" style="--i: 4">d</span>
+        <span class="display-4 fw-bold letter-anim" id="l5" style="--i: 5">i</span>
+        <span class="display-4 fw-bold letter-anim" id="l6" style="--i: 6">n</span>
+        <span class="display-4 fw-bold letter-anim" id="l7" style="--i: 7">g</span>
+        <span class="display-4 fw-bold letter-anim" id="l7" style="--i: 8">.</span>
+        <span class="display-4 fw-bold letter-anim" id="l7" style="--i: 9">.</span>
+        <span class="display-4 fw-bold letter-anim" id="l7" style="--i: 10">.</span>
+        <!-- <span class="display-4 fw-bold letter-anim" id="l8">&nbsp;</span> -->
+    </div>
+
+
+    <h3>SUITE</h3>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque adipisci doloremque non itaque quae quisquam eligendi facilis quaerat, temporibus blanditiis dolorem nostrum saepe numquam cumque hic minus architecto quasi autem.</p>
+
+</body>
+
+</html>
