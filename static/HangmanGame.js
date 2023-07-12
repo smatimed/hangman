@@ -5,7 +5,11 @@ var motRestant = [];
 var niveauJeu, laLangue, opJeu_indication, opJeu_Aide, opJeu_Enlever5Lettres;
 var jouerSon = true;
 // * idea 10/07/2023 with cookies: var histWordsHangman = lireHistWordsHangman();
-var histWordsHangman = lireHistWordsHangman(), todayHistWordsHangman;
+var histWordsHangman, todayHistWordsHangman;
+
+const p_MaxLengthOf_todayHistWordsHangman_ToSend = 300;
+const p_MaxNbTimesChecking_NbTiragesExistantDans_TodayHist = 100;
+const p_MaxNbTimesChecking_NbTiragesExistantDans_AllHist = 10;
 
 const audioLettreFausse = document.getElementById('lettre_fausse');
 const audioLettreJuste = document.getElementById('lettre_juste');
@@ -15,7 +19,8 @@ const audioNotification = document.getElementById('notification');
 
 
 function lireHistWordsHangman() {
-    let histhangman = localStorage.getItem('histhangman');
+    // console.log('laLangue=',laLangue,' niveauJeu=',niveauJeu);
+    let histhangman = localStorage.getItem('histhangman_'+laLangue+'_'+niveauJeu);   // Une liste par langue et par niveau
     // format: ;<mot>:<date-choisi>;<mot>:<date-choisi>;...    où date-choisi a le format: aaaa-mm-jj
     // Le dernier mot ne contient pas de ';'
     
@@ -23,7 +28,7 @@ function lireHistWordsHangman() {
     let aujourdhui = new Date(Date.parse( now.toISOString().slice(0,10) ));   // au format aaaa-mm-jj (sans l'heure)
     
     let new_histhangman = '';
-    todayHistWordsHangman = '';   // Les mots joués aujourd'hui
+    todayHistWordsHangman = ',';   // Les mots joués aujourd'hui, format: *mot*mot*...*mot*
 
     if (histhangman != null) {
         histhangman = decodeURIComponent(histhangman);
@@ -53,7 +58,8 @@ function lireHistWordsHangman() {
 
             // Liste des mots joués aujourd'hui
             if (uneDateChoisi.valueOf() == aujourdhui.valueOf()) {
-                todayHistWordsHangman += ';' + unMot + ':';   // ';' et ':' pour garder le même principe de recherche déjà évoqué
+                todayHistWordsHangman += unMot + ',';
+                // old: todayHistWordsHangman += ';' + unMot + ':';   // ';' et ':' pour garder le même principe de recherche déjà évoqué
             };
         }
     } else {new_histhangman = ';';};
@@ -73,8 +79,9 @@ function ajouterMot_a_HistWordsHangman(leMot_a_ajouter) {
         histWordsHangman += ';';
     };
     histWordsHangman += leMot_a_ajouter +':'+ now.toISOString().slice(0,10);   // aaaa-mm-jj
-    localStorage.setItem('histhangman', encodeURIComponent(histWordsHangman));
-    // console.log('localStorage.getItem("histhangman")=',localStorage.getItem('histhangman'));
+    localStorage.setItem('histhangman_'+laLangue+'_'+niveauJeu, encodeURIComponent(histWordsHangman));
+    todayHistWordsHangman += leMot_a_ajouter + ',';
+    // console.log("localStorage.getItem('histhangman_"+laLangue+"_"+niveauJeu+"')=",localStorage.getItem('histhangman_'+laLangue+'_'+niveauJeu));
 };
 
 // * idea 10/07/2023 with cookies
@@ -164,33 +171,46 @@ function jouerAvecCeMot (motAJouer) {
 async function demanderUnMot(laLangue, laDifficulte, nbTiragesExistantDans_TodayHist, nbTiragesExistantDans_AllHist) {
     // We use here FETCH and REST-API SYNCHRONOUSLY
 
-    let url = window.location.origin + '/api/word/' + laLangue + '/' + laDifficulte;
+    let url = window.location.origin + '/api/word/' + laLangue + '/' + laDifficulte + '/' + todayHistWordsHangman.slice(0,p_MaxLengthOf_todayHistWordsHangman_ToSend);
     // window.location.origin   =>   'http://127.0.0.1:8000'
     // window.location.host   =>   '127.0.0.1:8000'
     // window.location.pathname   =>   '/api/word/F/N'
+
+    // console.log('url=',url);
     
     await fetch(url)
         .then(resp => resp.json())
         .then(function (data) {
             // console.log('def=', data['definition']);
-            console.log('mot ',nbTiragesExistantDans_TodayHist,nbTiragesExistantDans_AllHist,' = ', data["word"]);
+            // console.log('mot ',nbTiragesExistantDans_TodayHist,nbTiragesExistantDans_AllHist,' = ', data["word"]);
             // console.log('hint=', data['hint']);
 
-            if (todayHistWordsHangman.indexOf(';'+data['word']+':') != -1) {   // mot déjà joué aujourd'hui
-                if (nbTiragesExistantDans_TodayHist < 100) {   // On fait 100 essais au max pour cette liste
-                    console.log('Existe dans TodayHist');
+            // old: if (todayHistWordsHangman.indexOf(';'+data['word']+':') != -1) {   // mot déjà joué aujourd'hui
+            if (todayHistWordsHangman.indexOf(','+data['word']+',') != -1) {   // mot déjà joué aujourd'hui
+                if (nbTiragesExistantDans_TodayHist < p_MaxNbTimesChecking_NbTiragesExistantDans_TodayHist) {
+
+                    // --- On teste si le mot choisi existe dans la liste des mots joués aujourd'hui; on fait 100 essais au max pour cette liste. Chaque fois qu'il existe (avant les 100 fois), on redemande un autre mot.
+                    // --- Sachant qu'une partie (max 300 car., pour ne pas alourdir l'envoi) de la liste des mots joués aujourd'hui est envoyée au serveur pour qu'il évite de choisir un mot parmis eux.
+                    // --- Il y a donc double tests, au niveau serveur et au niveau client.
+
+                    // console.log('Existe dans TodayHist');
                     demanderUnMot(laLangue, laDifficulte, ++nbTiragesExistantDans_TodayHist, nbTiragesExistantDans_AllHist)
                 } else {
-                    console.log("echec apres 100 essais dans TodayHist");
+                    // --- Après le max de fois (100), on accèpte le mot choisi.
+                    // console.log("echec apres 100 essais dans TodayHist");
                     jouerAvecCeMot(data);
                 };
             } else {
                 if (histWordsHangman.indexOf(';'+data['word']+':') != -1) {   // mot déjà joué (dans le passé)
-                    if (nbTiragesExistantDans_AllHist < 10) {   // On fait 10 essais au max
-                        console.log('Existe dans AllHist');
+                    if (nbTiragesExistantDans_AllHist < p_MaxNbTimesChecking_NbTiragesExistantDans_AllHist) {
+
+                        // --- On teste si le mot choisi existe dans la liste des mots joués (quelque soit le temps qui n'a pas expiré -1 mois-); on fait 10 essais au max pour cette liste. Chaque fois qu'il existe (avant les 10 fois), on redemande un autre mot.                        
+
+                        // console.log('Existe dans AllHist');
                         demanderUnMot(laLangue, laDifficulte, nbTiragesExistantDans_TodayHist, ++nbTiragesExistantDans_AllHist)
                     } else {
-                        console.log("echec apres 10 essais dans AllHist");
+                        // --- Après le max de fois (100), on accèpte le mot choisi.
+                        // console.log("echec apres 10 essais dans AllHist");
                         jouerAvecCeMot(data);
                     };
                 } else {
@@ -609,6 +629,8 @@ function initJeu() {
     document.getElementById("pendu2").setAttribute("data","false");
     document.getElementById("pendu2").style.top = 0;
     document.getElementById("img-pendu2").setAttribute("data","false");
+
+    histWordsHangman = lireHistWordsHangman()
 
     // --- Demander un mot
     document.getElementById("loading").setAttribute("data","true");
