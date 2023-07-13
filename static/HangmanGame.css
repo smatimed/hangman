@@ -154,7 +154,8 @@ body {
     /* padding: 10px 20px; */
     /* margin-left: 47%; */
     /* width: 6%; */
-    min-width: 66px;
+    /* min-width: 66px; */
+    width: 66px;
 }
 
 #boutonJouer[data="false"],
