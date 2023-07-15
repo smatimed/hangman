@@ -38,7 +38,9 @@
         </div>
         <div class="col">
             <input type="text" name="definition" id="definition" placeholder="Definition"
-                   class="form-control" maxlength="50" value="{{ request.form['definition'] or word['definition'] }}">
+                   class="form-control" maxlength="50"
+                   value="{{ request.form['definition'] or word['definition'] }}"
+                   onchange="premiereLettreMajuscule(this)">
         </div>
     </div>
 
@@ -48,13 +50,16 @@
         </div>
         <div class="col">
             <input name="hint" id="hint" placeholder="Hint"
-                   class="form-control" maxlength="50" value="{{ request.form['hint'] or word['hint'] }}">
+                   class="form-control" maxlength="50"
+                   value="{{ request.form['hint'] or word['hint'] }}"
+                   onchange="premiereLettreMajuscule(this)">
         </div>
     </div>
 
     <div class="pt-2">
         <label class="pe-2" for="difficulty" accesskey="f">Di<u>f</u>ficulty:</label>
-        <select name="difficulty" id="difficulty" class="form-control my-form-control-10">
+        <select name="difficulty" id="difficulty" class="form-control my-form-control-10"
+                onblur="colorDifficulty()" onchange="colorDifficulty()">
             <option value="E"
                     {% if request.form['difficulty']=='E' or word['difficulty']=='E' %}
                     selected
@@ -69,6 +74,7 @@
                     {% endif %}>Hard</option>
 
         </select>
+        <div id="difficulty-color" style="display: inline-block; margin-left: 15px; width: 30px; height: 30px; border-radius: 50%; border: 1px solid black; background-color: green;"></div>
     </div>
 
     <div class="pt-2">
@@ -80,5 +86,7 @@
         <button type="submit" class="btn btn-primary" accesskey="s"><u>S</u>ubmit</button>
     </div>
 </form>
+
+<script src="{{ url_for('static', filename= 'scripts.js') }}"></script>
 
 {% endblock %}
