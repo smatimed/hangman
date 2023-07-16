@@ -738,7 +738,8 @@ body[data="echec"] {
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
-    background: linear-gradient(to right, #226eba94, #3992ea80, #226eba94);
+    /* background: linear-gradient(to right, #226eba94, #3992ea80, #226eba94); */
+    background: linear-gradient(to right, #8dbceaee, #9bc2e9ee, #8dbceaee);
     box-shadow: 5px 5px 10px lightgray, -5px -5px 10px lightgray, 5px -5px 10px lightgray, -5px 5px 10px lightgray;
 }
 
@@ -763,3 +764,43 @@ body[data="echec"] {
     /* padding: 10px; */
 }
 /* * ref-externes (FIN) */
+
+
+/* #game-objective {
+    color: maroon;
+    text-shadow: 1.5px 1.5px silver;
+    font-size: larger;
+} */
+
+#game-objective {
+    position: fixed;
+    color: maroon;
+    text-shadow: 1.5px 1.5px silver;
+    font-size: x-large;
+    width: 25%;
+    right: 5%;
+    top: 30%;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #b7a93f7b;
+    /* background: linear-gradient(to right, #226eba94, #3992ea80, #226eba94); */
+    /* #f0e8aecc, #b7a93faa */
+    box-shadow: 5px 5px 10px #f0e8aecc, -5px -5px 10px #f0e8aecc, 5px -5px 10px #f0e8aecc, -5px 5px 10px #f0e8aecc;
+}
+
+#pb-https {
+    color: red;
+    /* text-shadow: 1.5px 1.5px silver; */
+    background: #ffffff;
+    font-size: large;
+    border-radius: 5px;
+}
+
+#pb-https[data="false"] {
+    display: none;
+}
+
+#pb-https[data="true"] {
+    display: block;
+}
