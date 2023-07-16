@@ -1,2 +1,5 @@
 - time
 - records
+
+
+- vérifier statcounter et le problème de cross-origin

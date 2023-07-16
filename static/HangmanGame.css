@@ -1,8 +1,21 @@
 body {
     font-family: 'Times New Roman', Times, serif;
-    background-color: rgba(240, 232, 174, 0.8);
+    /* background-color: rgba(240, 232, 174, 0.8); */
     /* #eee; */
     margin: 0;
+}
+
+body[data="normal"] {
+    /* background-color: #f0e8aecc; rgba(240, 232, 174, 0.8); */
+    background: linear-gradient(to right, #b7a93faa, #f0e8aecc, #b7a93faa);
+}
+body[data="succes"] {
+    /* background-color: #53ea5380; rgba(83, 234, 83, 0.5); */
+    background: linear-gradient(to right, #0f930f8c, #1ce11c8e, #0f930f8c);
+}
+body[data="echec"] {
+    /* background-color: #ea393980; rgba(234, 57, 57, 0.5); */
+    background: linear-gradient(to right, #a30d0daa, #ea393980, #a30d0daa);
 }
 
 .container {
@@ -203,16 +216,21 @@ body {
 
 #resultat {
     margin-top: 1rem;
+    border-radius: 5px;
 }
 
 #resultat[data="false"] {
-    background: rgba(234, 57, 57, 0.5);
+    /* background: rgba(234, 57, 57, 0.5); */
+    background: #ea393980;
     display: block;
+    box-shadow: 5px 5px 10px #ea393980, -5px -5px 10px #ea393980, 5px -5px 10px #ea393980, -5px 5px 10px #ea393980;
 }
 
 #resultat[data="true"] {
-    background: rgba(83, 234, 83, 0.5);
+    /* background: rgba(83, 234, 83, 0.5); */
+    background: #53ea5380;
     display: block;
+    box-shadow: 5px 5px 10px #53ea5380, -5px -5px 10px #53ea5380, 5px -5px 10px #53ea5380, -5px 5px 10px #53ea5380;
 }
 
 #resultat[data=""] {
@@ -709,3 +727,63 @@ body {
     }
 }
 /* * --- Loading animation (connecting to server) -END- */
+
+
+/* * ref-externes (DEBUT) */
+#div-ref-externes {
+    position: fixed;
+    width: 25%;
+    right: 5%;
+    top: 20%;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #226eba94, #3992ea80, #226eba94);
+    box-shadow: 5px 5px 10px lightgray, -5px -5px 10px lightgray, 5px -5px 10px lightgray, -5px 5px 10px lightgray;
+}
+
+#div-ref-externes[data="false"] {
+    display: none;
+}
+#div-ref-externes[data="true"] {
+    display: block;
+}
+
+.img-ref-externes {
+    min-width: 20px;
+    max-width: 30px;
+    width: 30%;
+}
+
+#a-wikipedia, #a-google {
+    text-decoration: none;
+    display: block;
+    color: black;
+    /* margin: 10px; */
+    /* padding: 10px; */
+}
+/* * ref-externes (FIN) */
+
+
+#game-objective {
+    color: maroon;
+    text-shadow: 1.5px 1.5px silver;
+    font-size: larger;
+}
+/* ! pb avec navigateur (à cause de stacounter)
+ #game-objective {
+    position: fixed;
+    color: maroon;
+    text-shadow: 1.5px 1.5px silver;
+    font-size: x-large;
+    width: 25%;
+    right: 5%;
+    top: 30%;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #b7a93f7b;
+    /* background: linear-gradient(to right, #226eba94, #3992ea80, #226eba94); */
+    /* #f0e8aecc, #b7a93faa */
+    box-shadow: 5px 5px 10px #f0e8aecc, -5px -5px 10px #f0e8aecc, 5px -5px 10px #f0e8aecc, -5px 5px 10px #f0e8aecc;
+} */

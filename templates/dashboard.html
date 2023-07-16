@@ -24,11 +24,23 @@
         #nom-jeu {
             font-size: 300%;
         }
+
+        #game-objective {
+            font-size: large;
+            /* pb avec navigateur (à cause de statcounter) */
+            /* width: 20%; */
+        }
     }
 
     @media (max-width: 570px) {
         #nom-jeu {
             font-size: 200%;
+        }
+
+        #game-objective {
+            font-size: medium;
+            /* pb avec navigateur (à cause de statcounter) */
+            /* width: 15%; */
         }
     }
 
@@ -36,10 +48,22 @@
         #nom-jeu {
             font-size: 150%;
         }
+
+        #game-objective {
+            font-size: small;
+            /* pb avec navigateur (à cause de statcounter) */
+            /* width: 14%; */
+        }
     }
 
     @media (max-width: 420px) {
         #nom-jeu {
+            display: none;
+        }
+    }
+
+    @media (max-width: 380px) {
+        #game-objective {
             display: none;
         }
     }
@@ -67,7 +91,7 @@
 {% endblock head %}
 
 <!-- { % block bodyclass % } style="text-align: center;" { % endblock bodyclass % } -->
-{% block bodyclass %} class="text-center"{% endblock bodyclass %}
+{% block bodyclass %} class="text-center" data="normal" {% endblock bodyclass %}
 
 {% block content %}
 
@@ -127,6 +151,10 @@
         </div>
     </div>
 
+    <div id="game-objective">
+        The famous game <b>hangman</b> where you have to find the <b>hidden word</b>.
+    </div>
+
     <br>
 
     <div class="div_enfant">
@@ -138,7 +166,7 @@
 
     <div class="div_enfant">
         <p class="mt-3 mb-1">Copyright &copy; 2022 by <a href="https://smatimed.github.io/website/">Mohamed SMATI</a></p>
-        <p class="text-secondary mb-1" style="font-size: x-small;">Version: 12/07/2023</p>
+        <p class="text-secondary mb-1" style="font-size: x-small;">Version: 15/07/2023</p>
     </div>
 </div>
 
@@ -223,6 +251,7 @@
             document.getElementsByTagName("html")[0].setAttribute("lang", "fr");
             langueCourante = 'F';
             document.getElementById('nom-jeu').innerHTML = 'LE PENDU';
+            document.getElementById('game-objective').innerHTML = 'Le célèbre jeu <b>le pendu</b> où il faut trouver le <b>mot caché</b>.';
         }
         else if (langueOn.innerHTML == 'En') {
             afficher(en_txt, nb_en);
@@ -236,6 +265,7 @@
             document.getElementsByTagName("html")[0].setAttribute("lang", "en");
             langueCourante = 'E';
             document.getElementById('nom-jeu').innerHTML = 'HANGMAN';
+            document.getElementById('game-objective').innerHTML = 'The famous game <b>hangman</b> where you have to find the <b>hidden word</b>.';
         }
         else if (langueOn.innerHTML == 'De') {
             afficher(de_txt, nb_de);

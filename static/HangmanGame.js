@@ -185,6 +185,10 @@ async function demanderUnMot(laLangue, laDifficulte, nbTiragesExistantDans_Today
             // console.log('mot ',nbTiragesExistantDans_TodayHist,nbTiragesExistantDans_AllHist,' = ', data["word"]);
             // console.log('hint=', data['hint']);
 
+            // data['word'] = 'FLAMENCO';
+            // data['definition'] = 'Spanish dance';
+            // data['hint'] = 'Dancers wearing colorful dresses';
+
             // old: if (todayHistWordsHangman.indexOf(';'+data['word']+':') != -1) {   // mot déjà joué aujourd'hui
             if (todayHistWordsHangman.indexOf(','+data['word']+',') != -1) {   // mot déjà joué aujourd'hui
                 if (nbTiragesExistantDans_TodayHist < p_MaxNbTimesChecking_NbTiragesExistantDans_TodayHist) {
@@ -234,42 +238,42 @@ async function demanderUnMot(laLangue, laDifficulte, nbTiragesExistantDans_Today
 };
 
 
-function OLD_demanderUnMot(laLangue, laDifficulte) {
-    // We use here FETCH and REST-API
+// * function OLD_demanderUnMot(laLangue, laDifficulte) {
+//     // We use here FETCH and REST-API
 
-    let url = window.location.origin + '/api/word/' + laLangue + '/' + laDifficulte;
-    // window.location.origin   =>   'http://127.0.0.1:8000'
-    // window.location.host   =>   '127.0.0.1:8000'
-    // window.location.pathname   =>   '/api/word/F/N'
-    fetch(url)
-        .then(resp => resp.json())
-        .then(function (data) {
-            document.getElementById("definition").innerHTML = data['definition'];
-            // document.getElementById("texteAide").innerHTML = "&nbsp;&nbsp;&nbsp;("+data['hint']+")";
-            // data['word'];
-            // data['definition'];
-            // data['hint'];
-            leMot[0] = data['word'];
-            leMot[1] = data['hint'];
-            // console.log('word:', leMot[0]);
-            // idea 10/07/2023 with cookies: ajouterMot_a_HistWordsHangman(leMot[0]);
+//     let url = window.location.origin + '/api/word/' + laLangue + '/' + laDifficulte;
+//     // window.location.origin   =>   'http://127.0.0.1:8000'
+//     // window.location.host   =>   '127.0.0.1:8000'
+//     // window.location.pathname   =>   '/api/word/F/N'
+//     fetch(url)
+//         .then(resp => resp.json())
+//         .then(function (data) {
+//             document.getElementById("definition").innerHTML = data['definition'];
+//             // document.getElementById("texteAide").innerHTML = "&nbsp;&nbsp;&nbsp;("+data['hint']+")";
+//             // data['word'];
+//             // data['definition'];
+//             // data['hint'];
+//             leMot[0] = data['word'];
+//             leMot[1] = data['hint'];
+//             // console.log('word:', leMot[0]);
+//             // idea 10/07/2023 with cookies: ajouterMot_a_HistWordsHangman(leMot[0]);
 
-            ajouterMot_a_HistWordsHangman(leMot[0]);
-            creerEspaceMot();
-            // return true;
-        })
-        .catch(erreur => {
-            if (laLangue == 'F') {
-                document.getElementById("definition").innerHTML = '*** Problème avec le serveur ***';
-            } else {
-                document.getElementById("definition").innerHTML = '*** Problem with the server ***';
-            }
-            leMot[0] = 'X';
-            leMot[1] = 'X';
-            document.getElementById("clavier").setAttribute("data", "false");
-            // return false;
-        });
-};
+//             ajouterMot_a_HistWordsHangman(leMot[0]);
+//             creerEspaceMot();
+//             // return true;
+//         })
+//         .catch(erreur => {
+//             if (laLangue == 'F') {
+//                 document.getElementById("definition").innerHTML = '*** Problème avec le serveur ***';
+//             } else {
+//                 document.getElementById("definition").innerHTML = '*** Problem with the server ***';
+//             }
+//             leMot[0] = 'X';
+//             leMot[1] = 'X';
+//             document.getElementById("clavier").setAttribute("data", "false");
+//             // return false;
+//         });
+// };
 
 
 function creerEspaceMot() {
@@ -497,7 +501,8 @@ function finDuJeu(lOk) {
             document.getElementById("resultatTitre").innerText = "You won !";
             document.getElementById("resultatCorps").innerHTML = "Congratulations, you found the word.";
         };
-        document.getElementsByTagName("body")[0].style.backgroundColor = "rgba(83, 234, 83, 0.5)";
+        // document.getElementsByTagName("body")[0].style.backgroundColor = "rgba(83, 234, 83, 0.5)";
+        document.getElementsByTagName("body")[0].setAttribute("data","succes");
     } else {
         // * ----------------------------------------------- ECHEC
         // Le son JeuEchec est joué à la 10e erreur (donc il est déjà joué lorsqu'on arrive ici)
@@ -515,8 +520,20 @@ function finDuJeu(lOk) {
         // document.getElementById("img-pendu2").setAttribute("data","true");
         setTimeout(goAnimation,200);
 
-        document.getElementsByTagName("body")[0].style.backgroundColor = "rgba(234, 57, 57, 0.5)";
+        // document.getElementsByTagName("body")[0].style.backgroundColor = "rgba(234, 57, 57, 0.5)";
+        document.getElementsByTagName("body")[0].setAttribute("data","echec");
+
     };
+
+
+    // --- links to Wikipedia and Google
+    if (laLangue == 'F') {
+        document.getElementById('a-wikipedia').setAttribute('href','https://fr.wikipedia.org/wiki/'+leMot[0].toLowerCase());
+    } else {
+        document.getElementById('a-wikipedia').setAttribute('href','https://en.wikipedia.org/wiki/'+leMot[0].toLowerCase());
+    };
+    document.getElementById('a-google').setAttribute('href','https://www.google.com/search?q='+leMot[0].toLowerCase());
+    document.getElementById("div-ref-externes").setAttribute("data","true");
 
 
     document.getElementById("clavier").setAttribute("data", "false");
@@ -537,8 +554,8 @@ function afficherAide() {
     document.getElementById("boutonAide").setAttribute("data","false");
 };
 
-function enlever5Lettres() {
-    retirerCinqLettres();
+function enleverDesLettres() {
+    retirerDesLettres(niveauJeu=='E' ? 5 : (niveauJeu=='N' ? 4 : 3));
     document.getElementById("boutonEnlever5Lettres").setAttribute("data","false");
 };
 
@@ -546,9 +563,7 @@ function nombreAleatoire(max) {
   return Math.floor(Math.random() * max);
 }
 
-function retirerCinqLettres() {
-    // console.log('retirerCinqLettres',motRestant);
-
+function retirerDesLettres(nbreToRemove) {
     let lettresNonUtilisees_Et_NonPartieDuMot = [], indice;
     let elemClavier = document.getElementById("clavier");
 
@@ -562,7 +577,7 @@ function retirerCinqLettres() {
         indice += 1;
     }
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < nbreToRemove; i++) {
         // On choisit un nombre aléatoire parmis les indices des touches non utilisées et qui ne font pas partie du mot.
         // Ce nombre aléatoire représente l'indice de la touche à désactiver (comme aide).
         let pos = nombreAleatoire(lettresNonUtilisees_Et_NonPartieDuMot.length);
@@ -630,6 +645,8 @@ function initJeu() {
     document.getElementById("pendu2").style.top = 0;
     document.getElementById("img-pendu2").setAttribute("data","false");
 
+    document.getElementById("div-ref-externes").setAttribute("data","false");
+
     histWordsHangman = lireHistWordsHangman()
 
     // --- Demander un mot
@@ -650,6 +667,7 @@ function demarrerJeu(LangueDuJeu) {
     document.getElementById("texteAide").setAttribute("data","false");
     document.getElementById("boutonAide").setAttribute("data","false");
     document.getElementById("boutonEnlever5Lettres").setAttribute("data","false");
+    document.getElementsByTagName("body")[0].setAttribute("data","normal");
     initJeu();
 };
 
@@ -666,3 +684,23 @@ function changerSon() {
         // console.log('bi-bell-slash-fill -> bi-bell-fill');
     };
 };
+
+
+function libelleEnleverDesLettres(niveauSelect) {
+    // On a fait un label dans un autre pour modifier facilement le libellé du label intérieur
+    let elemLibOption5Lettres = document.getElementById('lib-supp5Jeu');
+    let elemLib2Option5Lettres = document.getElementById('lib2-supp5Jeu');
+    let elemBoutonEnlever5Lettres = document.getElementById('boutonEnlever5Lettres');
+    let nbLettres = (niveauSelect=='E' ? 5 : (niveauSelect=='N' ? 4 : 3));
+    // console.log('nbLettres=',nbLettres);
+    if (laLangue=='F') {
+        elemLib2Option5Lettres.innerText = ` Enlever ${nbLettres} lettres`;
+        elemLibOption5Lettres.setAttribute('data-bs-original-title',`Proposer d'enlever ${nbLettres} lettres après 8 erreurs`);
+        elemBoutonEnlever5Lettres.innerHTML = `Enlever ${nbLettres} lettres`;
+    } else {
+        elemLib2Option5Lettres.innerText = ` Remove ${nbLettres} letters`; 
+        elemLibOption5Lettres.setAttribute('data-bs-original-title',`Propose to remove ${nbLettres} letters after 8 errors`);
+        elemBoutonEnlever5Lettres.innerHTML = `Remove ${nbLettres} letters`; 
+    };
+};
+

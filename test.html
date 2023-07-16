@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+
+    <link rel="stylesheet" href="static/bootstrap513-dist/css/bootstrap.min.css">
+
+    <style>
+        #div-ref-externes {
+            position: fixed;
+            /* width: 30%; */
+            right: 5%;
+            top: 20%;
+            margin: 5px;
+            padding: 5px;
+            /* background-color: rgba(240, 232, 174, 0.5); */
+            /* background: linear-gradient(to right, #a30d0daa, #ea393980, #a30d0daa); */
+
+            /* background: linear-gradient(to right, #a30d0daa, #ea393980); */
+            /* background: linear-gradient(to right, #0f930f8c, #1ce11c8e); */
+            background: linear-gradient(to right, #226eba94, #3992ea80, #226eba94);
+            /* background-color: #a30d0daa; */
+            box-shadow: 5px 5px 10px lightgray, -5px -5px 10px lightgray, 5px -5px 10px lightgray, -5px 5px 10px lightgray;
+        }
+
+        #div-ref-externes[resultat="succes"] {
+            background: linear-gradient(to right, #a30d0daa, #ea393980);
+        }
+
+        #div-ref-externes[resultat="echec"] {
+            background: linear-gradient(to right, #a30d0daa, #ea393980);
+        }
+
+        #div-ref-externes[data="false"] {
+            display: none;
+        }
+
+        #div-ref-externes[data="true"] {
+            display: block;
+        }
+
+        .img-ref-externes {
+            min-width: 20px;
+            max-width: 30px;
+            width: 30%;
+        }
+
+        #a-wikipedia,
+        #a-google {
+            text-decoration: none;
+            display: block;
+            color: black;
+            /* margin: 10px; */
+            /* padding: 10px; */
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            /* #eee; */
+            margin: 0;
+        }
+
+        body[data="normal"] {
+            /* background-color: #f0e8aecc; rgba(240, 232, 174, 0.8); */
+            background: linear-gradient(to right, #b7a93faa, #f0e8aecc, #b7a93faa);
+        }
+
+        body[data="succes"] {
+            /* background-color: #53ea5380; */
+            background: linear-gradient(to right, #0f930f8c, #1ce11c8e, #0f930f8c);
+        }
+
+        body[data="echec"] {
+            /* background-color: #ea393980; */
+            background: linear-gradient(to right, #a30d0daa, #ea393980, #a30d0daa);
+        }
+    </style>
+</head>
+
+<body class="text-center" data="echec">
+    <h1>WIKIPEDIA</h1>
+
+    <div class="row">
+        <div class="col"></div>
+
+        <div class="col">
+            <p>Tester lelien vers Wikipedia.</p>
+        </div>
+
+        <!-- <div class="col">
+            <a href="https://fr.wikipedia.org/wiki/tigre" target="_blank">Wikipedia <img src="static/wikipedia.png" alt="" width="15%"></a>
+            <br>
+            < !-- <iframe width="100%" height="100%" src="https://fr.wikipedia.org/wiki/tigre" frameborder="0"></iframe> -- >
+        <a href="https://www.google.com/search?q=tigre" target="_blank">Google <img src="static/google.png" alt="" width="15%"></a>
+    </div> -->
+
+    </div>
+    <p>By Mohamed SMATI</p>
+
+    <!-- link to google and wikipedia -->
+    <div id="div-ref-externes" data="true">
+        <a href="https://fr.wikipedia.org/wiki/word" target="_blank" id="a-wikipedia" class="my-1 py-1">Voir le mot dans Wikipedia <img class="img-ref-externes" src="static/wikipedia.png" alt=""></a>
+
+        <a href=" https://www.google.com/search?q=word" target="_blank" id="a-google" class="my-1 py-1">Chercher le mot dans Google <img class="img-ref-externes" src="static/google.png" alt=""></a>
+    </div>
+
+    <script src="static/bootstrap513-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

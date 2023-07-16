@@ -7,6 +7,7 @@
 
 {% endblock head %}
 
+{% block bodyclass %} data="normal" {% endblock bodyclass %}
 
 {% block content %}
 
@@ -76,7 +77,7 @@
             <span id="definition" data="false"></span>
             <span id="texteAide" data="false"></span>
             <button id="boutonAide" data="false" onclick="afficherAide()">{% if langue == 'F' %}Aide{% else %}Help{% endif %} ?</button>
-            <button id="boutonEnlever5Lettres" data="false" onclick="enlever5Lettres()">{% if langue == 'F' %}Enlever 5 lettres{% else %}Remove 5 lettres{% endif %} ?</button>
+            <button id="boutonEnlever5Lettres" data="false" onclick="enleverDesLettres()">{% if langue == 'F' %}Enlever 4 lettres{% else %}Remove 4 letters{% endif %} ?</button>
         </p>
 
         <!-- Loading animation (connecting to server) -->
@@ -92,6 +93,13 @@
             <span class="fw-bold letter-anim" style="--i: 8">.</span>
             <span class="fw-bold letter-anim" style="--i: 9">.</span>
             <span class="fw-bold letter-anim" style="--i: 10">.</span>
+        </div>
+
+        <!-- link to google and wikipedia -->
+        <div id="div-ref-externes" data="false">
+            <a href="https://fr.wikipedia.org/wiki/word" target="_blank" id="a-wikipedia" class="my-1 py-1">{% if langue == 'F' %}Voir le mot dans{% else %}See the word in{% endif %} Wikipedia <img class="img-ref-externes" src="{% static 'wikipedia.png' %}" alt=""></a>
+
+            <a href="https://www.google.com/search?q=word" target="_blank" id="a-google" class="my-1 py-1">{% if langue == 'F' %}Chercher le mot dans{% else %}Search the word in{% endif %} Google <img class="img-ref-externes" src="{% static 'google.png' %}" alt=""></a>
         </div>
     </div>
 
@@ -109,11 +117,18 @@
     <!-- Difficulté du jeu -->
     <div class="div_enfant" id="niveauDeJeu" data="true">
         <label class="pe-3 ps-1" for="facile">
-            <input class="ps-5" type="radio" name="niveauJeu" id="facile" value="E"> {% if langue == 'F' %}Facile{% else %}Easy{% endif %}</label>
+            <input class="ps-5" type="radio" name="niveauJeu" id="facile" value="E"
+                   onclick="libelleEnleverDesLettres('E')"> {% if langue == 'F' %}Facile{% else %}Easy{% endif %}
+        </label>
         <label class="pe-3 ps-1" for="normal">
-            <input class="ps-5" type="radio" name="niveauJeu" id="normal" value="N" checked> {% if langue == 'F' %}Moyen{% else %}Medium{% endif %}</label>
+            <input class="ps-5" type="radio" name="niveauJeu" id="normal" value="N"
+                   onclick="libelleEnleverDesLettres('N')" checked>
+            {% if langue == 'F' %}Moyen{% else %}Medium{% endif %}
+        </label>
         <label class="ps-1" for="difficile">
-            <input class="ps-5" type="radio" name="niveauJeu" id="difficile" value="H"> {% if langue == 'F' %}Difficile{% else %}Hard{% endif %}</label>
+            <input class="ps-5" type="radio" name="niveauJeu" id="difficile" value="H"
+                   onclick="libelleEnleverDesLettres('H')"> {% if langue == 'F' %}Difficile{% else %}Hard{% endif %}
+        </label>
     </div>
 
     <!-- * Options d'assistance du jeu -->
@@ -129,9 +144,9 @@
             <input type="checkbox" id="aideJeu" value="A" onclick="desactiverAideSiNecessaire()" checked> {% if langue == 'F' %}Aide{% else %}Help{% endif %}</label>
 
         <!-- Enlever 5 lettres -->
-        <label class="ps-1" for="supp5Jeu" data-bs-toggle="tooltip" data-bs-placement="top"
-               data-bs-original-title="{% if langue == 'F' %}Proposer d'enlever 5 lettres après 8 erreurs{% else %}Propose to remove 5 letters after 8 errors{% endif %}">
-            <input type="checkbox" id="supp5Jeu" value="H" checked> {% if langue == 'F' %}Enlever 5 lettres{% else %}Remove 5 letters{% endif %}</label>
+        <label class="ps-1" for="supp5Jeu" id="lib-supp5Jeu" data-bs-toggle="tooltip" data-bs-placement="top"
+               data-bs-original-title="{% if langue == 'F' %}Proposer d'enlever 4 lettres après 8 erreurs{% else %}Propose to remove 4 letters after 8 errors{% endif %}">
+            <input type="checkbox" id="supp5Jeu" value="H" checked> <label for="supp5Jeu" id="lib2-supp5Jeu">{% if langue == 'F' %}Enlever 4 lettres{% else %}Remove 4 letters{% endif %}</label></label>
         <!-- <input type="checkbox" id="supp5Jeu" value="H" checked><label class="ps-1" for="supp5Jeu" data-bs-toggle="tooltip" data-bs-placement="top"
                data-bs-original-title="{% if langue == 'F' %}Proposer d'enlever 5 lettres après 8 erreurs{% else %}Propose to remove 5 letters after 8 errors{% endif %}"> {% if langue == 'F' %}Enlever 5 lettres{% else %}Remove 5 letters{% endif %}</label> -->
 
