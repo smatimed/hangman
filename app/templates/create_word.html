@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+<h1>{% block title %} Create a New Word {% endblock title %}</h1>
+
+{% block content %}
+
+<div class="m-3">
+    <h2 class="mh-3 text-primary">NEW WORD</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- * LANGUAGE -->
+        <div class="pt-2" style="display: flex; align-items: center;">
+            <label class="pe-2" for="lang" accesskey="l"><u>L</u>anguage:</label>
+            <select name="lang" id="lang" class="form-control my-form-control-10">
+                {% if langue == 'E' %}
+                <!-- or request.form["langue"] == 'E' -->
+                <option value="E" selected>English</option>
+                {% else %}
+                <option value="E">English</option>
+                {% endif %}
+
+                {% if langue == 'F' %}
+                <!-- or request.form['langue'] == 'F' -->
+                <option value="F" selected>French</option>
+                {% else %}
+                <option value="F">French</option>
+                {% endif %}
+            </select>
+        </div>
+
+
+        <!-- * WORD -->
+        <div class="row pt-2">
+            <div class="col-auto pe-0">
+                <label class="my-label" for="word" accesskey="w"><u>W</u>ord:</label>
+            </div>
+            <div class="col">
+                <input type="text" name="word" id="word" value="{{ form.word.value|default_if_none:'' }}" placeholder="Word" class="form-control my-form-control-50 fw-bold" style="text-transform: uppercase;" maxlength="20" autofocus>
+                <!-- value="{{ request.form['word'] } }" maxlength="20" focused> -->
+            </div>
+        </div>
+
+        <!-- * DEFINITION -->
+        <div class="row pt-2">
+            <div class="col-auto pe-0">
+                <label class="my-label" for="definition" accesskey="d"><u>D</u>efinition:</label>
+            </div>
+            <div class="col">
+                <input type="text" name="definition" id="definition" placeholder="Definition"
+                       value="{{ form.definition.value|default_if_none:'' }}"
+                       class="form-control" maxlength="50"
+                       onchange="premiereLettreMajuscule(this)">
+                <!-- class="form-control" maxlength="50" value="{ { request.form['definition'] } }"> -->
+            </div>
+        </div>
+
+        <!-- * HINT -->
+        <div class="row pt-2">
+            <div class="col-auto pe-0">
+                <label class="my-label" for="hint" accesskey="h"><u>H</u>int:</label>
+            </div>
+            <div class="col">
+                <input name="hint" id="hint" placeholder="Hint" value="{{ form.hint.value|default_if_none:'' }}"
+                       class="form-control" maxlength="50"
+                       onchange="premiereLettreMajuscule(this)">
+                <!-- class="form-control" maxlength="50" value="{ { request.form['hint'] } }"> -->
+            </div>
+        </div>
+
+        <!-- * DIFFICULTY -->
+        <div class="pt-2" style="display: flex; align-items: center;">
+            <label class="pe-2" for="difficulty" accesskey="i">D<u>i</u>fficulty:</label>
+            <select name="difficulty" id="difficulty" class="form-control my-form-control-10"
+                    onblur="colorDifficulty()" onchange="colorDifficulty()">
+
+                {% if lastDifficulty == 'E' %}
+                <option value="E" selected>Easy</option>
+                {% else %}
+                <option value="E">Easy</option>
+                {% endif %}
+
+                {% if lastDifficulty == 'N' %}
+                <option value="N" selected>Medium</option>
+                {% else %}
+                <option value="N">Medium</option>
+                {% endif %}
+
+                {% if lastDifficulty == 'H' %}
+                <option value="H" selected>Hard</option>
+                {% else %}
+                <option value="H">Hard</option>
+                {% endif %}
+            </select>
+            <div id="difficulty-color" style="display: inline-block; margin-left: 15px; width: 30px; height: 30px; border-radius: 50%; border: 1px solid black; background-color: green;"></div>
+        </div>
+
+        <br />
+        <div style="color: red;">{{form.errors}}</div>
+
+
+        <div class="pt-2">
+            <button type="submit" name="enreg_seul" class="btn btn-primary" accesskey="s"><u>S</u>ubmit</button>
+            <button type="submit" name="enreg_et_autre" class="btn btn-primary" accesskey="a">Submit and <u>A</u>dd another one</button>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-4">
+                <label>Last word: <b>{{lastWord}}</b></label>
+            </div>
+            <div class="col-2">
+                <label>Easy: <b>{{countEasy}}</b></label>
+            </div>
+            <div class="col-2">
+                <label>Medium: <b>{{countMedium}}</b></label>
+            </div>
+            <div class="col-2">
+                <label>Hard: <b>{{countHard}}</b></label>
+            </div>
+            <div class="col-2">
+                <label>All: <b>{{countEasy | add:countMedium | add:countHard}}</b></label>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% comment %}
+<!-- {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %} -->
+{% endcomment %}
+
+
+{% load static %}
+<script src="{% static 'scripts.js' %}"></script>
+
+{% endblock content %}
