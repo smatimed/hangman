@@ -25,6 +25,8 @@ def create_word(request, langue, difficulte='E', dernierMot='*'):
     # print('***',request.POST)
     form = forms.wordsListForm(request.POST or None)
     if request.method == 'POST':
+        # if models.wordsList.objects.filter(lang=langue).get(word=)
+        print('***',request.POST['word'].upper())
         if form.is_valid():
             # print('***',form.cleaned_data['word'],form.cleaned_data['hint'],form.cleaned_data['difficulty'])
             enreg = form.save(commit=False)
@@ -43,7 +45,7 @@ def create_word(request, langue, difficulte='E', dernierMot='*'):
                 # return HttpResponseRedirect(request.path_info) # same page
                 # print('***',lastDifficulty,lastWord)
                 # print('***',f'/hangman/create-word/{langue}/{lastDifficulty}/{lastWord}/')
-                return HttpResponseRedirect(f'/hangman/create-word/{langue}/{lastDifficulty}/{lastWord}/')
+                return HttpResponseRedirect(f'/hangman/cw/{langue}/{lastDifficulty}/{lastWord}/')
             else:
                 return HttpResponseRedirect(f'/hangman/{langue}/')
     return render(request, 'create_word.html', {'form': form, 'langue': langue, 'lastDifficulty': difficulte, 'lastWord': dernierMot, 'countEasy':countEasy, 'countMedium':countMedium, 'countHard':countHard})

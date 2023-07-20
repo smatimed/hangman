@@ -1,3 +1,4 @@
+- attention à la base de données qui peut etre différente
 - copy 'static' into 'static_production'
 - compress all files (in zip)
 - upload the zip file to pythonanywhere
