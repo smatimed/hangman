@@ -8,7 +8,7 @@ class wordsList (models.Model):
     lang = models.CharField(max_length=1, choices=langChoices)
     word = models.CharField(max_length=20)
     definition = models.CharField(max_length=50)
-    hint = models.CharField(max_length=50)
+    hint = models.CharField(max_length=50, null=True)
     difficulty = models.CharField(max_length=1, choices=difficultyChoices, default='N')
     nbTimesChosen = models.SmallIntegerField(default=0)
 

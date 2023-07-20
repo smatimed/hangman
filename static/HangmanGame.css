@@ -804,3 +804,38 @@ body[data="echec"] {
 #pb-https[data="true"] {
     display: block;
 }
+
+
+/* * for Create Word */
+.my-form-control {
+    display: inline-block;
+}
+
+.my-form-control-50 {
+    display: inline-block;
+    width: 50%;
+     !important
+}
+
+.my-form-control-30 {
+    display: inline-block;
+    width: 30%;
+     !important
+}
+
+.my-form-control-20 {
+    display: inline-block;
+    width: 20%;
+     !important
+}
+
+.my-form-control-10 {
+    display: inline-block;
+    width: 10%;
+     !important
+}
+
+.my-label {
+    padding: 0.375rem 0;
+}
+/* * for Create Word */

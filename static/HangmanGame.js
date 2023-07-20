@@ -686,14 +686,15 @@ function changerSon() {
 };
 
 
-function libelleEnleverDesLettres(niveauSelect) {
+function libelleEnleverDesLettres(langueDuJeu, niveauSelect) {
     // On a fait un label dans un autre pour modifier facilement le libellé du label intérieur
     let elemLibOption5Lettres = document.getElementById('lib-supp5Jeu');
     let elemLib2Option5Lettres = document.getElementById('lib2-supp5Jeu');
     let elemBoutonEnlever5Lettres = document.getElementById('boutonEnlever5Lettres');
     let nbLettres = (niveauSelect=='E' ? 5 : (niveauSelect=='N' ? 4 : 3));
     // console.log('nbLettres=',nbLettres);
-    if (laLangue=='F') {
+    // console.log('laLangue=',laLangue);
+    if (langueDuJeu == 'F') {
         elemLib2Option5Lettres.innerText = ` Enlever ${nbLettres} lettres`;
         elemLibOption5Lettres.setAttribute('data-bs-original-title',`Proposer d'enlever ${nbLettres} lettres après 8 erreurs`);
         elemBoutonEnlever5Lettres.innerHTML = `Enlever ${nbLettres} lettres`;

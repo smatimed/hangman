@@ -118,16 +118,16 @@
     <div class="div_enfant" id="niveauDeJeu" data="true">
         <label class="pe-3 ps-1" for="facile">
             <input class="ps-5" type="radio" name="niveauJeu" id="facile" value="E"
-                   onclick="libelleEnleverDesLettres('E')"> {% if langue == 'F' %}Facile{% else %}Easy{% endif %}
+                   onclick="libelleEnleverDesLettres('{{langue}}','E')"> {% if langue == 'F' %}Facile{% else %}Easy{% endif %}
         </label>
         <label class="pe-3 ps-1" for="normal">
             <input class="ps-5" type="radio" name="niveauJeu" id="normal" value="N"
-                   onclick="libelleEnleverDesLettres('N')" checked>
+                   onclick="libelleEnleverDesLettres('{{langue}}','N')" checked>
             {% if langue == 'F' %}Moyen{% else %}Medium{% endif %}
         </label>
         <label class="ps-1" for="difficile">
             <input class="ps-5" type="radio" name="niveauJeu" id="difficile" value="H"
-                   onclick="libelleEnleverDesLettres('H')"> {% if langue == 'F' %}Difficile{% else %}Hard{% endif %}
+                   onclick="libelleEnleverDesLettres('{{langue}}','H')"> {% if langue == 'F' %}Difficile{% else %}Hard{% endif %}
         </label>
     </div>
 
