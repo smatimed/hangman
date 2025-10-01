@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Links</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: silver;
+            /* ✅ fond de page */
+        }
+
+        .link-active {
+            color: #0d6efd;
+            font-weight: bold;
+        }
+
+        .link-inactive {
+            color: gray;
+            text-decoration: line-through;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+
+        .link-container {
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            margin: 0.25rem 0;
+        }
+
+        .type-label {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background-color: white;
+            /* ✅ accordions en blanc */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-box {
+            max-width: 400px;
+        }
+
+        .no-result {
+            padding: 1rem;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <h1 class="mb-4">My Links</h1>
+
+        <!-- Contrôles + compteur aligné -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+            <!-- Bloc gauche -->
+            <div class="d-flex flex-wrap gap-3 align-items-center">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="chkToggleAll">
+                    <label class="form-check-label" for="chkToggleAll">Ouvrir tous les accordions</label>
+                </div>
+                <div class="d-flex gap-2">
+                    <input type="text" id="searchInput" class="form-control search-box" placeholder="Rechercher un lien...">
+                    <button id="resetBtn" class="btn btn-outline-secondary">Réinitialiser</button>
+                </div>
+            </div>
+            <!-- Bloc droit (compteur) -->
+            <div id="linkCounter" class="fw-bold"></div>
+        </div>
+
+        <div class="accordion" id="linksAccordion"></div>
+        <div id="noResult" class="no-result d-none">Aucun résultat trouvé</div>
+    </div>
+
+    <script>
+        // ==================== Données ====================
+        const liens = [
+            {
+                categorie: "Programmation",
+                libelle: "MDN Web Docs",
+                lien: "https://developer.mozilla.org/",
+                description: "Documentation complète pour les développeurs web.",
+                type: "Gratuit",
+                icone: "https://developer.mozilla.org/favicon-48x48.cbbd161b.png",
+                actif: true
+            },
+            {
+                categorie: "Programmation",
+                libelle: "Stack Overflow",
+                lien: "https://stackoverflow.com/",
+                description: "Communauté de développeurs pour poser des questions et trouver des réponses.",
+                type: "Gratuit",
+                icone: "https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.png",
+                actif: true
+            },
+            {
+                categorie: "Design",
+                libelle: "Dribbble",
+                lien: "https://dribbble.com/",
+                description: "Plateforme pour découvrir et partager des travaux de design.",
+                type: "Freemium",
+                icone: "https://cdn.worldvectorlogo.com/logos/dribbble-icon-1.svg",
+                actif: false
+            },
+            {
+                categorie: "Design",
+                libelle: "Figma",
+                lien: "https://figma.com/",
+                description: "Outil collaboratif de design UI/UX.",
+                type: "Freemium",
+                icone: "https://cdn.worldvectorlogo.com/logos/figma-1.svg",
+                actif: true
+            }
+        ];
+
+        const accordion = document.getElementById("linksAccordion");
+        const noResultDiv = document.getElementById("noResult");
+        const searchInput = document.getElementById("searchInput");
+        const resetBtn = document.getElementById("resetBtn");
+        const linkCounter = document.getElementById("linkCounter");
+
+        // ==================== Construction dynamique ====================
+        function buildAccordion(filteredLinks, autoOpen = false) {
+            accordion.innerHTML = "";
+
+            // ✅ Compteur toujours affiché
+            linkCounter.textContent = `${filteredLinks.length} lien${filteredLinks.length > 1 ? "s" : ""}`;
+
+            if (filteredLinks.length === 0) {
+                noResultDiv.classList.remove("d-none");
+                return;
+            } else {
+                noResultDiv.classList.add("d-none");
+            }
+
+            // Regroupement par catégorie
+            const categories = {};
+            filteredLinks.forEach(item => {
+                if (!categories[item.categorie]) {
+                    categories[item.categorie] = [];
+                }
+                categories[item.categorie].push(item);
+            });
+
+            // ✅ Tri alphabétique des catégories
+            const sortedCategories = Object.keys(categories).sort();
+
+            let index = 0;
+            sortedCategories.forEach(categorie => {
+                index++;
+                const items = categories[categorie];
+                const collapseId = `collapse${index}`;
+                const headingId = `heading${index}`;
+
+                const accordionItem = document.createElement("div");
+                accordionItem.className = "accordion-item";
+
+                accordionItem.innerHTML = `
+        <h2 class="accordion-header" id="${headingId}">
+          <button class="accordion-button collapsed" type="button" 
+            data-bs-toggle="collapse" data-bs-target="#${collapseId}" 
+            aria-expanded="false" aria-controls="${collapseId}">
+            ${categorie} <span class="badge bg-secondary ms-2">${items.length}</span>
+          </button>
+        </h2>
+        <div id="${collapseId}" class="accordion-collapse collapse" aria-labelledby="${headingId}">
+          <div class="accordion-body" id="body-${categorie}"></div>
+        </div>
+      `;
+
+                accordion.appendChild(accordionItem);
+
+                // Remplir les liens
+                const bodyDiv = accordionItem.querySelector(`#body-${categorie}`);
+                items.forEach(link => {
+                    const linkDiv = document.createElement("div");
+                    linkDiv.className = "link-container";
+
+                    linkDiv.innerHTML = `
+          <div>
+            <img src="${link.icone}" class="icon" alt="icon">
+            <a href="${link.lien}" target="_blank" class="${link.actif ? "link-active" : "link-inactive"}">
+              ${link.libelle}
+            </a>
+          </div>
+          <div>
+            <p class="description">${link.description}</p>
+            <label class="type-label">Type : ${link.type}</label>
+          </div>
+        `;
+
+                    bodyDiv.appendChild(linkDiv);
+                });
+
+                // ✅ Ouvrir auto les catégories contenant résultats si recherche active
+                if (autoOpen) {
+                    bootstrap.Collapse.getOrCreateInstance(document.getElementById(collapseId), { toggle: false }).show();
+                }
+            });
+        }
+
+        // Initialisation
+        buildAccordion(liens);
+
+        // ==================== Checkbox "Ouvrir tous" ====================
+        const chkToggleAll = document.getElementById("chkToggleAll");
+        chkToggleAll.addEventListener("change", () => {
+            const allCollapses = accordion.querySelectorAll(".accordion-collapse");
+            if (chkToggleAll.checked) {
+                allCollapses.forEach(collapse => {
+                    bootstrap.Collapse.getOrCreateInstance(collapse, { toggle: false }).show();
+                });
+            } else {
+                allCollapses.forEach(collapse => {
+                    bootstrap.Collapse.getOrCreateInstance(collapse, { toggle: false }).hide();
+                });
+            }
+        });
+
+        // ==================== Recherche au ENTER ====================
+        searchInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                const query = searchInput.value.toLowerCase();
+                const filtered = liens.filter(item =>
+                    item.libelle.toLowerCase().includes(query) ||
+                    item.description.toLowerCase().includes(query)
+                );
+                buildAccordion(filtered, query.length > 0);
+            }
+        });
+
+        // ==================== Réinitialiser ====================
+        resetBtn.addEventListener("click", () => {
+            searchInput.value = "";
+            buildAccordion(liens);
+            noResultDiv.classList.add("d-none");
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
