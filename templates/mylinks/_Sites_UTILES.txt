@@ -12,18 +12,18 @@ ok - https://app.klingai.com
 Transforme un texte ou image en vidéo
 (on doit créer un compte)
 
-- sidehustlestack.co
+ok - sidehustlestack.co
+C'est une plateforme de ressources qui recense des opportunités pour gagner de l’argent en ligne.
+
+ok- remoterocketship.com
 Work online
 
-- remoterocketship.com
-Work online
-
-- suno.com
+ok- suno.com
 Faire une chanson à partir d'un texte (produit par chatGPT par exemple).
 (cliquer "custom", coller le texte, choisir le type de musique, choisir un titre, ensuite "create")
 (signed with google: smatiham67@gmail.com)
 
-- Touche windows + R et taper: explorer shell:::{ED7BA470-8E54-465E-825C-99712043E01C}
+ok - Touche windows + R et taper: explorer shell:::{ED7BA470-8E54-465E-825C-99712043E01C}
 Il t'ouvrira tous les outils pour réparer Windows.
 
 - ifixit.com
