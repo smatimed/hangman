@@ -26,17 +26,17 @@ Faire une chanson à partir d'un texte (produit par chatGPT par exemple).
 ok - Touche windows + R et taper: explorer shell:::{ED7BA470-8E54-465E-825C-99712043E01C}
 Il t'ouvrira tous les outils pour réparer Windows.
 
-- ifixit.com
+ok- ifixit.com
 Etapes pour réparer tout (PC, smartphone, voiture, ...)
 
-- filehippo.com
+ok- filehippo.com
 Télécharger les logiciels (mêmes les versions précédentes)
 
 - App "Recuva"
 Récupérer les fichiers effacés
 
-- immersity.ai
-Convertir images et vidéos en 3D
+ok- immersity.ai
+Plateforme alimentée par l’IA qui transforme des images et vidéos 2D en expériences 3D immersives (ajout de profondeur, mouvement, effet de parallaxe).
 (smati_med@yahoo.com / HmoHmo123heygen+)
 
 - leonardo.ai
