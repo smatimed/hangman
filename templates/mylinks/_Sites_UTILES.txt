@@ -74,6 +74,8 @@ Sépare la voix de la musique
 - tinywow.com
 Plein d'outils
 
+- https://www.craiyon.com/en/background-remover
+remove bg
 
 - chatgpt.com
 - chat.deepseek.com
