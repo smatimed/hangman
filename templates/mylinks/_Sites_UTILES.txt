@@ -46,6 +46,7 @@ Plateforme alimentée par l’IA qui transforme des images et vidéos 2D en expérien
 
 - workingnomads.com/jobs
 Tele-travail
+
 - hedra.com
 Faire parler une photo avec l'IA.
 (définir le texte, choisir la personne -ou la décrire, il la trouvera- sauf une personnalité mondialement connue, ensuite générer)
@@ -80,3 +81,6 @@ remove bg
 ok- chatgpt.com
 ok- chat.deepseek.com
 ok- claude.ai
+
+- filehippo.com
+Télécharger les softwares.
