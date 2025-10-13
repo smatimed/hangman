@@ -63,6 +63,10 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        .accordion-button:hover {
+            background-color: rgb(240, 240, 240);
+        }
+
         .search-box {
             max-width: 400px;
         }
@@ -76,12 +80,64 @@
             font-style: italic;
             color: #555;
         }
+
+
+        /* ----------------------------------- */
+        #GoTopBtn {
+            opacity: 0;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 2.5rem;
+            height: 2.5rem;
+            z-index: 999;
+            cursor: pointer;
+            background-color: black;
+            border: none;
+            border-radius: 50%;
+            transition: transform 0.25s ease;
+        }
+
+        #GoTopBtn p {
+            font-weight: bolder;
+            color: #ff0000;
+        }
+
+        #GoTopBtn:hover {
+            box-shadow: 0 8px 8px grey;
+            border: 1px solid #ff0000;
+            transform: translateY(-10px);
+        }
+
+        /* ----------------------------------- */
+        #conteneur-haut {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(222, 222, 222);
+            z-index: 1000;
+        }
+
+        #conteneur-bas {
+            margin-top: 80px;
+        }
     </style>
 </head>
 
 <body>
+
+    <div id="GoTopBtn" class="btn btn-primary">
+        <p class="bi bi-chevron-up mt-1"></p>
+    </div>
+
+
     <div class="container py-4">
-        <div class="row align-items-center">
+        <div class="row align-items-center p-4" id="conteneur-haut">
 
             <div class="col-3">
                 <h1 class="mb-0 text-primary">My Links</h1>
@@ -120,8 +176,10 @@
         </div>
 
 
-        <div class="accordion" id="linksAccordion"></div>
-        <div id="noResult" class="no-result d-none">Aucun résultat trouvé</div>
+        <div id="conteneur-bas">
+            <div class="accordion" id="linksAccordion"></div>
+            <div id="noResult" class="no-result d-none">Aucun résultat trouvé</div>
+        </div>
     </div>
 
     <script>
@@ -158,6 +216,16 @@
                 icone: "https://claude.ai/favicon.ico",
                 actif: true
             }
+            , {
+                categorie: "IA",
+                libelle: "Qwen",
+                lien: "https://chat.qwen.ai",
+                description: "Intelligence Artificielle.",
+                guide: "",
+                type: "Gratuit",
+                icone: "https://assets.alicdn.com/g/qwenweb/qwen-webui-fe/0.0.223/favicon.png",
+                actif: true
+            }
             // ---------------------------- Travail en ligne
             , {
                 categorie: "Travail en ligne",
@@ -189,6 +257,17 @@
                 type: "Gratuit",
                 icone: "https://www.remove.bg/favicon.ico",
                 // icone: "../../static/mylinks_icones/default-icon.svg",
+                actif: true
+            }
+            // ---------------------------- Traduction
+            , {
+                categorie: "Traduction",
+                libelle: "yandex",
+                lien: "https://translate.yandex.com",
+                description: "Traducteur en plus de 100 langues.",
+                guide: "",
+                type: "Gratuit",
+                icone: "https://translate.yandex.com/icons/favicon.ico",
                 actif: true
             }
             // ---------------------------- Vidéo (IA)
@@ -535,6 +614,24 @@
             searchInput.value = "";
             buildAccordion(liens);
             noResultDiv.classList.add("d-none");
+        });
+
+
+        let bouton_GoTop = document.getElementById("GoTopBtn");
+
+        // --- Go Top bouton
+        window.onscroll = function () {
+
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                bouton_GoTop.style.opacity = 1;
+            } else {
+                bouton_GoTop.style.opacity = 0;
+            };
+        };
+
+        bouton_GoTop.addEventListener("click", function () {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
         });
     </script>
 

@@ -47,13 +47,13 @@ Plateforme alimentée par l’IA qui transforme des images et vidéos 2D en expérien
 - workingnomads.com/jobs
 Tele-travail
 
-- hedra.com
+ok- hedra.com
 Faire parler une photo avec l'IA.
 (définir le texte, choisir la personne -ou la décrire, il la trouvera- sauf une personnalité mondialement connue, ensuite générer)
 (signed with google: smatiham67@gmail.com)
 
-- translate.yandex.com
-Traduction
+ok- translate.yandex.com
+Traducteur en plus de 100 langues.
 
 - gotranscript.com
 (https://gotranscript.com/transcription-jobs)
@@ -81,6 +81,7 @@ remove bg
 ok- chatgpt.com
 ok- chat.deepseek.com
 ok- claude.ai
+ok-chat.qwen.ai
 
-- filehippo.com
+ok- filehippo.com
 Télécharger les softwares.
