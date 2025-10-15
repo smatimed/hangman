@@ -1,0 +1,148 @@
+WITH django REST framework:
+--------------------------- (www.django-rest-framework.org)
+- pipenv install djangorestframework
+- add 'rest_framework' to the installed app (in settings.py)
+
+- we can create a folder "api" under the app folder "myapp"
+   |- myapp
+   |    |- api
+
+in the app urls.py:
+urlpatterns = [
+    ...
+    path('api/', include('myapp.api.urls')),
+    ...
+]
+
+
+- in serializers.py:
+  =================
+from rest_framework.serializers import ModelSerializer, Serializer, CharField, IntegerField, ...
+* ModelSerializer: based on a Model
+* Serializer: not based on a Model
+
+
+* ModelSerializer:
+from myapp.models import Employee
+class employeeSerializer(ModelSerializer):
+    class Meta:
+        model = Employee
+        fields = ['code', 'firstName', 'lastName', 'birthday', 'salary']
+        (or fields = '__all__')
+
+
+* Serializer:
+class tempsUtiliseSerializer(Serializer):
+    temps = IntegerField()
+
+class tempsMajSerializer(Serializer):
+    utilisateur = CharField()
+    temps = IntegerField()
+
+
+
+- in views.py:
+  ===========
+* add "@api_view([...])" to the function: @api_view(['GET']), @api_view(['POST']), @api_view(['DELETE'])
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+* ModelSerializer:
+  ---------------
+from myapp.models import Employee
+from .serializers import employeeSerializer
+
+@api_view(['GET'])
+def v_Employees(request):
+    employees = Employee.objects.all()
+    theSerializer = employeeSerializer(employees, many=True)
+    return Response(theSerializer.data)
+
+@api_view(['GET'])
+def v_OneEmployee(request, pk):
+    try:
+        employee = Employee.objects.get(code=pk)
+        theSerializer = employeeSerializer(employee, many=False)
+    except:
+        theSerializer = employeeSerializer(Employee(code='XXXXX'), many=False)
+    return Response(theSerializer.data)
+
+many=True : we can have multiple records
+many=False : we have only one record
+
+@api_view(['POST'])
+def v_EmployeeCreate(request):
+    theSerializer = employeeSerializer(data=request.data)
+    if theSerializer.is_valid():
+        theSerializer.save()
+    else:
+        print('*** INVALID Serializer ***')
+    return Response(theSerializer.data)
+
+@api_view(['POST'])
+def v_EmployeeUpdate(request, pk):
+    theEmployee = Employee.objects.get(code=pk)
+    theSerializer = employeeSerializer(data=request.data, instance=theEmployee)
+    if theSerializer.is_valid():
+        theSerializer.save()
+    else:
+        print('*** INVALID Serializer ***')
+    return Response(theSerializer.data)
+
+@api_view(['DELETE'])
+def v_EmployeeDelete(request, pk):
+    theEmployee = Employee.objects.get(code=pk)
+    theEmployee.delete()
+    return Response(f'Employee {pk} deleted!')
+
+
+* Serializer:
+  ----------
+class TempsUtilise(object):
+    def __init__(self, valTemps):
+        self.temps = valTemps
+
+class TempsMaj(object):
+    def __init__(self, valUtilisateur, valTemps):
+        self.utilisateur = valUtilisateur
+        self.temps = valTemps
+
+@api_view(['GET'])
+def tempsUtilise(request, utilisateur):
+    if not exists('temps.ini'):
+        creerIniFile(utilisateur)
+    tempsUtilise = lireTempsIniFile(utilisateur)
+    leTemps = TempsUtilise(valTemps=tempsUtilise)
+    serializer = tempsUtiliseSerializer(leTemps, many=False)
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def tempsMaj(request):
+    donnees = request.data
+    serializer = tempsMajSerializer(request.data, many=False)
+    majTempsIniFile(donnees["utilisateur"], donnees["temps"])
+    return Response(serializer.data)
+
+
+- in urls.py:
+  ==========
+urlpatterns = [
+    path('employees/', views.v_Employees, name='api-employees-list'),
+    path('employee/<str:pk>', views.v_OneEmployee, name='api-one-employee'),
+    path('employee-create/', views.v_EmployeeCreate, name='api-employee-create'),
+    path('employee-update/<str:pk>', views.v_EmployeeUpdate, name='api-employee-update'),
+    path('employee-delete/<str:pk>', views.v_EmployeeDelete, name='api-employee-delete'),
+]
+
+urlpatterns = [
+    path('temps/<str:utilisateur>', views.tempsUtilise, name='api-tempsUtilise'),
+    path('majtemps', views.tempsMaj, name='api-tempsMaj'),
+]
+
+
+- utilisation:
+
+http://127.0.0.1:8000/api/temps/anes
+http://127.0.0.1:8000/api/majtemps ,  avec un JSON {"utilisateur": "anes", "temps": 20}
+
