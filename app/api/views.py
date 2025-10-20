@@ -241,26 +241,14 @@ def tempsAjouter(request):
     ajouterTempsIniFile(donnees["utilisateur"], donnees["tempsAdditionnel"])
     return Response(serializer.data)
 
-# ^ appel:
-# http://127.0.0.1:8000/api/temps/anes
+# ^ --- utilisation:
+# http://127.0.0.1:8001/api/temps/anes
 
-# http://127.0.0.1:8000/api/majtemps
+# http://127.0.0.1:8001/api/majtemps
 # {"utilisateur": "anes", "temps": 11}
 
-
-# def tempsMaj(request, utilisateur, temps):
-#     print('*** request:\n', request.data)
-#     print('*** 1 ***')
-#     # serializer = tempsMajSerializer({"utilisateur": donnees["utilisateur"], "temps": donnees["temps"]}, many=False)
-#     serializer = tempsMajSerializer(request.data, many=False)
-#     print('*** 2 ***')
-#     # if serializer.is_valid():
-#     print('*** 3 ***')
-#     majTempsIniFile(utilisateur, temps)
-#     # else:
-#     # print('*** INVALID Serializer (tempsMaj) ***')
-#     print('*** 4 ***')
-#     return Response(serializer.data)
+# http://127.0.0.1:8001/api/ajoutertemps
+# {"utilisateur": "anes", "tempsAdditionnel": 50}
 
 
 # *old 12/07/2023 : J'ai rajouté la liste historique (d'aujourd'hui) des mots à éviter
