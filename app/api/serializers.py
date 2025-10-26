@@ -17,3 +17,8 @@ class tempsUtiliseSerializer(Serializer):
 class tempsMajSerializer(Serializer):
     utilisateur = CharField()
     temps = IntegerField()
+
+
+class tempsAjouterSerializer(Serializer):
+    utilisateur = CharField()
+    tempsAdditionnel = IntegerField()

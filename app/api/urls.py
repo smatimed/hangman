@@ -8,6 +8,7 @@ urlpatterns = [
     # --- Temps "Mot de passe" (Anes)
     path('temps/<str:utilisateur>', views.tempsUtilise, name='api-tempsUtilise'),
     path('majtemps', views.tempsMaj, name='api-tempsMaj'),
+    path('ajoutertemps', views.tempsAjouter, name='api-tempsAjouter'),
     #     path('majtemps/<str:utilisateur>/<int:temps>', views.tempsMaj, name='api-tempsMaj'),
 ]
 

@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 import random
 
-from .serializers import wordChosenSerializer, tempsUtiliseSerializer, tempsMajSerializer
+from .serializers import wordChosenSerializer, tempsUtiliseSerializer, tempsMajSerializer, tempsAjouterSerializer
 
 from app.models import wordsList
 
@@ -69,7 +69,7 @@ def chooseWordRandomly(request, theLang, theDifficulty, wordsListToAvoid):
     return Response(serializer.data)
 
 
-# --- Mot de passe (Anes)
+# ^ ------------------------------------------------------------------------ Mot de passe (Anes)
 class TempsUtilise(object):
     def __init__(self, valTemps):
         self.temps = valTemps
@@ -80,7 +80,13 @@ class TempsMaj(object):
         self.utilisateur = valUtilisateur
         self.temps = valTemps
 
-# ^ -------------------------------------- ini file (debut)
+
+class TempsAjouter(object):
+    def __init__(self, valUtilisateur, valTempsAdditionnel):
+        self.utilisateur = valUtilisateur
+        self.tempsAdditionnel = valTempsAdditionnel
+
+# ^ ---------------------------- ini file (debut)
 
 
 def creerIniFile(utilisateur):
@@ -91,22 +97,39 @@ def creerIniFile(utilisateur):
     if not config.has_section(utilisateur):
         config.add_section(utilisateur)
     config.set(utilisateur, 'date', '01/01/2000')
-    config.set(utilisateur, 'temps', '0')
+    config.set(utilisateur, 'temps utilise', '0')
+    config.set(utilisateur, 'temps additionnel', '0')
 
     with open('temps.ini', 'w') as configfile:
         config.write(configfile)
 
 
-def lireTempsIniFile(utilisateur):
+def lireTempsUtiliseIniFile(utilisateur):
     config = ConfigParser()
     config.read('temps.ini')
     # config.read(settings.BASE_DIR+'\\temps.ini')
-    laDate = config.get(utilisateur, 'date')
-    leTemps = config.getint(utilisateur, 'temps')
+
+    if config.has_section(utilisateur):
+
+        if config.has_option(utilisateur, 'date'):
+            laDate = config.get(utilisateur, 'date')
+        else:
+            laDate = '01/01/2000'
+
+        if config.has_option(utilisateur, 'temps utilise'):
+            leTempsUtilise = config.getint(utilisateur, 'temps utilise')
+        else:
+            leTempsUtilise = '0'
+
+        if config.has_option(utilisateur, 'temps additionnel'):
+            leTempsAdditionnel = config.getint(
+                utilisateur, 'temps additionnel')
+        else:
+            leTempsAdditionnel = '0'
 
     aujourdhui = datetime.now().strftime(r'%d/%m/%Y')
     if laDate == aujourdhui:
-        return (leTemps)
+        return (int(leTempsUtilise) - int(leTempsAdditionnel))
     else:
         return (0)
 
@@ -116,22 +139,70 @@ def majTempsIniFile(utilisateur, temps):
     config.read('temps.ini')
     # config.read(settings.BASE_DIR+'\\temps.ini')
 
-    laDate = config.get(utilisateur, 'date')
-    leTemps = config.getint(utilisateur, 'temps')
+    if config.has_section(utilisateur):
+
+        if config.has_option(utilisateur, 'date'):
+            laDate = config.get(utilisateur, 'date')
+        else:
+            laDate = '01/01/2000'
+
+        if config.has_option(utilisateur, 'temps utilise'):
+            leTempsUtilise = config.getint(utilisateur, 'temps utilise')
+        else:
+            leTempsUtilise = '0'
+
+    aujourdhui = datetime.now().strftime(r'%d/%m/%Y')
+
+    # ! IMPORTANT: le client doit envoyer le temps écoulé depuis la dernière maj réussie
+    # !            ie: chaque fois que la maj réussit, il remet à zéro le compteur
+    if laDate == aujourdhui:
+        # même jour, donc on cumule le temps
+        config.set(utilisateur, 'temps utilise',
+                   str(temps+int(leTempsUtilise)))
+    else:
+        # ce n'est pas le même jour, donc on met le nouveau temps seulement
+        config.set(utilisateur, 'temps utilise', str(temps))
+        config.set(utilisateur, 'temps additionnel', '0')
+
+    config.set(utilisateur, 'date', aujourdhui)
+
+    with open('temps.ini', 'w') as configfile:
+        config.write(configfile)
+
+
+def ajouterTempsIniFile(utilisateur, tempsAdditionnel):
+    config = ConfigParser()
+    config.read('temps.ini')
+
+    if config.has_section(utilisateur):
+
+        if config.has_option(utilisateur, 'date'):
+            laDate = config.get(utilisateur, 'date')
+        else:
+            laDate = '01/01/2000'
+
+        if config.has_option(utilisateur, 'temps additionnel'):
+            leTempsAdditionnel = config.getint(
+                utilisateur, 'temps additionnel')
+        else:
+            leTempsAdditionnel = '0'
 
     aujourdhui = datetime.now().strftime(r'%d/%m/%Y')
 
     if laDate == aujourdhui:
         # même jour, donc on cumule le temps
-        config.set(utilisateur, 'temps', str(temps+leTemps))
+        config.set(utilisateur, 'temps additionnel',
+                   str(tempsAdditionnel+int(leTempsAdditionnel)))
     else:
         # ce n'est pas le même jour, donc on met le nouveau temps seulement
-        config.set(utilisateur, 'temps', str(temps))
+        config.set(utilisateur, 'temps additionnel', str(tempsAdditionnel))
+
     config.set(utilisateur, 'date', aujourdhui)
 
     with open('temps.ini', 'w') as configfile:
         config.write(configfile)
-# ^ -------------------------------------- ini file (fin)
+
+# ^ ---------------------------- ini file (fin)
 
 
 @api_view(['GET'])
@@ -142,10 +213,10 @@ def tempsUtilise(request, utilisateur):
     if not exists('temps.ini'):
         creerIniFile(utilisateur)
 
-    tempsUtilise = lireTempsIniFile(utilisateur)
+    tempsUtilise = lireTempsUtiliseIniFile(utilisateur)
 
-    leTemps = TempsUtilise(valTemps=tempsUtilise)
-    serializer = tempsUtiliseSerializer(leTemps, many=False)
+    leTempsUtilise = TempsUtilise(valTemps=tempsUtilise)
+    serializer = tempsUtiliseSerializer(leTempsUtilise, many=False)
     return Response(serializer.data)
 
 
@@ -162,26 +233,22 @@ def tempsMaj(request):
     # print('*** INVALID Serializer (tempsMaj) ***')
     return Response(serializer.data)
 
-# ^ appel:
-# http://127.0.0.1:8000/api/temps/anes
 
-# http://127.0.0.1:8000/api/majtemps
+@api_view(['POST'])
+def tempsAjouter(request):
+    donnees = request.data
+    serializer = tempsAjouterSerializer(request.data, many=False)
+    ajouterTempsIniFile(donnees["utilisateur"], donnees["tempsAdditionnel"])
+    return Response(serializer.data)
+
+# ^ --- utilisation:
+# http://127.0.0.1:8001/api/temps/anes
+
+# http://127.0.0.1:8001/api/majtemps
 # {"utilisateur": "anes", "temps": 11}
 
-
-# def tempsMaj(request, utilisateur, temps):
-#     print('*** request:\n', request.data)
-#     print('*** 1 ***')
-#     # serializer = tempsMajSerializer({"utilisateur": donnees["utilisateur"], "temps": donnees["temps"]}, many=False)
-#     serializer = tempsMajSerializer(request.data, many=False)
-#     print('*** 2 ***')
-#     # if serializer.is_valid():
-#     print('*** 3 ***')
-#     majTempsIniFile(utilisateur, temps)
-#     # else:
-#     # print('*** INVALID Serializer (tempsMaj) ***')
-#     print('*** 4 ***')
-#     return Response(serializer.data)
+# http://127.0.0.1:8001/api/ajoutertemps
+# {"utilisateur": "anes", "tempsAdditionnel": 50}
 
 
 # *old 12/07/2023 : J'ai rajouté la liste historique (d'aujourd'hui) des mots à éviter
