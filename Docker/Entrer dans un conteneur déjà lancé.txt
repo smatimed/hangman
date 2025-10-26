@@ -1,0 +1,18 @@
+Entrer dans un conteneur déjà lancé
+
+Si ton conteneur hangman_container tourne (ou a tourné récemment) :
+
+Pour lister :
+
+> docker ps -a
+
+
+Pour ouvrir un shell dedans :
+
+> docker exec -it hangman_container /bin/bash
+
+
+Si le conteneur est “Exited”, tu ne pourras pas y entrer.
+Mais tu peux le redémarrer en mode interactif :
+
+>  docker start -ai hangman_container

@@ -1,0 +1,3 @@
+email: smati_med@yahoo.com
+username: smatimed
+pwd: HmoHmo123Docker

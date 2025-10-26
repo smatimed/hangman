@@ -1,0 +1,36 @@
+Entrer dans un conteneur déjà créé (le plus courant)
+
+Même si ton conteneur hangman_container s’est arrêté, tu peux en lancer un interactif à partir de ton image hangman.
+
+Étape 1 — Ouvre un terminal interactif
+Exécute :
+
+> docker run -it --entrypoint /bin/bash hangman
+
+Explication :
+-it : mode interactif + terminal
+--entrypoint /bin/bash : remplace la commande Django par un shell bash
+hangman : c’est ton image de base
+
+
+
+Vérifie les installations
+
+Dans le shell que tu ouvres, tu seras dans le conteneur Linux, dans /app.
+
+Tu peux alors tester :
+
+> pipenv --version
+> pipenv graph
+> pipenv run pip list
+> ls -l
+
+
+Si tu veux exécuter Django manuellement
+
+Toujours à l’intérieur du conteneur :
+
+> pipenv run python manage.py runserver 0.0.0.0:8000
+
+Tu verras directement l’erreur exacte dans le terminal.
+
